@@ -1,0 +1,75 @@
+ body {
+height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+
+}
+
+.login-btn {
+  border-radius: 10px;
+  text-transform: none;
+  color: #000 !important;
+}
+
+.left-section-content{
+  max-width: 60%;
+  margin:   auto ;
+}
+.left-section .title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: none;
+  font-size: 0.95rem;
+  color: #000 !important;
+}
+
+.social-btn img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+
+
+.email-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 30px;
+  height: 45px;
+  margin-top: 10px;
+  font-weight: 400;
+
+}
+
+.divider hr {
+  border-top: 1px solid ;
+}
+
+.terms {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.terms a{
+  font-size: 0.8rem;
+  color: #000;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+  height: 100%;
+}
