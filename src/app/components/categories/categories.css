@@ -1,0 +1,44 @@
+.categories-container {
+  text-align: center;
+  margin-top: 3em;
+}
+
+.categories-container h2 {
+  font-weight: bold;
+}
+
+.header-p {
+  color: #7e7c7c;
+}
+
+.categories-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  padding: 0 2em;
+  margin-top: 3em;
+}
+
+.categories-cards-container section {
+  cursor: pointer;
+}
+
+.category-img {
+  flex: 1 1 300px;
+  max-width: 370px;
+  aspect-ratio: 1 / 1;
+}
+
+.category-img img {
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.category-title {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-top: 1em;
+}
