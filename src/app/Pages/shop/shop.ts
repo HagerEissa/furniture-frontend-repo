@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { Banner } from "../../components/banner/banner";
 
 @Component({
   selector: 'app-shop',
-  imports: [],
+  imports: [Banner],
   templateUrl: './shop.html',
   styleUrl: './shop.css'
 })
