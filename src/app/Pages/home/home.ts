@@ -9,7 +9,7 @@ import { HeroHome } from '../../components/hero-home/hero-home';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, Navbar, Categories, Products, Homegrid, HeroHome],
+  imports: [RouterModule, Categories, Products, Homegrid, HeroHome],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
