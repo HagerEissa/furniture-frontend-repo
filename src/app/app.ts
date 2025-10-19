@@ -6,10 +6,11 @@ import { SignupWithMail } from "./components/signup-with-mail/signup-with-mail";
 import { Home } from './Pages/home/home';
 import { Homegrid } from './components/homegrid/homegrid';
 import { Categories } from "./components/categories/categories";
+import { Products } from "./components/products/products";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Login, Signup, SignupWithMail, Home, Homegrid, Categories],
+  imports: [RouterOutlet, Login, Signup, SignupWithMail, Home, Homegrid, Categories, Products],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
