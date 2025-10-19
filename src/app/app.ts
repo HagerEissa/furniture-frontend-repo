@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Login } from "./components/login/login";
 import { Signup } from "./components/signup/signup";
 import { SignupWithMail } from "./components/signup-with-mail/signup-with-mail";
+import { Home } from './Pages/home/home';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Login, Signup, SignupWithMail],
+  imports: [RouterOutlet, Login, Signup, SignupWithMail,Home],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
