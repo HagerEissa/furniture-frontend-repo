@@ -1,0 +1,85 @@
+/* --- Page Title Banner Styles --- */
+.page-title-banner {
+  background-image: url('https://plus.unsplash.com/premium_photo-1683140882981-490928b33596?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHNjYW5kaW5hdmlhbi1pbnRlcmlvci1tb2NrdXAtd2FsbC1kZWNhbC1iYWNrZ3JvdW5kJTIwMSUyMGZ1cm5pdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600https://plus.unsplash.com/premium_photo-1680183180344-c1e9926f11e1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTN8fHNjYW5kaW5hdmlhbi1pbnRlcmlvci1tb2NrdXAtd2FsbC1kZWNhbC1iYWNrZ3JvdW5kJTIwMSUyMGZ1cm5pdHVyZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.page-title-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* --- Banner Content --- */
+.banner-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 48px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #b88e2f;
+}
+
+.breadcrumbs .separator {
+  margin: 0 6px;
+  color: #000000;
+}
+
+.breadcrumbs .current-page {
+  color: #b88e2f;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .page-title-banner {
+    height: 220px;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .breadcrumbs {
+    font-size: 14px;
+  }
+}
