@@ -1,0 +1,173 @@
+/* Base Container Styles */
+.footer-container {
+  padding: 50px 5%;
+  background-color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  color: #333333;
+}
+
+/* Main Content Layout (Funiro, Links, Help, Newsletter) */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* --- Column Styling --- */
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo and Address Column */
+.col-info {
+  flex-basis: 25%;
+  max-width: 250px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.footer-address {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9f9f9f;
+  line-height: 100%;
+}
+
+/* Links and Help Columns */
+.col-links,
+.col-help {
+  flex-basis: 15%;
+  min-width: 120px;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9f9f9f;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-col a {
+  font-size: 16px;
+  color: #333333;
+  text-decoration: none;
+  margin-bottom: 30px;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #b88e2f;
+}
+
+/* --- Newsletter Styling --- */
+
+.col-newsletter {
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.newsletter-form input {
+  padding: 5px 0;
+  border: none;
+  border-bottom: 1px solid #000000;
+  font-size: 14px;
+  color: #000000;
+  flex-grow: 1;
+}
+
+.newsletter-form input::placeholder {
+  color: #9f9f9f;
+}
+
+.subscribe-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 5px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  color: #b88e2f;
+  border-bottom-color: #b88e2f;
+}
+
+/* --- Divider and Copyright --- */
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  margin: 50px auto;
+  max-width: 1440px;
+}
+
+.footer-copyright {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.footer-copyright p {
+  font-size: 16px;
+  color: #000000;
+}
+
+/* --- Responsive Mobile View (e.g., screens under 768px) --- */
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 40px 5%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  /* Reset column widths for mobile to stack them */
+  .footer-col {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+    max-width: 100%;
+  }
+
+  .footer-address {
+    margin-bottom: 20px;
+  }
+
+  .col-newsletter {
+    max-width: 100%;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .newsletter-form input,
+  .subscribe-btn {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
