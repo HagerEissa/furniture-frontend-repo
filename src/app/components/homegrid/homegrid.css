@@ -1,0 +1,10 @@
+.gallery-section {
+  background-color: #ffffff;
+  padding: 40px 0;
+}
+
+.container {
+  width: 85%;
+  max-width: 1000px;
+  margin: auto;
+}

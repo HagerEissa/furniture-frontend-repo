@@ -4,10 +4,11 @@ import { Login } from "./components/login/login";
 import { Signup } from "./components/signup/signup";
 import { SignupWithMail } from "./components/signup-with-mail/signup-with-mail";
 import { Home } from './Pages/home/home';
+import { Homegrid } from './components/homegrid/homegrid';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Login, Signup, SignupWithMail,Home],
+  imports: [RouterOutlet, Login, Signup, SignupWithMail,Home,Homegrid],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
