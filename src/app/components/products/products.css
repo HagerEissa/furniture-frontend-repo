@@ -1,12 +1,5 @@
 .products-container {
   text-align: center;
-  margin-top: 15em;
-}
-
-.products-container h2 {
-  color: #3a3a3a;
-  font-size: 2em;
-  font-weight: bold;
 }
 
 .products-cards-container {
@@ -15,7 +8,7 @@
   justify-content: center;
   gap: 2em;
   padding: 0 2em;
-  margin-top: 3em;
+  margin-top: 6em;
 }
 
 .product-card-container {
@@ -128,7 +121,7 @@
   margin-top: 0.5em;
 }
 
-.show-more-btn {
+/* .show-more-btn {
   margin-top: 10em;
   background-color: transparent;
   border: 1px solid #b88e2f;
@@ -138,4 +131,4 @@
   font-weight: 600;
   font-size: 1.2em;
   cursor: pointer;
-}
+} */
