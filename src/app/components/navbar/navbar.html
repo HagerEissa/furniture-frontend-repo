@@ -1,32 +1,29 @@
 <!-- Navbar Container -->
 <header class="navbar-container">
 
-    <!-- Logo Section -->
-    <div class="logo">
-        <!-- Logo Image linked to homepage -->
-        <a routerLink="/">
-            <img src="Log.png" alt="Furniro Logo" width="50" height="50" />
-        </a>
-        <!-- Brand Name -->
-        <span>Furniro</span>
-    </div>
+  <!-- Logo Section -->
+  <div class="logo">
+    <a routerLink="/">
+      <img src="Log.png" alt="Furniro Logo" width="50" height="50" />
+    </a>
+    <span>Furniro</span>
+  </div>
 
-    <!-- Navigation Links -->
-    <nav class="nav-links" [class.active]="showMenu">
-        <!-- Each link navigates to a route and closes the mobile menu when clicked -->
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            (click)="toggleMenu()">Home</a>
-        <a routerLink="/shop" routerLinkActive="active" (click)="toggleMenu()">Shop</a>
-        <a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a>
-        <a routerLink="/contact" routerLinkActive="active" (click)="toggleMenu()">Contact</a>
-    </nav>
+  <!-- Navigation Links -->
+  <nav class="nav-links" [class.active]="showMenu">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      (click)="toggleMenu()">Home</a>
+    <a routerLink="/shop" routerLinkActive="active" (click)="toggleMenu()">Shop</a>
+    <a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="toggleMenu()">Contact</a>
 
-    <!-- Navigation Icons (right side) -->
     <div class="nav-icons">
-       <i  class="fa-regular fa-heart"></i> <!-- Wishlist Icon -->
-        <i class="fa-solid fa-cart-shopping"></i> <!-- Cart Icon -->
-        <i class="fa-solid fa-gauge"></i> <!-- Dashboard Icon -->
-        <i class="fa-solid fa-bars menu-toggle" (click)="toggleMenu()"></i> <!-- Mobile Menu Toggle Icon -->
+      <i class="fa-regular fa-heart"></i>
+      <i class="fa-solid fa-cart-shopping"></i>
+      <i class="fa-solid fa-gauge"></i>
     </div>
+  </nav>
+
+  <i class="fa-solid fa-bars menu-toggle" (click)="toggleMenu()"></i>
 
 </header>

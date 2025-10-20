@@ -41,6 +41,7 @@
   color: #333;
   font-size: 1rem;
   font-weight: 500;
+  
   transition: color 0.3s ease;
   font-family: 'Poppins', sans-serif;
 }
@@ -127,8 +128,15 @@
     transform: translateY(-10px);
     pointer-events: none;
   }
+  .nav-icons {
+    margin-top: 1rem;
+    justify-content: center;
+    gap: 2rem;
+  }
 
-  /* When active class is added → menu becomes visible */
+  .nav-icons i {
+    font-size: 22px;
+  }
   .nav-links.active {
     opacity: 1;
     transform: translateY(0);
