@@ -1,0 +1,24 @@
+.products-section {
+  text-align: center;
+}
+
+h2 {
+  color: #3a3a3a;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6em;
+}
+
+.show-more-btn {
+  margin-top: 10em;
+  background-color: transparent;
+  border: 1px solid #b88e2f;
+  color: #b88e2f;
+  width: 220px;
+  height: 48px;
+  font-weight: 600;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-bottom: 3em;
+}
