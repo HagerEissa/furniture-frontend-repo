@@ -1,0 +1,56 @@
+<div class="container my-5">
+    @if(favourites.length > 0) {
+        <h2>Your Cart</h2>
+        <div class="row" >
+            <div class="col-8">
+                <table class="table align-middle fav-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>Product Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th >Quantity</th>
+                            <th>Subtotal</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (fav of favourites; track $index) {
+                        <tr>
+                            <td class="d-flex align-items-center"><img [src]="fav.image" [alt]="fav.name" class="fav-img"/></td>
+                            <td>{{ fav.name }}</td>
+                            <td>${{ fav.price}}</td>
+                            <td>
+                                <div class="quantity-box">
+                                    <button class="qty-btn" (click)="decreaseQuantity(fav)">-</button>
+                                    <span class="qty-value">{{ fav.Quantity }}</span>
+                                    <button class="qty-btn" (click)="increaseQuantity(fav)">+</button>
+                                </div>
+                            </td>
+                            <td>${{ fav.price * fav.Quantity }}</td>
+
+                            <td><button class="btn btn-outline-danger btn-sm" (click)="removeItem(fav.id)"> <mat-icon>delete</mat-icon></button></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                <div class="summary-card">
+                <h4 class="fw-bold mb-4 text-center">Cart Totals</h4>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span>{{ favourites.length }}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Total Price</span>
+                    <span class="total">${{ totalPrice}}.00</span>
+                </div>
+                <button class="btn btn-warning w-100">check Out</button>
+                </div>
+            </div>
+        </div>
+    }@else {
+        <p class="empty-msg"> Your Cart is empty</p>
+    }
+</div>
