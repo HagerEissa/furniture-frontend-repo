@@ -28,8 +28,8 @@ import { Shop } from '../app/Pages/shop/shop';
 import { About } from '../app/Pages/about/about';
 import { Contact } from '../app/Pages/contact/contact';
 import { Checkout } from './Pages/checkout/checkout';
-import { Login } from './components/login/login';
-import { Signup } from './components/signup/signup';
+import { Profile } from './Pages/profile/profile';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -39,6 +39,6 @@ export const routes: Routes = [
   { path: 'shop', component: Shop },
   { path: 'about', component: About },
   { path: 'contact', component: Contact },
-  { path: 'checkout', component: Checkout },
-  { path: '**', redirectTo: 'login' },
+  { path: 'Checkout', component: Checkout },
+  { path: 'profile', component: Profile },
 ];
