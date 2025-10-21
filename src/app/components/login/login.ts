@@ -3,36 +3,57 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
-import { PasswordValidor } from './../../../../customvalidators/password.validators';
+import { MatIconModule } from '@angular/material/icon';
+import { PasswordValidator } from './../../../../customvalidators/password.validators';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule,MatInputModule,MatButtonModule,ReactiveFormsModule,MatIconModule],
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    RouterLink
+  ],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrls: ['./login.css'],
 })
 export class Login {
   hide = true;
 
   loginForm = new FormGroup({
-    email:new FormControl(null,[Validators.email,Validators.required]),
-    password:new FormControl(null,[Validators.required,PasswordValidor.passwordStrength()]),
-  })
+    email: new FormControl(null, [Validators.email, Validators.required]),
+    password: new FormControl(null, [Validators.required, PasswordValidator .passwordStrength()]),
+  });
 
-    get FormValid(){
-    return this.loginForm.valid
-    }
+  get FormValid() {
+    return this.loginForm.valid;
+  }
 
-    get emailValid(){
-      return this.loginForm.controls.email.valid
-    }
-    get passwordValid(){
-      return this.loginForm.controls.password.valid
-    }
+  get emailValid() {
+    return this.loginForm.controls.email.valid;
+  }
 
-  login(){
-    console.log(this.loginForm);
-    
+  get passwordValid() {
+    return this.loginForm.controls.password.valid;
+  }
+
+  login() {
+    console.log(this.loginForm.value);
+  }
+
+  loginWithGoogle() {
+    console.log('Google login clicked');
+  }
+
+  loginWithFacebook() {
+    console.log('Facebook login clicked');
+  }
+
+  loginWithGithub() {
+    console.log('GitHub login clicked');
   }
 }
