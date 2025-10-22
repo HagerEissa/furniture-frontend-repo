@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <table class="table table-striped custom-table table-bordered align-middle">
+    <thead>
+      <tr>
+        <th>Category Name</th>
+        <th>Category ID</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (category of categories; track $index) {
+      <tr>
+        <td>{{ category.name }}</td>
+        <td>{{ category._id }}</td>
+        <td class="product-control-btns">
+          <button class="btn btn-sm btn-primary me-2" (click)="openEditModal(category)">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCategory(category._id)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-edit-category-form
+  [category]="selectedCategory"
+  (categoryUpdated)="loadCategories()"
+></app-edit-category-form>

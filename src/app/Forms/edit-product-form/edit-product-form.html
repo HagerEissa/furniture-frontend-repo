@@ -70,6 +70,18 @@
 
           <div class="mb-3">
             <label>Product Image</label>
+
+            @if (product.imgURL) {
+            <div class="mb-3 text-center">
+              <img
+                [src]="product.imgURL"
+                alt="Current Product Image"
+                class="img-fluid rounded mb-2"
+                style="max-height: 150px; border: 1px solid #ddd"
+              />
+            </div>
+            }
+
             <input
               type="file"
               class="form-control"
@@ -137,3 +149,25 @@
     </div>
   </div>
 </div>
+
+<!-- @if (product.imgURL) {
+          <div class="mb-3 text-center">
+            <img
+              [src]="product.imgURL"
+              alt="Current Product Image commented later"
+              class="img-fluid rounded mb-2"
+              style="max-height: 150px; border: 1px solid #ddd"
+            />
+          </div>
+          }
+
+          <div class="mb-3">
+            <label>Product Image</label>
+            <input
+              type="file"
+              class="form-control"
+              name="product-img"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+            />
+          </div> -->

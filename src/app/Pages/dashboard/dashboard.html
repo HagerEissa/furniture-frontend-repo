@@ -1,6 +1,7 @@
 <app-hero-dashboard></app-hero-dashboard>
 
 <div class="dashboard-container">
+  <button class="btn add-category-btn" (click)="openAddCategoryModal()">+ Add New Category</button>
   <button class="btn add-product-btn" (click)="openAddModal()">+ Add New Product</button>
 
   <div class="container mt-5 table-container">
@@ -17,6 +18,20 @@
           aria-selected="true"
         >
           Products
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="categories-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#categories"
+          type="button"
+          role="tab"
+          aria-controls="categories"
+          aria-selected="false"
+        >
+          Categories
         </button>
       </li>
       <li class="nav-item" role="presentation">
@@ -59,6 +74,10 @@
         <app-products-tab></app-products-tab>
       </div>
 
+      <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="categories-tab">
+        <app-categories-tab></app-categories-tab>
+      </div>
+
       <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
         <app-users-tab></app-users-tab>
       </div>
@@ -69,5 +88,6 @@
     </div>
 
     <app-add-product-form></app-add-product-form>
+    <app-add-category-form></app-add-category-form>
   </div>
 </div>
