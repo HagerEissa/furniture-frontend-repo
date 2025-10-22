@@ -29,6 +29,9 @@ import { About } from '../app/Pages/about/about';
 import { Contact } from '../app/Pages/contact/contact';
 import { Checkout } from './Pages/checkout/checkout';
 import { Profile } from './Pages/profile/profile';
+import { Login } from './components/login/login';
+import { Signup } from './components/signup/signup';
+import { NotFound } from './components/not-found/not-found';
 
 
 export const routes: Routes = [
@@ -41,4 +44,5 @@ export const routes: Routes = [
   { path: 'contact', component: Contact },
   { path: 'Checkout', component: Checkout },
   { path: 'profile', component: Profile },
+  {path:'**', component: NotFound, title:'NotFound'},
 ];
