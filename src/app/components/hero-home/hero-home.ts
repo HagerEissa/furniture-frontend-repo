@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-hero-home',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './hero-home.html',
   styleUrl: './hero-home.css'
 })

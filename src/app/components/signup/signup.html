@@ -1,80 +1,116 @@
-<div class="container">
-    <div class="top-links">
-        <span>Already have an account? <a href="#">Log in</a></span>
-        <br />
-        <a href="#">Forgot your user ID or password?</a>
-    </div>
-    <div class="avatar">
-        <mat-icon>person</mat-icon>
-    </div>
-    <div class="registerationForm" [formGroup]="registerationForm" >
-        <h2>Create an account</h2>
-        <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis maximus.</p>
-        
-        <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="pat@example.com" type="email" formControlName="email" required>
-        </mat-form-field>
-        
-        @if(registerationForm.controls.email.touched&&!emailValid){
-            @if (registerationForm.controls.email.errors?.['required']) {
-                <small class="warning ">Please enter Email address*</small>
-            }
-            @if (registerationForm.controls.email.errors?.['email']) {
-                <small class="warning ">The Email address should be a valid email*</small>
-            }
-        }@else {
-            <small class="helper">We will use your email as your user ID.</small>
-        }
+<div class="signup-container">
+  <div class="signup-card" [formGroup]="registerationForm">
+    <h2 class="mb-3">Create an account</h2>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Phone</mat-label>
-            <input matInput formControlName="phone"  required>
-        </mat-form-field>
-        @if(registerationForm.controls.phone.touched&&!phoneValid){
-            @if (registerationForm.controls.phone.errors?.['required']) {
-                <p class="warning">*phone is required</p>
-            }
-        }@else {
-        <small class="helper">We strongly recommend adding a phone number. This will help verify your account and keep it safe.</small>
-        }
+    <p class="subtitle">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis maximus.
+    </p>
 
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        type="email"
+        formControlName="email"
+        required
+      />
+    </mat-form-field>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label> 
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-            </button> 
-        </mat-form-field> 
-        
-        @if(registerationForm.controls.password.touched&&!passwordValid){
-            @if (registerationForm.controls.password.errors?.['required']) {
-                <small class="warning ">*password is required</small>
-            }@else {
-            <ul class="password-rules">
-                <li>Use 8 or more characters</li>
-                <li>Use upper and lower case letters (e.g. Aa)</li>
-                <li>Use a number (e.g. 1234)</li>
-                <li>Use a symbol (e.g. !@#$)</li>
-            </ul>
-        }
-        }@else {
-            <ul class="password-rules">
-                <li>Use 8 or more characters</li>
-                <li>Use upper and lower case letters (e.g. Aa)</li>
-                <li>Use a number (e.g. 1234)</li>
-                <li>Use a symbol (e.g. !@#$)</li>
-            </ul>
-        }
+    @if (registerationForm.controls.email.touched && !emailValid) {
+      @if (registerationForm.controls.email.errors?.['required']) {
+        <small class="warning">Please enter Email address*</small>
+      }
+      @if (registerationForm.controls.email.errors?.['email']) {
+        <small class="warning">The Email address should be a valid email*</small>
+      }
+    } @else {
+      <small class="helper">We will use your email as your user ID.</small>
+    }
 
-        <button mat-raised-button class="sign-btn"  [disabled]="!FormValid" (click)="register()" >
-            Sign up
-        </button>
+    <!-- Phone -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" required />
+    </mat-form-field>
 
-        <p class="terms">
-            By creating an account, you agree to the <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.
-        </p>
+    @if (registerationForm.controls.phone.touched && !phoneValid) {
+      @if (registerationForm.controls.phone.errors?.['required']) {
+        <p class="warning">*Phone is required</p>
+      }
+    } @else {
+      <small class="helper"
+        >We strongly recommend adding a phone number for verification.</small
+      >
+    }
 
-    </div>
+    <!-- Password -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    @if (registerationForm.controls.password.touched && !passwordValid) {
+      @if (registerationForm.controls.password.errors?.['required']) {
+        <small class="warning">*Password is required</small>
+      } @else {
+        <ul class="password-rules">
+          <li>Use 8 or more characters</li>
+          <li>Use upper and lower case letters (e.g. Aa)</li>
+          <li>Use a number (e.g. 1234)</li>
+          <li>Use a symbol (e.g. !@#$)</li>
+        </ul>
+      }
+    } @else {
+      <ul class="password-rules">
+        <li>Use 8 or more characters</li>
+        <li>Use upper and lower case letters (e.g. Aa)</li>
+        <li>Use a number (e.g. 1234)</li>
+        <li>Use a symbol (e.g. !@#$)</li>
+      </ul>
+    }
+
+    <button
+      mat-raised-button
+      class="sign-btn mt-2"
+      [disabled]="!FormValid"
+      (click)="register()"
+      
+    >
+      Sign up
+    </button>
+
+    <p class="terms mt-3 text-center">
+      Already have an account?
+      <a routerLink="/login">Log in</a>
+    </p>
+
+    <p class="terms text-center">
+      By creating an account, you agree to the
+      <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.
+    </p>
+  </div>
+
+  <!-- Background Image -->
+  <div class="signup-image">
+    <img
+      src="2.jpg"
+      alt="signup background"
+      class="img-fluid w-100 h-100 object-fit-cover"
+    />
+  </div>
 </div>

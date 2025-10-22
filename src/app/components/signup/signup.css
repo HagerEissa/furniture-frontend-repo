@@ -1,122 +1,154 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #fafafa;
-    position: relative;
-    
-}
-.top-links {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  text-align: right;
-  font-size: 0.9rem;
-}
-
-
-
-.top-links a {
-  color: #000;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.top-links a:hover {
-  text-decoration: underline;
-}
-
-.avatar {
-  width: 60px;
-  height: 60px;
-  background: #e0e0e0;
-  border-radius: 50%;
+.signup-container {
   display: flex;
+  height: 100vh;
+  width: 100%;
+  background: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170')
+    no-repeat center center/cover;
+  position: relative;
   justify-content: center;
   align-items: center;
-  margin-bottom: -40px;
-  z-index: 1;
-}
-.avatar mat-icon {
-  color: #666;
+  padding: 20px;
 }
 
-.registerationForm {
-  max-width: 600px;
-  width: 100%;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 0px 3px 12px rgba(0,0,0,0.1);
+.signup-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+/* 🔹 Signup Card */
+.signup-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 10px 50px;
+  color: #000;
+  min-width: 45px;
+  /* max-width: 420px; */
   text-align: center;
 }
-.registerationForm h2{
-    margin-bottom: 10px;
-}
 
-.registerationForm .subtitle {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 20px;
-}
-
-mat-form-field {
-  width: 100%;
-}
-
-.helper {
-  font-size: 0.8rem;
-  color: #888;
-  text-align: left;
+/* 🔹 Headings */
+.signup-card h2 {
   margin-bottom: 15px;
-  display: block;
+  font-weight: 700;
+  color: #fff;
 }
 
-
-.password-rules {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  /* margin: 10px 0 20px; */
-}
-.password-rules li {
-  font-size: 0.85rem;
-  color: #666;
-  margin: 4px 0;
-}
-.password-rules li::before {
-  content: "• ";
-  color: #666;
+.subtitle {
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
+/* 🔹 Buttons */
 .sign-btn {
-  width: 100%;
   background: #000 !important;
   color: #fff !important;
   border-radius: 30px;
   height: 45px;
-  margin-top: 10px;
-  font-weight: 500;
+  width: 100%;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
+.sign-btn:hover {
+  background: #333 !important;
+  transform: translateY(-2px);
+}
+
+/* 🔹 Password rules and warnings */
+.password-rules {
+  list-style: none;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #000;
+  padding: 0;
+}
+
+.helper {
+  font-size: 0.8rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.warning {
+  color: #ffb3b3;
+  font-size: small;
+  display: block;
+  text-align: left;
+}
+
+/* 🔹 Terms text */
 .terms {
   font-size: 0.8rem;
-  color: #666;
+  color: #fff;
   margin-top: 20px;
 }
+
 .terms a {
-  color: #000;
-  font-weight: 500;
+  color: #b88e2f;
   text-decoration: none;
-}
-.terms a:hover {
-  text-decoration: underline;
+  font-weight: 700;
+  font-size: 16px;
 }
 
-.warning{
-    color: red;
-    font-size: small;
-    /* text-align: left; */
+/* 🔹 Right-side image */
+.signup-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  z-index: 0;
+}
 
+.signup-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* 🔹 Responsive */
+@media (max-width: 992px) {
+  .signup-image {
+    display: none;
+  }
+
+  .signup-container {
+    padding: 40px 20px;
+  }
+
+  .signup-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 35px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .signup-card {
+    padding: 25px 20px;
+    max-width: 95%;
+  }
+
+  .sign-btn {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .terms a {
+    font-size: 14px;
+  }
 }
