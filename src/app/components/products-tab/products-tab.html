@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table table-striped custom-table table-bordered align-middle">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Discount</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track $index) {
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.desc }}</td>
+        <td>${{ product.price | number }}</td>
+        <td>{{ product.categoryId.name }}</td>
+        <td>{{ product.discount }}%</td>
+        <td class="product-control-btns">
+          <button class="btn btn-sm btn-primary me-2" (click)="openEditModal(product)">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product._id)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-edit-product-form
+  [product]="selectedProduct"
+  (productUpdated)="reloadProducts()"
+></app-edit-product-form>

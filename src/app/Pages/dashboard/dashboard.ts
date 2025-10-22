@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { ProductsTab } from '../../components/products-tab/products-tab';
+import { UsersTab } from '../../components/users-tab/users-tab';
+import { OrdersTab } from '../../components/orders-tab/orders-tab';
+import { AddProductForm } from '../../Forms/add-product-form/add-product-form';
+import { HeroDashboard } from "../../components/hero-dashboard/hero-dashboard";
+declare var bootstrap: any;
+
+@Component({
+  selector: 'app-dashboard',
+  standalone: true,
+  imports: [ProductsTab, UsersTab, OrdersTab, AddProductForm, HeroDashboard],
+  templateUrl: './dashboard.html',
+  styleUrl: './dashboard.css',
+})
+export class Dashboard {
+  newProduct = { name: '', price: 0, description: '', stock: 0, category: '' };
+  openAddModal() {
+    this.newProduct = { name: '', price: 0, description: '', stock: 0, category: '' };
+    const modal = new bootstrap.Modal(document.getElementById('addModal'));
+    modal.show();
+  }
+}

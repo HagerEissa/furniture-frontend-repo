@@ -1,0 +1,139 @@
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label>Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              [(ngModel)]="product.name"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="description"
+              [(ngModel)]="product.desc"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Short Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="short-description"
+              [(ngModel)]="product.shortDesc"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Price</label>
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              [(ngModel)]="product.price"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Discount</label>
+            <input
+              type="number"
+              class="form-control"
+              name="discount"
+              [(ngModel)]="product.discount"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Product Image</label>
+            <input
+              type="file"
+              class="form-control"
+              name="product-img"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Category</label>
+            <input
+              type="text"
+              class="form-control"
+              name="category"
+              [(ngModel)]="product.categoryId"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Stock</label>
+            <input
+              type="text"
+              class="form-control"
+              name="stock"
+              [(ngModel)]="product.stock"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Product Status</label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="status"
+                id="new"
+                [value]="true"
+                [(ngModel)]="product.isnew"
+                checked
+              />
+              <label class="form-check-label" for="true">New</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="status"
+                id="old"
+                [value]="false"
+                [(ngModel)]="product.isnew"
+              />
+              <label class="form-check-label" for="false">Old</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn add-product-btn" (click)="updateProduct()">Edit Product</button>
+      </div>
+    </div>
+  </div>
+</div>
