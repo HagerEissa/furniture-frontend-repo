@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PasswordValidator } from './../../../../customvalidators/password.validators';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink
+    RouterModule
   ],
   templateUrl: './signup.html',
   styleUrls: ['./signup.css'],

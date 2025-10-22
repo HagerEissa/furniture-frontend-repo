@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { HeroCart } from "../hero-cart/hero-cart";
 
 @Component({
   selector: 'app-cart',
-  imports: [MatIconModule],
+  imports: [MatIconModule, HeroCart],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
 })
