@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  styleUrls: ['./navbar.css'],
 })
 export class Navbar {
+  showMenu = false;
 
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 }

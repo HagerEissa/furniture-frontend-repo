@@ -1,0 +1,30 @@
+<section class="products-container">
+  <section class="products-cards-container">
+    @for (product of products.slice(0, 4); track $index) {
+    <div class="img-content-card-container">
+      <div class="product-card-container">
+        <div class="product-card-img">
+          <img [src]="product.imgURL" [alt]="product.title" />
+        </div>
+
+        <div class="overlay">
+          <button class="add-to-cart-btn">Add to cart</button>
+          <p class="wishlist-btn"><span class="material-icons">favorite_border</span>Like</p>
+        </div>
+
+        <div class="card-content">
+          <p class="product-title">{{ product.name }}</p>
+          <p class="product-desc">{{ product.shortDesc }}</p>
+          <p class="price">${{ product.price | number }}</p>
+        </div>
+
+        @if (product.discount) {
+        <div class="sticker-discount">-{{ product.discount }}%</div>
+        } @else if (product.isnew) {
+        <div class="sticker-new">New</div>
+        }
+      </div>
+    </div>
+    }
+  </section>
+</section>

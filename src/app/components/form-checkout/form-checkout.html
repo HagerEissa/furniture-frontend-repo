@@ -1,0 +1,122 @@
+<div class="page-container">
+
+
+    <div class="checkout-body">
+        <div class="billing-details">
+            <h2 class="section-title">Billing details</h2>
+
+            <form action="#" method="POST">
+                <div class="form-row split-2">
+                    <div class="form-group">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" name="first-name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" name="last-name" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company-name">Company Name (optional)</label>
+                    <input type="text" id="company-name" name="company-name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country / Region</label>
+                    <select id="country" name="country" required>
+                        <option value="srilanka">Sri Lanka</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Street address</label>
+                    <input type="text" id="address" name="address" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Town / City</label>
+                    <input type="text" id="city" name="city" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="province">Province</label>
+                    <select id="province" name="province" required>
+                        <option value="western">Western Province</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="zip-code">ZIP code</label>
+                    <input type="text" id="zip-code" name="zip-code" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-group">
+                    <textarea id="additional-info" name="additional-info" rows="3"
+                        placeholder="Additional Information"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <div class="order-summary">
+            <div class="product-summary">
+                <div class="summary-header">
+                    <span class="product-title">Product</span>
+                    <span class="product-title">Subtotal</span>
+                </div>
+                <div class="summary-item">
+                    <span class="item-name">Headphones</span>
+                    <span class="item-amount">Rs. 89,000.00</span>
+                </div>
+                <div class="summary-total">
+                    <span class="total-label">Subtotal</span>
+                    <span class="total-amount">Rs. 89,000.00</span>
+                </div>
+                <div class="summary-total grand-total">
+                    <span class="total-label">Total</span>
+                    <span class="grand-amount">Rs. 150,000.00</span>
+                </div>
+            </div>
+
+            <div class="payment-section">
+                <div class="payment-method">
+                    <input type="radio" id="bank-transfer" name="payment-method" value="bank-transfer" checked />
+                    <label for="bank-transfer">Direct Bank Transfer</label>
+                    <p class="payment-description">
+                        Make your payment directly into our bank account. Please use your
+                        Order ID as the payment reference. Your order will not be shipped
+                        until the funds have cleared in our account.
+                    </p>
+                </div>
+
+                <div class="payment-method">
+                    <input type="radio" id="check-payments" name="payment-method" value="check-payments" />
+                    <label for="check-payments">Check payments</label>
+                </div>
+
+                <div class="payment-method">
+                    <input type="radio" id="cash-on-delivery" name="payment-method" value="cash-on-delivery" />
+                    <label for="cash-on-delivery">Cash on delivery</label>
+                </div>
+
+                <p class="privacy-note">
+                    Your personal data will be used to support your experience throughout
+                    this website, to manage access to your account, and for other purposes
+                    described in our <a href="#">privacy policy</a>.
+                </p>
+
+                <button type="submit" class="place-order-btn">Place order</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+.banner-container {
+  background-color: #faf3ea;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5em 2em 2em 2em;
+  margin-top: 8em;
+}
+
+.advantages-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 2em;
+  width: 90%;
+  max-width: 300px;
+}
+
+.advantages-container img {
+  width: 50px;
+  height: 50px;
+}
+
+.main-feature {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.features-content {
+  margin-top: 0.8em;
+}
+
+.sub {
+  color: #898989;
+  font-weight: 500;
+}
+
+@media (min-width: 1000px) {
+  .features-content {
+    line-height: 10px;
+  }
+}

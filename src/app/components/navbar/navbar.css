@@ -1,0 +1,174 @@
+/* Main Navbar Container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 5%;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Round logo image */
+.logo img {
+  border-radius: 50%;
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  transition: all 0.4s ease;
+}
+
+/* Individual nav links */
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  
+  transition: color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Underline animation on hover/active */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2.5px;
+  background-color: #b88e2f;
+  transition: width 0.3s ease;
+}
+
+/* Hover effect: change color + show underline */
+.nav-links a:hover {
+  color: #b88e2f;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link styling */
+.nav-links a.active {
+  color: #b88e2f;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Icons container */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Style for each icon */
+.nav-icons i {
+  font-size: 22px;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Icon hover effect */
+.nav-icons i:hover {
+  color: #b88e2f;
+  transform: scale(1.2);
+}
+
+/* Hidden menu toggle icon (only visible on mobile) */
+.menu-toggle {
+  display: none;
+}
+
+/* ========================= */
+/*  Responsive Design (Mobile) */
+/* ========================= */
+@media (max-width: 768px) {
+  /* Show menu toggle icon */
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+  }
+
+  /* Mobile dropdown menu style */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    background-color: white;
+    width: 220px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 1.2rem;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+  .nav-icons {
+    margin-top: 1rem;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .nav-icons i {
+    font-size: 22px;
+  }
+  .nav-links.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    animation: slideDown 0.4s ease;
+  }
+
+  /* Slide-down animation for smooth open */
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Center text for mobile menu items */
+  .nav-links a {
+    text-align: center;
+  }
+}
+
+
+
+.nav-icons a.icon-link {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.nav-icons a.icon-link:hover i {
+  color: #b88e2f; 
+}
