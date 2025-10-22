@@ -34,12 +34,14 @@ import { Signup } from './components/signup/signup';
 import { NotFound } from './components/not-found/not-found';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
+import { OauthSuccess } from './components/oauth-success/oauth-success';
 
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
+  { path: 'oauth-success', component: OauthSuccess },
   { path: 'home', component: Home },
   { path: 'shop', component: Shop },
   { path: 'about', component: About },

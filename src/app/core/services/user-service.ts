@@ -23,5 +23,4 @@ export class UserService {
       deleteUser(id:any){
         return this._http.delete(`${this.URL_DB}/${id}`)
       }
-
 }

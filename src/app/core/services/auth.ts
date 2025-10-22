@@ -14,27 +14,23 @@ export class Auth {
         return this._http.post(`${this.URL_DB}/register`,data)
       }
 
-      // Google Login redirect
       loginWithGoogle() {
         window.location.href = `${this.URL_DB}/auth/google`;
       }
 
-      // Facebook Login redirect
       loginWithFacebook() {
         window.location.href = `${this.URL_DB}/auth/facebook`;
       }
 
-       setToken(token: string) {
+      setToken(token: string) {
           localStorage.setItem('token', token);
         }
 
-        getToken() {
+      getToken() {
           return localStorage.getItem('token');
         }
 
-        clearToken() {
+      clearToken() {
           localStorage.removeItem('token');
         }
-
-   
 }
