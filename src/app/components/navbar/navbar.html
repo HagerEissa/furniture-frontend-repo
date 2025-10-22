@@ -1,6 +1,5 @@
 <!-- Navbar Container -->
 <header class="navbar-container">
-
   <!-- Logo Section -->
   <div class="logo">
     <a routerLink="/">
@@ -11,8 +10,13 @@
 
   <!-- Navigation Links -->
   <nav class="nav-links" [class.active]="showMenu">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-      (click)="toggleMenu()">Home</a>
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="toggleMenu()"
+      >Home</a
+    >
     <a routerLink="/shop" routerLinkActive="active" (click)="toggleMenu()">Shop</a>
     <a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a>
     <a routerLink="/contact" routerLinkActive="active" (click)="toggleMenu()">Contact</a>
@@ -23,14 +27,13 @@
         <i class="fa-regular fa-heart"></i>
       </a>
       <!-- <i class="fa-regular fa-heart"></i> -->
-       <a routerLink="/cart" class="icon-link">
+      <a routerLink="/cart" class="icon-link">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
       <!-- <i class="fa-solid fa-cart-shopping"></i> -->
-      <i class="fa-solid fa-gauge"></i>
+      <a routerLink="/dashboard"><i class="fa-solid fa-gauge"></i></a>
     </div>
   </nav>
 
   <i class="fa-solid fa-bars menu-toggle" (click)="toggleMenu()"></i>
-
 </header>

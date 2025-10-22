@@ -13,7 +13,7 @@ import { Signup } from './components/signup/signup';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Footer, Navbar,Login,Signup, Favourite, Cart],
+  imports: [RouterOutlet, Footer, Navbar], //Login,Signup, Favourite, Cart
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

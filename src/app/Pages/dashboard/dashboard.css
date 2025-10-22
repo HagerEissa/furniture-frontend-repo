@@ -4,7 +4,7 @@
   border-radius: 15px;
 }
 
-.add-product-btn {
+.add-product-btn, .add-category-btn {
   /* background-color: #faf3ea; */
   background-color: #66796B;
   font-weight: bold;
@@ -12,6 +12,10 @@
   margin-right: 2em;
   color: white;
   font-weight: 500;
+}
+
+.add-category-btn {
+  background-color: #A9C2D9;
 }
 
 .table-container {
