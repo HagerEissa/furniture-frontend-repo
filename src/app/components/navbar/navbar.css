@@ -161,3 +161,14 @@
     text-align: center;
   }
 }
+
+
+
+.nav-icons a.icon-link {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.nav-icons a.icon-link:hover i {
+  color: #b88e2f; 
+}

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-hero-home',
+  selector: 'app-hero-cart',
   imports: [RouterModule],
-  templateUrl: './hero-home.html',
-  styleUrl: './hero-home.css'
+  templateUrl: './hero-cart.html',
+  styleUrl: './hero-cart.css'
 })
-export class HeroHome {
+export class HeroCart {
 
 }

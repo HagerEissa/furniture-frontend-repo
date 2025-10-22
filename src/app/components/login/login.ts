@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { PasswordValidator } from './../../../../customvalidators/password.validators';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
     MatButtonModule,
     ReactiveFormsModule,
     MatIconModule,
-    RouterLink
+    RouterModule
   ],
   templateUrl: './login.html',
   styleUrls: ['./login.css'],

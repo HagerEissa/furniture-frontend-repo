@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { HeroFavourite } from "../hero-favourite/hero-favourite";
 
 @Component({
   selector: 'app-favourite',
-  imports: [MatIconModule],
+  imports: [MatIconModule, HeroFavourite],
   templateUrl: './favourite.html',
   styleUrl: './favourite.css'
 })

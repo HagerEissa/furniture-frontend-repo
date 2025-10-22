@@ -1,3 +1,4 @@
+
 .fav-table {
   width: 100%;
   border-collapse: collapse;
@@ -12,6 +13,7 @@ table.table thead.table-header tr th {
   vertical-align: middle !important;
   text-align: center;
 }
+
 .fav-img {
   width: 80px;
   height: 80px;

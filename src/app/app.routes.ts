@@ -32,6 +32,8 @@ import { Profile } from './Pages/profile/profile';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
 import { NotFound } from './components/not-found/not-found';
+import { Cart } from './components/cart/cart';
+import { Favourite } from './components/favourite/favourite';
 
 
 export const routes: Routes = [
@@ -44,5 +46,7 @@ export const routes: Routes = [
   { path: 'contact', component: Contact },
   { path: 'Checkout', component: Checkout },
   { path: 'profile', component: Profile },
+  { path: 'cart', component: Cart },
+  { path: 'favourite', component: Favourite },
   {path:'**', component: NotFound, title:'NotFound'},
 ];
