@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../../core/services/category-service';
 declare var bootstrap: any;
@@ -16,6 +16,7 @@ export class AddCategoryForm {
 
   selectedFile: File | null = null;
 
+  @Output() categoryAdded = new EventEmitter<void>();
   constructor(private categoryService: CategoryService) {}
 
   onFileSelected(event: any) {
@@ -31,22 +32,21 @@ export class AddCategoryForm {
 
     const formData = new FormData();
     formData.append('name', this.category.name);
-    formData.append('imgURL', this.selectedFile);
+    formData.append('categoryImage', this.selectedFile);
 
     this.categoryService.addCategory(formData).subscribe({
       next: (res) => {
         console.log('✅ Category added successfully:', res);
 
-        // Close modal
         const modalElement = document.getElementById('addCategoryModal');
         const modal = bootstrap.Modal.getInstance(modalElement);
         modal.hide();
 
-        // Reset form
         this.category.name = '';
         this.selectedFile = null;
+        this.categoryAdded.emit();
       },
-      error: (err:any) => {
+      error: (err: any) => {
         console.error('❌ Error adding category:', err);
       },
     });
