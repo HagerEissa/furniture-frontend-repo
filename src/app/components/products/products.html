@@ -1,7 +1,8 @@
 <section class="products-container">
   <section class="products-cards-container">
-    @for (product of (limit ? products.slice(0, limit) : products); track $index) {
-    <div class="img-content-card-container">
+    <div class="img-content-card-container" 
+         *ngFor="let product of (displayedProducts$ | async)?.slice(0, limit || undefined)">
+      
       <div class="product-card-container">
         <div class="product-card-img">
           <img [src]="product.imgURL" [alt]="product.title" />
@@ -9,7 +10,9 @@
 
         <div class="overlay">
           <button class="add-to-cart-btn">Add to cart</button>
-          <p class="wishlist-btn"><span class="material-icons">favorite_border</span>Like</p>
+          <p class="wishlist-btn">
+            <span class="material-icons">favorite_border</span>Like
+          </p>
         </div>
 
         <div class="card-content">
@@ -18,13 +21,13 @@
           <p class="price">${{ product.price | number }}</p>
         </div>
 
-        @if (product.discount) {
-        <div class="sticker-discount">-{{ product.discount }}%</div>
-        } @else if (product.isnew) {
-        <div class="sticker-new">New</div>
-        }
+        <div *ngIf="product.discount" class="sticker-discount">
+          -{{ product.discount }}%
+        </div>
+        <div *ngIf="!product.discount && product.isnew" class="sticker-new">
+          New
+        </div>
       </div>
     </div>
-    }
   </section>
 </section>

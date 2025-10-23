@@ -1,10 +1,20 @@
 <div class="product-control-bar">
 
     <div class="control-group left-controls">
-        <button class="control-btn filter-btn">
+        <button class="control-btn filter-btn" (click)="toggleFilterMenu()">
             <i class="fas fa-sliders-h"></i>
             Filter
         </button>
+
+        <div class="filter-menu" *ngIf="showFilterMenu">
+            <select (change)="onFilterChange($event)">
+                <option value="all" selected>All</option>
+                <option *ngFor="let cat of categories" [value]="cat._id">{{ cat.name }}</option>
+            </select>
+        </div>
+
+
+
         <div class="separator-line"></div>
         <div class="view-options">
             <button class="control-btn active">
@@ -14,29 +24,26 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <span class="results-text">
-            Showing 1–16 of 32 results
-        </span>
+        <span class="results-text">Showing 1–16 of 32 results</span>
     </div>
 
     <div class="control-group right-controls">
-
         <div class="control-option search-option">
             <label for="search-input">Search</label>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Enter product name">
+                <input type="text" id="search-input" placeholder="Enter product name" [(ngModel)]="searchText"
+                    (input)="onSearchChange()">
                 <i class="fas fa-search search-icon"></i>
             </div>
         </div>
 
         <div class="control-option">
             <label for="sort-select">Sort by</label>
-            <select id="sort-select" class="control-select sort-select default-select">
+            <select id="sort-select" class="control-select sort-select default-select" (change)="onSortChange($event)">
                 <option value="default" selected>Default</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
             </select>
         </div>
-
     </div>
 </div>
