@@ -1,1 +1,62 @@
-<p>contact-layout works!</p>
+<section class="contact-section py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-2">Get In Touch With Us</h2>
+        <p class="text-center text-muted mb-5">For more information about our products & services, please feel free to drop us an email.</p>
+
+        <div class="row g-4 align-items-start bg-white rounded p-4">
+        <div class="col-lg-4 col-md-5 col-12">
+            <div class="mb-4">
+            <h5><i class="bi bi-geo-alt-fill me-2"></i> Address</h5>
+            <p class="mb-0">236 5th SE Avenue,<br />New York NY10000,<br />United States</p>
+            </div>
+
+            <div class="mb-4">
+            <h5><i class="bi bi-telephone-fill me-2"></i> Phone</h5>
+            <p class="mb-0">Mobile: (+84) 546-6789<br />Hotline: (+84) 456-6789</p>
+            </div>
+
+            <div>
+            <h5><i class="bi bi-clock-fill me-2"></i> Working Time</h5>
+            <p class="mb-0">Mon–Fri: 8:00–22:00<br />Sat–Sun: 9:00–21:00</p>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-7 col-12">
+            <form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
+            <div class="mb-3">
+                <input type="text" name="name" placeholder="Your name" required [(ngModel)]="contact.name" #name="ngModel"/>
+                @if (name.invalid && name.touched) {
+                    <div class="text-danger small mt-1">Name is required.</div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <input type="email" name="email" placeholder="Email address" required email [(ngModel)]="contact.email" #email="ngModel" />
+                @if (email.invalid && email.touched) {
+                <div class="text-danger small mt-1">
+                    @if (email.errors?.['required']) {
+                        <span>Email is required.</span>
+                    } @else if (email.errors?.['email']) {
+                        <span>Enter a valid email.</span>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <input type="text" name="subject" placeholder="Subject" [(ngModel)]="contact.subject"/>
+            </div>
+
+            <div class="mb-4">
+                <textarea name="message" rows="4" placeholder="Message" required [(ngModel)]="contact.message" #message="ngModel"></textarea>
+                @if (message.invalid && message.touched) {
+                    <div class="text-danger small mt-1">Message is required.</div>
+                }
+            </div>
+
+            <button type="submit" [disabled]="contactForm.invalid">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</section>
