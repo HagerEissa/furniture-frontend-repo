@@ -1,25 +1,37 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from '../../core/services/category-service';
 
 @Component({
   selector: 'app-categories',
   imports: [CommonModule],
   templateUrl: './categories.html',
-  styleUrl: './categories.css',
+  styleUrls: ['./categories.css'],
 })
-export class Categories implements OnInit{
-  categories:any
-  constructor(private _catrgoryService:CategoryService){}
+export class Categories implements OnInit {
+  categories: any[] = [];
+
+  constructor(
+    private _categoryService: CategoryService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    this._catrgoryService.getAllCategories().subscribe({
-       next: (data)=> {
-        this.categories = data
-        console.log(data);
-       },
-       error: (error) => console.log("Error ", error)
-  })
+    this._categoryService.getAllCategories().subscribe({
+      next: (data) => {
+        this.categories = data;
+        console.log('Categories:', data);
+      },
+      error: (error) => console.log('Error fetching categories:', error),
+    });
+  }
+
+  goToShop(categoryId: string) {
+    this.router.navigate(['/shop'], { queryParams: { category: categoryId } });
+  }
 }
+
   // categories = [
   //   {
   //     title: 'Dining',
@@ -40,6 +52,3 @@ export class Categories implements OnInit{
   //     alt: 'an image of a bedroom',
   //   },
   // ];
-
-
-}
