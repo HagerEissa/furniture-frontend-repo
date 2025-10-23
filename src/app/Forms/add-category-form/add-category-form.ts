@@ -10,13 +10,13 @@ declare var bootstrap: any;
   styleUrl: './add-category-form.css',
 })
 export class AddCategoryForm {
+  @Output() categoryAdded = new EventEmitter<void>();
   category = {
     name: '',
   };
 
   selectedFile: File | null = null;
 
-  @Output() categoryAdded = new EventEmitter<void>();
   constructor(private categoryService: CategoryService) {}
 
   onFileSelected(event: any) {
@@ -36,7 +36,7 @@ export class AddCategoryForm {
 
     this.categoryService.addCategory(formData).subscribe({
       next: (res) => {
-        console.log('✅ Category added successfully:', res);
+        console.log('Category added successfully:', res);
 
         const modalElement = document.getElementById('addCategoryModal');
         const modal = bootstrap.Modal.getInstance(modalElement);
@@ -47,8 +47,18 @@ export class AddCategoryForm {
         this.categoryAdded.emit();
       },
       error: (err: any) => {
-        console.error('❌ Error adding category:', err);
+        console.error('Error adding category:', err);
       },
     });
+  }
+
+  resetForm(form: any) {
+    form.resetForm();
+    this.category = { name: '' };
+    this.selectedFile = null;
+  }
+
+  onCancel(form: any) {
+    this.resetForm(form);
   }
 }
