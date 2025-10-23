@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductService } from '../../core/services/product-service';
 
 @Component({
@@ -10,6 +10,7 @@ import { ProductService } from '../../core/services/product-service';
 })
 export class Products {
   products: any;
+  @Input() limit: number | null = null;
 
   constructor(private _productService: ProductService) {}
 
