@@ -10,7 +10,7 @@ import { Auth } from '../../core/services/auth';
 })
 export class OauthSuccess implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private auth: Auth) {}
-
+  // handle oauth
   ngOnInit(): void {
     const token = this.route.snapshot.queryParamMap.get('token');
     if (token) {
