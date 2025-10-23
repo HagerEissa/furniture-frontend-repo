@@ -1,9 +1,8 @@
-
 import { Routes } from '@angular/router';
-import { Home } from '../app/Pages/home/home';
-import { Shop } from '../app/Pages/shop/shop';
-import { About } from '../app/Pages/about/about';
-import { Contact } from '../app/Pages/contact/contact';
+import { Home } from './Pages/home/home';
+import { Shop } from './Pages/shop/shop';
+import { About } from './Pages/about/about';
+import { Contact } from './Pages/contact/contact';
 import { Checkout } from './Pages/checkout/checkout';
 import { Dashboard } from './Pages/dashboard/dashboard';
 import { Profile } from './Pages/profile/profile';
@@ -31,6 +30,5 @@ export const routes: Routes = [
   { path: 'profile', component: Profile },
   { path: 'cart', component: Cart },
   { path: 'favourite', component: Favourite },
-  { path: 'oauth-success', component: OauthSuccessComponent },
-  {path:'**', component: NotFound, title:'NotFound'},
+  { path: '**', component: NotFound }
 ];

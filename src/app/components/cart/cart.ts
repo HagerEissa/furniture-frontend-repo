@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { HeroCart } from "../hero-cart/hero-cart";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cart',
-  imports: [MatIconModule, HeroCart],
+  imports: [MatIconModule, HeroCart, RouterLink],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
 })
