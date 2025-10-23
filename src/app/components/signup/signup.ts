@@ -5,7 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PasswordValidator } from './../../../../customvalidators/password.validators';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { Auth } from '../../core/services/auth';
 
 @Component({
   selector: 'app-signup',
@@ -22,29 +23,62 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./signup.css'],
 })
 export class Signup {
-  hide = true;
+hide = true;
 
-  registerationForm = new FormGroup({
-    email: new FormControl(null, [Validators.email, Validators.required]),
-    password: new FormControl(null, [Validators.required, PasswordValidator.passwordStrength()]),
-    phone: new FormControl(null, [Validators.minLength(11), Validators.required]),
-  });
+constructor(private _authService:Auth,private router:Router){}
 
-  get FormValid() {
-    return this.registerationForm.valid;
+
+registerationForm = new FormGroup({
+  name: new FormControl('', Validators.required),
+  email: new FormControl(null, [Validators.email, Validators.required]),
+  password: new FormControl(null, [Validators.required, PasswordValidator.passwordStrength()]),
+  phone: new FormControl(null, [Validators.minLength(11), Validators.required]),
+});
+
+get FormValid() {
+  return this.registerationForm.valid;
+}
+
+get emailValid() {
+  return this.registerationForm.controls.email.valid;
+}
+
+get nameValid() {
+  return this.registerationForm.controls.name.valid;
+}
+get passwordValid() {
+  return this.registerationForm.controls.password.valid;
+}
+get phoneValid() {
+  return this.registerationForm.controls.phone.valid;
+}
+
+
+
+
+register() {
+  if (this.registerationForm.valid) {
+      const formData = this.registerationForm.value;
+      // console.log('registerationForm data:', formData);
+
+      this._authService.register(formData).subscribe({
+        next: (data: any) => {
+          // console.log('Register success:', data);
+          // this._authService.setToken(data.token);  //store them in local storage
+          // this._authService.setUser(data.user);
+          alert('Registration successful!');
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          console.error('Register error:', err);
+          alert(err.error.message || 'Registration failed');
+        }
+      });
+    } else {
+      console.log('Form invalid');
+    }
   }
 
-  get emailValid() {
-    return this.registerationForm.controls.email.valid;
-  }
-  get passwordValid() {
-    return this.registerationForm.controls.password.valid;
-  }
-  get phoneValid() {
-    return this.registerationForm.controls.phone.valid;
-  }
 
-  register() {
-    console.log(this.registerationForm);
-  }
+
 }

@@ -8,12 +8,12 @@
             <input matInput type="email" placeholder="pat@example.com" formControlName="email" required />
         </mat-form-field>
         @if (loginForm.controls.email.touched && !emailValid) {
-        @if (loginForm.controls.email.errors?.['required']) {
-        <small class="warning">Please enter Email address*</small>
-        }
-        @if (loginForm.controls.email.errors?.['email']) {
-        <small class="warning">The Email address should be a valid email*</small>
-        }
+            @if (loginForm.controls.email.errors?.['required']) {
+                <small class="warning">Please enter Email address*</small>
+            }
+            @if (loginForm.controls.email.errors?.['email']) {
+                <small class="warning">The Email address should be a valid email*</small>
+            }
         }
 
         <!-- Password -->
@@ -27,9 +27,9 @@
         </mat-form-field>
 
         @if (loginForm.controls.password.touched && !passwordValid) {
-        @if (loginForm.controls.password.errors?.['required']) {
-        <small class="warning">*password is required</small>
-        }
+            @if (loginForm.controls.password.errors?.['required']) {
+                <small class="warning">*password is required</small>
+            }
         }
 
         <button mat-raised-button class="sign-btn mt-2" [disabled]="!FormValid" (click)="login()">

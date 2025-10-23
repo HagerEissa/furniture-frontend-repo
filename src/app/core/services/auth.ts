@@ -24,17 +24,34 @@ export class Auth {
         window.location.href = `${this.URL_DB}/auth/facebook`;
       }
 
-       setToken(token: string) {
-          localStorage.setItem('token', token);
-        }
+      setToken(token: string) {
+        localStorage.setItem('token', token);
+      }
 
-        getToken() {
-          return localStorage.getItem('token');
-        }
+      setUser(user: any) {
+        localStorage.setItem('user', JSON.stringify(user));
+      }
 
-        clearToken() {
-          localStorage.removeItem('token');
-        }
+      getToken() {
+        return localStorage.getItem('token');
+      }
+      getUser() {
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+      }
 
+      getUserId() {
+        const user = this.getUser();
+        return user ? user._id : null;
+      }
+
+
+      logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
    
+      isLoggedIn() {
+        return !!this.getToken();
+      }
 }

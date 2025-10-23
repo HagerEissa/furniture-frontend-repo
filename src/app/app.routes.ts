@@ -34,6 +34,7 @@ import { Signup } from './components/signup/signup';
 import { NotFound } from './components/not-found/not-found';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
+import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 
 
 export const routes: Routes = [
@@ -48,5 +49,6 @@ export const routes: Routes = [
   { path: 'profile', component: Profile },
   { path: 'cart', component: Cart },
   { path: 'favourite', component: Favourite },
+  { path: 'oauth-success', component: OauthSuccessComponent },
   {path:'**', component: NotFound, title:'NotFound'},
 ];

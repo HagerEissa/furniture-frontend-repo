@@ -16,7 +16,7 @@ table.table thead.table-header tr th {
 
 .fav-img {
   width: 80px;
-  height: 80px;
+  height: 100px;
   border-radius: 10px;
   object-fit: cover;
 
