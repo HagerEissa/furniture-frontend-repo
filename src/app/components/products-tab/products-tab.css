@@ -11,10 +11,26 @@ td,
 th {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 td.desc-cell {
   white-space: normal;
   width: 350px;
 }
+
+.add-product-btn {
+  /* background-color: #faf3ea; */
+  background-color: #66796b;
+  font-weight: bold;
+  float: right;
+  margin-right: 2em;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 2em;
+}
+
+/* .something {
+  display: flex;
+  flex-direction: column;
+} */

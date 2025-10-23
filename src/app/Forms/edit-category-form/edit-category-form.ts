@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../../core/services/category-service';
 declare var bootstrap: any;
@@ -22,19 +22,13 @@ export class EditCategoryForm {
     }
   }
 
-  // onFileSelected(event: any) {
-  //   this.selectedCategory = event.target.files[0];
-  // }
-
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
       this.selectedCategory = file;
 
-      // Use FileReader to preview image
       const reader = new FileReader();
       reader.onload = () => {
-        // Update preview before submitting
         this.category.imgURL = reader.result as string;
       };
       reader.readAsDataURL(file);
@@ -47,18 +41,18 @@ export class EditCategoryForm {
     const formData = new FormData();
     formData.append('name', this.category.name);
     if (this.selectedCategory) {
-      formData.append('imgURL', this.selectedCategory);
+      formData.append('categoryImage', this.selectedCategory);
     }
 
     this.categoriesService.updateCategory(this.category._id, formData).subscribe({
       next: () => {
-        console.log('✅ Category updated successfully');
+        console.log('Category updated successfully');
         const modalElement = document.getElementById('editCategoryModal');
         const modal = bootstrap.Modal.getInstance(modalElement);
         modal.hide();
-        this.categoryUpdated.emit(); // notify parent to refresh
+        this.categoryUpdated.emit();
       },
-      error: (err) => console.error('❌ Error updating category:', err),
+      error: (err) => console.error('Error updating category:', err),
     });
   }
 }
