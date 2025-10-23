@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../core/services/category-service';
 import { EditCategoryForm } from '../../Forms/edit-category-form/edit-category-form';
+import { CategoryService } from '../../core/services/category-service';
 declare var bootstrap: any;
 
 @Component({
@@ -18,9 +18,6 @@ export class CategoriesTab implements OnInit {
 
   ngOnInit() {
     this.loadCategories();
-    // this.categoriesService.getAllCategories().subscribe((res: any) => {
-    //   this.categories = res;
-    // });
   }
 
   loadCategories() {
@@ -30,6 +27,10 @@ export class CategoriesTab implements OnInit {
       },
       error: (err) => console.error('Error fetching categories:', err),
     });
+  }
+
+  reloadCategories() {
+    this.loadCategories();
   }
 
   openEditModal(category: any) {
