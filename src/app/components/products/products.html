@@ -1,8 +1,6 @@
 <section class="products-container">
-  <h2>Our Products</h2>
-
   <section class="products-cards-container">
-    @for (product of products; track $index) {
+    @for (product of (limit ? products.slice(0, limit) : products); track $index) {
     <div class="img-content-card-container">
       <div class="product-card-container">
         <div class="product-card-img">
@@ -15,20 +13,18 @@
         </div>
 
         <div class="card-content">
-          <p class="product-title">{{ product.title }}</p>
-          <p class="product-desc">{{ product.desc }}</p>
-          <p class="price">${{ product.price }}</p>
+          <p class="product-title">{{ product.name }}</p>
+          <p class="product-desc">{{ product.shortDesc }}</p>
+          <p class="price">${{ product.price | number }}</p>
         </div>
 
-        @if (product.isNew) {
-        <div class="sticker-new">New</div>
-        } @if (product.discount) {
+        @if (product.discount) {
         <div class="sticker-discount">-{{ product.discount }}%</div>
+        } @else if (product.isnew) {
+        <div class="sticker-new">New</div>
         }
       </div>
     </div>
     }
   </section>
-
-  <button class="show-more-btn">Show More</button>
 </section>

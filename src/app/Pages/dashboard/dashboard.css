@@ -1,0 +1,28 @@
+.admin-header {
+  background-color: #f9f1e7;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+.add-product-btn, .add-category-btn {
+  /* background-color: #faf3ea; */
+  background-color: #66796B;
+  font-weight: bold;
+  float: right;
+  margin-right: 2em;
+  color: white;
+  font-weight: 500;
+}
+
+.add-category-btn {
+  background-color: #A9C2D9;
+}
+
+.table-container {
+  padding-top: 5em;
+}
+
+h2 {
+  margin-top: 2em;
+}
+
