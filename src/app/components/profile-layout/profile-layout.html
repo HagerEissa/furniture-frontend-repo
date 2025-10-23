@@ -52,16 +52,11 @@
 
             <div class="file-save-group">
             <div class="file-input-wrapper">
-                <input
-                type="file"
-                id="fileInput"
-                class="file-input"
-                (change)="onFileSelected($event)"
-                />
+                <input type="file" id="fileInput" class="file-input" (change)="onFileSelected($event)"/>
                 <label class="file-label" for="fileInput">Upload Image</label>
                 <span class="file-name">{{ selectedFileName || 'No file chosen' }}</span>
             </div>
-            <button type="submit">Save</button>
+            <button type="submit" [disabled]="!profileForm.form.valid">Save</button>
             </div>
         </form>
         </section>

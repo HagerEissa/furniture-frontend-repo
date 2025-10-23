@@ -6,7 +6,6 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis maximus.
     </p>
 
-    <!-- Email -->
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Email</mat-label>
       <input
@@ -29,7 +28,15 @@
       <small class="helper">We will use your email as your user ID.</small>
     }
 
-    <!-- Phone -->
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Your Name" />
+    </mat-form-field>
+    @if (registerationForm.controls.name.touched && !nameValid) {
+      @if (registerationForm.controls.name.errors?.['required']) {
+        <small class="warning">*Name is required</small>
+      }
+    }
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Phone</mat-label>
       <input matInput formControlName="phone" required />
@@ -45,7 +52,6 @@
       >
     }
 
-    <!-- Password -->
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Password</mat-label>
       <input

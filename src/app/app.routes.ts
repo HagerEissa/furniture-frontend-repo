@@ -11,7 +11,10 @@ import { Signup } from './components/signup/signup';
 import { OauthSuccess } from './components/oauth-success/oauth-success';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
+import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 import { NotFound } from './components/not-found/not-found';
+
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
