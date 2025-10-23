@@ -75,7 +75,7 @@
       </div>
 
       <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="categories-tab">
-        <app-categories-tab></app-categories-tab>
+        <app-categories-tab #categoriesTab></app-categories-tab>
       </div>
 
       <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
@@ -88,6 +88,8 @@
     </div>
 
     <app-add-product-form (productAdded)="productsTab.reloadProducts()"></app-add-product-form>
-     <app-add-category-form (categoryAdded)="reloadCategories()"></app-add-category-form>
+    <app-add-category-form
+      (categoryAdded)="categoriesTab.reloadCategories()"
+    ></app-add-category-form>
   </div>
 </div>

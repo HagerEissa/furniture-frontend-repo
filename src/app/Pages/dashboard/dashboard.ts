@@ -24,7 +24,6 @@ declare var bootstrap: any;
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
-  @ViewChild(CategoriesTab) categoriesTab!: CategoriesTab;
   newProduct = { name: '', price: 0, description: '', stock: 0, category: '' };
   newCategory = { name: '', imgUrl: '' };
 
@@ -37,11 +36,5 @@ export class Dashboard {
   openAddCategoryModal() {
     const modal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
     modal.show();
-  }
-
-  reloadCategories() {
-    if (this.categoriesTab) {
-      this.categoriesTab.loadCategories();
-    }
   }
 }
