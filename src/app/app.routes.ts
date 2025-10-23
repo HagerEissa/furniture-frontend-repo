@@ -9,13 +9,12 @@ import { Dashboard } from './Pages/dashboard/dashboard';
 import { Profile } from './Pages/profile/profile';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
-<<<<<<< Updated upstream
 import { OauthSuccess } from './components/oauth-success/oauth-success';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
+import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 import { NotFound } from './components/not-found/not-found';
-=======
->>>>>>> Stashed changes
+
 
 
 export const routes: Routes = [
@@ -32,5 +31,6 @@ export const routes: Routes = [
   { path: 'profile', component: Profile },
   { path: 'cart', component: Cart },
   { path: 'favourite', component: Favourite },
+  { path: 'oauth-success', component: OauthSuccessComponent },
   {path:'**', component: NotFound, title:'NotFound'},
 ];

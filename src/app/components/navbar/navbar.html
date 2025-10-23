@@ -10,13 +10,8 @@
 
   <!-- Navigation Links -->
   <nav class="nav-links" [class.active]="showMenu">
-    <a
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      (click)="toggleMenu()"
-      >Home</a
-    >
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      (click)="toggleMenu()">Home</a>
     <a routerLink="/shop" routerLinkActive="active" (click)="toggleMenu()">Shop</a>
     <a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a>
     <a routerLink="/contact" routerLinkActive="active" (click)="toggleMenu()">Contact</a>
