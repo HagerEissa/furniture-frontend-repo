@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-
+import { HeroContact } from '../../components/hero-contact/hero-contact';
 
 @Component({
   selector: 'app-contact',
-  imports: [],
+  standalone: true,
+  imports: [HeroContact],
   templateUrl: './contact.html',
-  styleUrl: './contact.css'
+  styleUrls: ['./contact.css'],
 })
-export class Contact {
-
-}
+export class Contact {}
