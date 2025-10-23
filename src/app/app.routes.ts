@@ -9,10 +9,13 @@ import { Dashboard } from './Pages/dashboard/dashboard';
 import { Profile } from './Pages/profile/profile';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
+<<<<<<< Updated upstream
 import { OauthSuccess } from './components/oauth-success/oauth-success';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
 import { NotFound } from './components/not-found/not-found';
+=======
+>>>>>>> Stashed changes
 
 
 export const routes: Routes = [
