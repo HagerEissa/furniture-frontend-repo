@@ -1,6 +1,6 @@
 <section class="products-container">
   <section class="products-cards-container">
-    @for (product of products.slice(0, 4); track $index) {
+    @for (product of (limit ? products.slice(0, limit) : products); track $index) {
     <div class="img-content-card-container">
       <div class="product-card-container">
         <div class="product-card-img">
