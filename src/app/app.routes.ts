@@ -1,22 +1,17 @@
-
 import { Routes } from '@angular/router';
-import { Home } from '../app/Pages/home/home';
-import { Shop } from '../app/Pages/shop/shop';
-import { About } from '../app/Pages/about/about';
-import { Contact } from '../app/Pages/contact/contact';
+import { Home } from './Pages/home/home';
+import { Shop } from './Pages/shop/shop';
+import { About } from './Pages/about/about';
+import { Contact } from './Pages/contact/contact';
 import { Checkout } from './Pages/checkout/checkout';
 import { Dashboard } from './Pages/dashboard/dashboard';
 import { Profile } from './Pages/profile/profile';
 import { Login } from './components/login/login';
 import { Signup } from './components/signup/signup';
-<<<<<<< Updated upstream
 import { OauthSuccess } from './components/oauth-success/oauth-success';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
 import { NotFound } from './components/not-found/not-found';
-=======
->>>>>>> Stashed changes
-
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,5 +27,5 @@ export const routes: Routes = [
   { path: 'profile', component: Profile },
   { path: 'cart', component: Cart },
   { path: 'favourite', component: Favourite },
-  {path:'**', component: NotFound, title:'NotFound'},
+  { path: '**', component: NotFound }
 ];
