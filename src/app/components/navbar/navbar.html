@@ -1,3 +1,4 @@
+html/
 <!-- Navbar Container -->
 <header class="navbar-container">
   <!-- Logo Section -->
@@ -18,20 +19,22 @@
     <a routerLink="/blog" routerLinkActive="active" (click)="toggleMenu()">Blog</a>
 
     <div class="nav-icons">
-      <i class="fa-regular fa-user"></i>
+      <a routerLink="/profile" class="icon-link">
+        <i class="fa-regular fa-user"></i>
+      </a>
       <a routerLink="/favourite" class="icon-link">
         <i class="fa-regular fa-heart"></i>
         <span class="fav-count" *ngIf="favCount > 0">{{ favCount }}</span>
       </a>
-      <!-- <i class="fa-regular fa-heart"></i> -->
       <a routerLink="/cart" class="icon-link">
         <i class="fa-solid fa-cart-shopping"></i>
         
       </a>
-      <!-- <i class="fa-solid fa-cart-shopping"></i> -->
       <a routerLink="/dashboard"><i class="fa-solid fa-gauge"></i></a>
+
+      <button class="logout-btn" (click)="logout()">Logout</button>
     </div>
   </nav>
 
   <i class="fa-solid fa-bars menu-toggle" (click)="toggleMenu()"></i>
-</header>
+</header> 

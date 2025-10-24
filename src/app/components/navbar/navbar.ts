@@ -1,3 +1,5 @@
+import { RouterModule, Router } from '@angular/router';
+import { AuthStateService } from '../../core/services/auth-state.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -7,12 +9,17 @@ import { Auth } from '../../core/services/auth';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
 })
 export class Navbar implements OnInit {
   showMenu = false;
+  isLoggedIn = false;
+
+  constructor(private authState: AuthStateService, private auth: Auth, private router: Router) {
+    this.authState.isLoggedIn$.subscribe((status) => (this.isLoggedIn = status));
+  }
   favCount: number = 0;
   constructor(private _favouriteService:FavouriteService,private _authService:Auth) {}
   ngOnInit(): void {
@@ -34,4 +41,12 @@ export class Navbar implements OnInit {
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
+
+  logout() {
+    this.auth.logout();
+    this.authState.updateLoginStatus();
+    this.router.navigate(['/login']);
+  }
 }
+ 
+

@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PasswordValidator } from './../../../../customvalidators/password.validators';
 import { Router, RouterModule } from '@angular/router';
 import { Auth } from '../../core/services/auth';
+import { AuthStateService } from '../../core/services/auth-state.service';
 
 @Component({
   selector: 'app-login',
@@ -17,18 +18,22 @@ import { Auth } from '../../core/services/auth';
     MatButtonModule,
     ReactiveFormsModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
 })
 export class Login {
   hide = true;
-constructor(private _authService:Auth,private router:Router){}
+  constructor(
+    private _authService: Auth,
+    private authState: AuthStateService,
+    private router: Router
+  ) {}
 
   loginForm = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
-    password: new FormControl(null, [Validators.required, PasswordValidator .passwordStrength()]),
+    password: new FormControl(null, [Validators.required, PasswordValidator.passwordStrength()]),
   });
 
   get FormValid() {
@@ -43,33 +48,34 @@ constructor(private _authService:Auth,private router:Router){}
     return this.loginForm.controls.password.valid;
   }
 
-  login(){
-    if(this.loginForm.valid){
+  login() {
+    if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-       this._authService.login(formData).subscribe({
+      this._authService.login(formData).subscribe({
         next: (data: any) => {
-          // console.log('login success:', data);
-          this._authService.setToken(data.token);  //store them in local storage
+          this._authService.setToken(data.token);
           this._authService.setUser(data.user);
+
+          this.authState.updateLoginStatus();
           alert('login successful!');
           this.router.navigate(['/home']);
-
         },
+
         error: (err) => {
           console.error('Register error:', err);
           alert(err.error.message || 'Registration failed');
-        }
+        },
       });
-    }else{
+    } else {
       console.log('Form invalid');
     }
   }
 
   loginWithGoogle() {
-  this._authService.loginWithGoogle(); // redirect للباك
+    this._authService.loginWithGoogle();
   }
 
   loginWithFacebook() {
-    this._authService.loginWithFacebook(); // redirect للباك
+    this._authService.loginWithFacebook();
   }
 }
