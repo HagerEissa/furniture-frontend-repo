@@ -6,11 +6,12 @@ import { HeroHome } from '../../components/hero-home/hero-home';
 import { CommonModule } from '@angular/common';
 import { Products } from '../../components/products/products';
 import { ProductStateService } from '../../core/services/product-state.service';
+import { Homeslider } from "../../components/homeslider/homeslider";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, Categories, Homegrid, HeroHome, CommonModule, Products],
+  imports: [RouterModule, Categories, Homegrid, HeroHome, CommonModule, Products, Homeslider],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
