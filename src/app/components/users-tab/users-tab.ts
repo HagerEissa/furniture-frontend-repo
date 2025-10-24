@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { UserService } from '../../core/services/user-service';
 
 @Component({
@@ -24,9 +24,11 @@ export class UsersTab {
   }
 
   toggleRole(user: any) {
-    const newRole = user.role === 'Admin' ? 'User' : 'Admin';
+    const newRole = user.role.toLowerCase() === 'admin' ? 'user' : 'admin';
+
     this.userService.updateRole(user._id, { role: newRole }).subscribe({
       next: () => {
+        // Update the local users signal so UI updates immediately
         const updatedUsers = this.users().map((u) =>
           u._id === user._id ? { ...u, role: newRole } : u
         );
