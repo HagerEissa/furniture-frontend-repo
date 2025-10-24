@@ -16,8 +16,7 @@
           role="tab"
           aria-controls="products"
           aria-selected="true"
-        >
-          Products
+        >Products
         </button>
       </li>
       <li class="nav-item" role="presentation">
@@ -30,8 +29,7 @@
           role="tab"
           aria-controls="categories"
           aria-selected="false"
-        >
-          Categories
+        >Categories
         </button>
       </li>
       <li class="nav-item" role="presentation">
@@ -44,8 +42,7 @@
           role="tab"
           aria-controls="users"
           aria-selected="false"
-        >
-          Users
+        >Users
         </button>
       </li>
       <li class="nav-item" role="presentation">
@@ -65,17 +62,12 @@
     </ul>
 
     <div class="tab-content mt-4" id="dashboardTabsContent">
-      <div
-        class="tab-pane fade show active"
-        id="products"
-        role="tabpanel"
-        aria-labelledby="products-tab"
-      >
-        <app-products-tab></app-products-tab>
+      <div class="tab-pane fade show active" id="products" role="tabpanel" aria-labelledby="products-tab">
+        <app-products-tab #productsTab></app-products-tab>
       </div>
 
       <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="categories-tab">
-        <app-categories-tab></app-categories-tab>
+        <app-categories-tab #categoriesTab></app-categories-tab>
       </div>
 
       <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
@@ -87,7 +79,7 @@
       </div>
     </div>
 
-    <app-add-product-form></app-add-product-form>
-    <app-add-category-form></app-add-category-form>
+    <app-add-product-form (productAdded)="productsTab.reloadProducts()"></app-add-product-form>
+    <app-add-category-form (categoryAdded)="categoriesTab.reloadCategories()"></app-add-category-form>
   </div>
 </div>

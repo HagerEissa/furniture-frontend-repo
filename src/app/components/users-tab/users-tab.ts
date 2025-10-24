@@ -1,25 +1,51 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { UserService } from '../../core/services/user-service';
+
 @Component({
   selector: 'app-users-tab',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './users-tab.html',
-  styleUrl: './users-tab.css',
+  styleUrls: ['./users-tab.css'],
 })
 export class UsersTab {
-  users = [
-    { name: 'Tony Stark', email: 'tony@example.com', role: 'User' },
-    { name: 'Steve Rogers', email: 'steve@example.com', role: 'Admin' },
-    { name: 'Natasha Romanoff', email: 'nat@example.com', role: 'User' },
-    { name: 'Bucky', email: 'buck@example.com', role: 'User' },
-    { name: 'Sam wilson', email: 'sam@example.com', role: 'User' },
-    { name: 'Vision', email: 'vision@example.com', role: 'User' },
-    { name: 'Wanda Maximoff', email: 'wanda@example.com', role: 'User' },
-  ];
-  userColumns = ['name', 'email', 'role'];
+  users = signal<any[]>([]);
+
+  constructor(private userService: UserService) {
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.userService.getUsers().subscribe({
+      next: (res: any) => this.users.set(res),
+      error: (err) => console.error('Failed to load users:', err),
+    });
+  }
 
   toggleRole(user: any) {
-    user.role = user.role === 'Admin' ? 'User' : 'Admin';
+    const newRole = user.role.toLowerCase() === 'admin' ? 'user' : 'admin';
+
+    this.userService.updateRole(user._id, { role: newRole }).subscribe({
+      next: () => {
+        // Update the local users signal so UI updates immediately
+        const updatedUsers = this.users().map((u) =>
+          u._id === user._id ? { ...u, role: newRole } : u
+        );
+        this.users.set(updatedUsers);
+      },
+      error: (err) => console.error('Failed to update role:', err),
+    });
+  }
+
+  deleteUser(user: any) {
+    if (!confirm(`Are you sure you want to delete ${user.name}?`)) return;
+    this.userService.deleteUser(user._id).subscribe({
+      next: () => {
+        const updatedUsers = this.users().filter((u) => u._id !== user._id);
+        this.users.set(updatedUsers);
+      },
+      error: (err) => console.error('Failed to delete user:', err),
+    });
   }
 }

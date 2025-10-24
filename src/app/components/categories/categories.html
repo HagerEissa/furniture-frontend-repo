@@ -3,33 +3,11 @@
   <p class="header-p">You can find multiple categories that suits your taste.</p>
 
   <section class="categories-cards-container">
-    <section class="category-card" *ngFor="let category of categories; let i = index">
+    <section class="category-card" *ngFor="let category of categories; let i = index" (click)="goToShop(category._id)">
       <div class="category-img">
         <img [src]="category.imgURL" [alt]="category.name" />
       </div>
-
       <p class="category-title">{{ category.name }}</p>
     </section>
   </section>
 </section>
-
-
-
-<!-- 
-        
-    
-    {
-        "_id": "68f88e2bf166f5a595dea94d",
-        "name": "KIVIK",
-        "desc": "Cuddle up in the comfortable KIVIK sofa. The generous size, low armrests and pocket springs with foam that adapts to the body invites you and your guests to many hours of socialising and relaxation.",
-        "shortDesc": "5-seat sofa with chaise longue, Tibbleby beige/grey",
-        "price": 69490,
-        "discount": 0,
-        "imgURL": "https://res.cloudinary.com/dsso9spcd/image/upload/v1761119789/furniture/p0kwruzoztflijrumsqi.jpg",
-        "categoryId": null,
-        "stock": 0,
-        "isnew": true,
-        "createdAt": "2025-10-22T07:56:27.580Z",
-        "updatedAt": "2025-10-22T07:56:27.580Z",
-        "__v": 0
-    }-->

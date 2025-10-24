@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Categories } from '../../components/categories/categories';
 import { Homegrid } from '../../components/homegrid/homegrid';
 import { HeroHome } from '../../components/hero-home/hero-home';
 import { CommonModule } from '@angular/common';
-import { Products } from "../../components/products/products";
+import { Products } from '../../components/products/products';
+import { ProductStateService } from '../../core/services/product-state.service';
 
 @Component({
   selector: 'app-home',
@@ -13,5 +14,10 @@ import { Products } from "../../components/products/products";
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
-export class Home {
+export class Home implements OnInit {
+  constructor(private productState: ProductStateService) {}
+
+  ngOnInit() {
+    this.productState.resetFilters(); 
+  }
 }

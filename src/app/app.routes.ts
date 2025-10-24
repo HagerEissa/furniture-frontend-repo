@@ -1,9 +1,8 @@
-
 import { Routes } from '@angular/router';
-import { Home } from '../app/Pages/home/home';
-import { Shop } from '../app/Pages/shop/shop';
-import { About } from '../app/Pages/about/about';
-import { Contact } from '../app/Pages/contact/contact';
+import { Home } from './Pages/home/home';
+import { Shop } from './Pages/shop/shop';
+import { About } from './Pages/about/about';
+import { Contact } from './Pages/contact/contact';
 import { Checkout } from './Pages/checkout/checkout';
 import { Dashboard } from './Pages/dashboard/dashboard';
 import { Profile } from './Pages/profile/profile';
@@ -14,8 +13,7 @@ import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
 import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 import { NotFound } from './components/not-found/not-found';
-
-
+import { Blog } from './Pages/blog/blog';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,6 +31,8 @@ export const routes: Routes = [
   { path: 'profile', component: Profile },
   { path: 'cart', component: Cart },
   { path: 'favourite', component: Favourite },
-  { path: 'oauth-success', component: OauthSuccessComponent },
-  {path:'**', component: NotFound, title:'NotFound'},
+  { path: 'oauthsuccesscomponent', component: OauthSuccessComponent },
+  { path: 'blog', component: Blog },
+
+  { path: '**', component: NotFound },
 ];

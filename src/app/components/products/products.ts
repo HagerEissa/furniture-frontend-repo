@@ -1,13 +1,19 @@
+
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+
 import { ProductService } from '../../core/services/product-service';
 import { FavouriteService } from '../../core/services/favourite-service';
 import { Auth } from '../../core/services/auth';
 import { CartService } from '../../core/services/cart-service';
+import { ProductStateService } from '../../core/services/product-state.service';
+import { AsyncPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, AsyncPipe, FormsModule],
 templateUrl: './products.html',
   styleUrl: './products.css',
 })
@@ -17,7 +23,10 @@ export class Products {
   favouriteProducts: string[] = []; // Array has favourite product IDs
   @Input() limit: number | null = null;
 
-  constructor(private _productService: ProductService,private _favouriteService:FavouriteService,private _authService:Auth,private _cartService:CartService) {}
+
+
+
+  constructor(private state: ProductStateService,private _productService: ProductService,private _favouriteService:FavouriteService,private _authService:Auth,private _cartService:CartService) {}
 
   ngOnInit(): void {
     this._productService.getAllProducts().subscribe({
@@ -57,7 +66,12 @@ export class Products {
         error: (error) => console.log('Error ', error),
       });
       }
+    
+  get displayedProducts$() {
+    return this.state.displayedProducts$;
+
   }
+
 
 
 

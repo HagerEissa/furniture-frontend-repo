@@ -3,10 +3,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add New Product</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="resetForm(form)"
+        ></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #form="ngForm" (ngSubmit)="addProduct(form)">
           <div class="mb-3">
             <label>Name</label>
             <input
@@ -14,8 +19,12 @@
               class="form-control"
               name="name"
               [(ngModel)]="product.name"
+              #name="ngModel"
               required
             />
+            @if (name.invalid && (name.dirty || name.touched)) {
+            <div class="text-danger small">Name is required.</div>
+            }
           </div>
 
           <div class="mb-3">
@@ -26,7 +35,11 @@
               name="description"
               [(ngModel)]="product.desc"
               required
+              #desc="ngModel"
             />
+            @if (desc.invalid && (desc.dirty || desc.touched)) {
+            <div class="text-danger small">Description is required.</div>
+            }
           </div>
 
           <div class="mb-3">
@@ -37,7 +50,11 @@
               name="short-description"
               [(ngModel)]="product.shortDesc"
               required
+              #shortDesc="ngModel"
             />
+            @if (shortDesc.invalid && (shortDesc.dirty || shortDesc.touched)) {
+            <div class="text-danger small">Short description is required.</div>
+            }
           </div>
 
           <div class="mb-3">
@@ -70,7 +87,11 @@
               (change)="onFileSelected($event)"
               accept="image/*"
               required
+              #imageInput
             />
+            @if (!selectedFile && form.submitted) {
+            <div class="text-danger small">Product image is required.</div>
+            }
           </div>
 
           <div class="mb-3">
@@ -79,9 +100,13 @@
               type="text"
               class="form-control"
               name="category"
-              [(ngModel)]="product.categoryId"
+              [(ngModel)]="product.category"
               required
+              #category="ngModel"
             />
+            @if (category.invalid && (category.dirty || category.touched)) {
+            <div class="text-danger small">Category is required.</div>
+            }
           </div>
 
           <div class="mb-3">
@@ -121,11 +146,19 @@
               <label class="form-check-label" for="false">Old</label>
             </div>
           </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(form)">
+              Cancel
+            </button>
+            <button
+              class="btn add-product-btn"
+              [disabled]="form.invalid || !selectedFile"
+              type="submit"
+            >
+              Add Product
+            </button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn add-product-btn" (click)="addProduct()">Add Product</button>
       </div>
     </div>
   </div>

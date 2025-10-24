@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EditProductForm } from '../../Forms/edit-product-form/edit-product-form';
 import { ProductService } from '../../core/services/product-service';
@@ -22,8 +22,9 @@ export class ProductsTab implements OnInit {
   openEditModal(product: any) {
     this.selectedProduct = {
       ...product,
-      categoryId: product.categoryId?.name || product.categoryId,
+      categoryId: product.categoryId?._id || product.categoryId,
     };
+
     const modal = new bootstrap.Modal(document.getElementById('editModal'));
     modal.show();
   }

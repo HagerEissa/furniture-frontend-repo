@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { HeroCart } from "../hero-cart/hero-cart";
+
 import { CartService } from '../../core/services/cart-service';
 import { Auth } from '../../core/services/auth';
 import { Router } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
-
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-cart',
-  imports: [MatIconModule, HeroCart,CurrencyPipe],
+  imports: [MatIconModule, HeroCart,CurrencyPipe,RouterLink],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
-})
+  })
+
 export class Cart implements OnInit{
   products_in_cart:any;
   userId:any ;

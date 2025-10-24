@@ -1,0 +1,36 @@
+.about-section {
+  background-color: #fafafa;
+  color: #333;
+}
+
+.text-gold {
+  color: #b88e2f;
+}
+
+img {
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+a.text-gold:hover {
+  color: #8b6924;
+}
+
+.avatar-placeholder {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f1ec;
+  border-radius: 50%;
+}
+
+
+
+
+
