@@ -54,25 +54,21 @@
                 </div>
 
                 <!-- Payment Method -->
-                <div class="payment-section">
-                    <div class="payment-method">
-                        <input type="radio" id="stripe" name="payment-method" value="stripe"
-                            formControlName="paymentMethod" />
-                        <label for="stripe">Pay with Card (Stripe)</label>
-                    </div>
-
-                    <div class="payment-method">
-                        <input type="radio" id="cod" name="payment-method" value="cash-on-delivery"
-                            formControlName="paymentMethod" />
-                        <label for="cod">Cash on delivery</label>
-                    </div>
-
-                    <p class="privacy-note">
-                        Your personal data will be used ... <a href="#">privacy policy</a>.
-                    </p>
-
-                    <button type="submit" class="place-order-btn" [disabled]="checkoutForm.invalid">Place order</button>
+                <!-- Payment Method -->
+                <div class="payment-method">
+                    <input type="radio" id="card" formControlName="paymentMethod" name="paymentMethod" value="stripe" />
+                    <label for="card">Pay with Card (Stripe)</label>
                 </div>
+
+                <div class="payment-method">
+                    <input type="radio" id="cod" formControlName="paymentMethod" name="paymentMethod" value="cash" />
+                    <label for="cod">Cash on delivery</label>
+                </div>
+
+                <button type="submit" class="place-order-btn" [disabled]="checkoutForm.invalid">Place order</button>
+
+
+
             </form>
         </div>
 
@@ -103,4 +99,4 @@
         </div>
 
     </div>
-</div>
+</div> 
