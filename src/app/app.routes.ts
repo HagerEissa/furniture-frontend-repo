@@ -13,6 +13,7 @@ import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
 import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 import { NotFound } from './components/not-found/not-found';
+import { Blog } from './Pages/blog/blog';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -29,6 +30,7 @@ export const routes: Routes = [
   { path: 'cart', component: Cart },
   { path: 'favourite', component: Favourite },
   { path: 'oauthsuccesscomponent', component: OauthSuccessComponent },
+  { path: 'blog', component: Blog },
 
   { path: '**', component: NotFound },
 ];
