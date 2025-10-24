@@ -14,6 +14,7 @@ import { Favourite } from './components/favourite/favourite';
 import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 import { NotFound } from './components/not-found/not-found';
 import { Blog } from './Pages/blog/blog';
+import { ProductDetail } from './components/product-detail/product-detail';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'favourite', component: Favourite },
   { path: 'oauthsuccesscomponent', component: OauthSuccessComponent },
   { path: 'blog', component: Blog },
+  { path: 'product-detail/:id', component: ProductDetail },
 
   { path: '**', component: NotFound },
 ];

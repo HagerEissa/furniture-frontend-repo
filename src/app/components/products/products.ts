@@ -8,6 +8,7 @@ import { ProductStateService } from '../../core/services/product-state.service';
 import { FavouriteService } from '../../core/services/favourite-service';
 import { Auth } from '../../core/services/auth';
 import { CartService } from '../../core/services/cart-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -26,7 +27,8 @@ export class Products {
     private state: ProductStateService,
     private _favouriteService: FavouriteService,
     private _authService: Auth,
-    private _cartService: CartService
+    private _cartService: CartService,
+    private _router:Router
   ) {}
 
   ngOnInit(): void {
@@ -118,5 +120,10 @@ export class Products {
       },
     });
   }
+
+  // display product details
+   goToProductDetail(product: any) {
+    this._router.navigate(['/product-detail', product._id]);
+}
 }
 
