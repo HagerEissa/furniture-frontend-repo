@@ -20,7 +20,7 @@ export class Shop implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const categoryId = params['category'] || 'all';
-      this.state.setFilter(categoryId); 
+      this.state.setFilter(categoryId);
     });
   }
 }
