@@ -3,10 +3,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeroFavourite } from "../hero-favourite/hero-favourite";
 import { FavouriteService } from '../../core/services/favourite-service';
 import { Auth } from '../../core/services/auth';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-favourite',
-  imports: [MatIconModule, HeroFavourite],
+  imports: [MatIconModule, HeroFavourite,CurrencyPipe],
   templateUrl: './favourite.html',
   styleUrl: './favourite.css'
 })
@@ -33,10 +34,9 @@ export class Favourite implements OnInit {
   ngOnInit(): void {
     this.userId =this._authService.getUserId();
     if (!this.userId) {
-      console.warn('User not found or not logged in');
+      console.log('User not found or not logged in');
       return;
     }
-
     this.loadFavourite();
   }
 

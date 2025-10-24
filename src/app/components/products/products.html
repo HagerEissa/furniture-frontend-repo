@@ -8,8 +8,8 @@
         </div>
 
         <div class="overlay">
-          <button class="add-to-cart-btn">Add to cart</button>
-          <p class="wishlist-btn"><span class="material-icons">favorite_border</span>Like</p>
+          <button class="add-to-cart-btn" (click)="add_to_card(product._id)">Add to cart</button>
+          <p class="wishlist-btn" (click)="toggle_fav(product._id)" ><span class="material-icons" [ngStyle]="{color: '#b88e2f' }">{{ favouriteProducts.includes(product._id) ? 'favorite' : 'favorite_border' }}</span>Like</p>
         </div>
 
         <div class="card-content">

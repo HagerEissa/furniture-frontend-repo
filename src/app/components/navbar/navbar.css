@@ -172,3 +172,19 @@
 .nav-icons a.icon-link:hover i {
   color: #b88e2f; 
 }
+
+.fav-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #b88e2f;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

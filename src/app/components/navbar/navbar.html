@@ -20,10 +20,12 @@
       <i class="fa-regular fa-user"></i>
       <a routerLink="/favourite" class="icon-link">
         <i class="fa-regular fa-heart"></i>
+        <span class="fav-count" *ngIf="favCount > 0">{{ favCount }}</span>
       </a>
       <!-- <i class="fa-regular fa-heart"></i> -->
       <a routerLink="/cart" class="icon-link">
         <i class="fa-solid fa-cart-shopping"></i>
+        
       </a>
       <!-- <i class="fa-solid fa-cart-shopping"></i> -->
       <a routerLink="/dashboard"><i class="fa-solid fa-gauge"></i></a>
