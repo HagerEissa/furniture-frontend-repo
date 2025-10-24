@@ -2,12 +2,24 @@
   <h2>Browse The Range</h2>
   <p class="header-p">You can find multiple categories that suits your taste.</p>
 
-  <section class="categories-cards-container">
-    <section class="category-card" *ngFor="let category of categories; let i = index" (click)="goToShop(category._id)">
-      <div class="category-img">
-        <img [src]="category.imgURL" [alt]="category.name" />
-      </div>
-      <p class="category-title">{{ category.name }}</p>
+  <div class="slider-wrapper">
+    <button class="scroll-btn left" (click)="scroll('left')">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <section class="categories-cards-container" id="categoriesContainer">
+      <section
+        class="category-card"
+        *ngFor="let category of categories; let i = index"
+        (click)="goToShop(category._id)"
+      >
+        <div class="category-img">
+          <img [src]="category.imgURL" [alt]="category.name" />
+        </div>
+        <p class="category-title">{{ category.name }}</p>
+      </section>
     </section>
-  </section>
+    <button class="scroll-btn right" (click)="scroll('right')">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
 </section>
