@@ -22,7 +22,6 @@ export class UsersTab {
   loadUsers() {
     this.userService.getUsers().subscribe({
       next: (res: any) => {
-        // Move the current user to the top
         const currentId = this.currentUser?._id;
         const sortedUsers = res.sort((a: any, b: any) => {
           if (a._id === currentId) return -1; 
