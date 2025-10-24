@@ -12,7 +12,7 @@ export class ProductStateService {
 
   private searchText = '';
   private sortOption: string = 'default';
-  private filterOption: string = 'all'; 
+  private filterOption: string = 'all';
 
   constructor(private productService: ProductService) {
     this.loadProducts();
@@ -55,17 +55,16 @@ export class ProductStateService {
       );
     }
 
-if (this.filterOption && this.filterOption !== 'all') {
-  const filter = this.filterOption;
-  result = result.filter((p) => {
-    if (!p.categoryId) return false;
-    if (typeof p.categoryId === 'object' && '_id' in p.categoryId) {
-      return p.categoryId._id === filter;
+    if (this.filterOption && this.filterOption !== 'all') {
+      const filter = this.filterOption;
+      result = result.filter((p) => {
+        if (!p.categoryId) return false;
+        if (typeof p.categoryId === 'object' && '_id' in p.categoryId) {
+          return p.categoryId._id === filter;
+        }
+        return p.categoryId.toString() === filter;
+      });
     }
-    return p.categoryId.toString() === filter;
-  });
-}
-
 
     if (this.sortOption === 'price-asc') {
       result = result.sort((a, b) => (a.price || 0) - (b.price || 0));
@@ -74,5 +73,11 @@ if (this.filterOption && this.filterOption !== 'all') {
     }
 
     this._displayedProducts.next(result);
+  }
+  resetFilters() {
+    this.searchText = ''; 
+    this.sortOption = 'default';
+    this.filterOption = 'all'; 
+    this._displayedProducts.next([...this.allProducts]); 
   }
 }
