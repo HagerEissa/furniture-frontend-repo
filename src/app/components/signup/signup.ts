@@ -67,7 +67,7 @@ register() {
           // this._authService.setToken(data.token);  //store them in local storage
           // this._authService.setUser(data.user);
           alert('Registration successful!');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           console.error('Register error:', err);
