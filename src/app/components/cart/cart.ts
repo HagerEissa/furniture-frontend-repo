@@ -1,55 +1,95 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { HeroCart } from "../hero-cart/hero-cart";
-import { RouterLink } from "@angular/router";
 
+import { CartService } from '../../core/services/cart-service';
+import { Auth } from '../../core/services/auth';
+import { Router } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-cart',
-  imports: [MatIconModule, HeroCart, RouterLink],
+  imports: [MatIconModule, HeroCart,CurrencyPipe],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
-})
-export class Cart {
-favourites = [
-    {
-      id: 1,
-      name: 'Asgaard Sofa',
-      price: 250000,
-      image: 'grid-6.png' ,
-      Quantity:5
-    },
-    {
-      id: 2,
-      name: 'Nordic Chair',
-      price: 120000,
-      image: 'grid-6.png',
-      Quantity:3
-    },
-    {
-      id: 3,
-      name: ' Chair',
-      price: 180000,
-      image: 'grid-8.png',
-      Quantity:2
+  })
+
+export class Cart implements OnInit{
+  products_in_cart:any;
+  userId:any ;
+  totalPrice: number = 0;
+  quantity: number = 1;
+  quantityArr:any
+  constructor(private _cartService:CartService,private _authService:Auth,private router: Router) {}
+
+  load_Products_in_cart() {
+    this.userId =this._authService.getUserId();
+    this._cartService.getCartForUser(this.userId).subscribe({
+      next: (data:any)=> {
+        this.products_in_cart = data?.products?.map((p: any) => ({...p.productId,quantity:p.quantity})) || []; //now in this.products_in_cart = [{},{},{}]
+
+        this.totalPrice = 0;
+         data?.products?.forEach((p: any) => {
+          this.totalPrice +=p.productId.price*p.quantity
+        })
+        console.log("cart Response:", this.products_in_cart);
+        console.log("cart Quantity:", data.products);
+       },
+       error: (error) => console.log("Error ", error)
+    })
+  }
+
+
+  ngOnInit(): void {
+    this.userId =this._authService.getUserId();
+    if (!this.userId) {
+      return;
     }
-  ];
-
-  removeItem(id: number) {
-    this.favourites = this.favourites.filter(item => item.id !== id);
+    this.load_Products_in_cart();
   }
 
+  removeItem(id: string) {
+    this._cartService.deleteProductFromCart(this.userId, id).subscribe({
+      next: (data:any)=> {
+        this.load_Products_in_cart();
+        console.log("cart deleted and data now:", data);
+       },
+       error: (error) => console.log("Error ", error)
+    })
+  }
 
-  get totalPrice() {
-  return this.favourites.reduce((sum, item) => sum + item.price * item.Quantity, 0);
-}
-
-increaseQuantity(item: any) {
-  item.Quantity++;
-}
-
-decreaseQuantity(item: any) {
-  if (item.Quantity > 1) {
-    item.Quantity--;
+  decreaseQuantity(product: any) {
+    // console.log(product);
+    if (product.quantity > 1) {
+      this._cartService.updateQuantity(this.userId,product._id,product.quantity - 1).subscribe({
+        next: (data:any)=> {
+          this.load_Products_in_cart();
+          console.log("Quantity decreased:", data);
+         },
+         error: (error) => console.log("Error ", error)
+      })
+    }
+    
+  }
+  increaseQuantity(product: any) {
+    if (product.quantity < product.stock) {
+      this._cartService.updateQuantity(this.userId,product._id,product.quantity + 1).subscribe({
+        next: (data:any)=> {
+          this.load_Products_in_cart();
+          console.log("Quantity increased:", data);
+        },
+        error: (error) => console.log("Error ", error)
+      })
+    }else {
+    alert(`Only ${product.stock} items are available in stock now.`);
   }
 }
+
+goToCheckout() {
+  
+  localStorage.setItem('cartItems', JSON.stringify(this.products_in_cart));
+  localStorage.setItem('totalPrice', this.totalPrice.toString());
+
+  this.router.navigate(['/Checkout']);
+}
+
 }
