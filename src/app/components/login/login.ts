@@ -5,7 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { PasswordValidator } from './../../../../customvalidators/password.validators';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { Auth } from '../../core/services/auth';
+import { AuthStateService } from '../../core/services/auth-state.service';
 
 @Component({
   selector: 'app-login',
@@ -16,17 +18,22 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     ReactiveFormsModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
 })
 export class Login {
   hide = true;
+  constructor(
+    private _authService: Auth,
+    private authState: AuthStateService,
+    private router: Router
+  ) {}
 
   loginForm = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
-    password: new FormControl(null, [Validators.required, PasswordValidator .passwordStrength()]),
+    password: new FormControl(null, [Validators.required, PasswordValidator.passwordStrength()]),
   });
 
   get FormValid() {
@@ -42,18 +49,33 @@ export class Login {
   }
 
   login() {
-    console.log(this.loginForm.value);
+    if (this.loginForm.valid) {
+      const formData = this.loginForm.value;
+      this._authService.login(formData).subscribe({
+        next: (data: any) => {
+          this._authService.setToken(data.token);
+          this._authService.setUser(data.user);
+
+          this.authState.updateLoginStatus();
+          alert('login successful!');
+          this.router.navigate(['/home']);
+        },
+
+        error: (err) => {
+          console.error('Register error:', err);
+          alert(err.error.message || 'Registration failed');
+        },
+      });
+    } else {
+      console.log('Form invalid');
+    }
   }
 
   loginWithGoogle() {
-    console.log('Google login clicked');
+    this._authService.loginWithGoogle();
   }
 
   loginWithFacebook() {
-    console.log('Facebook login clicked');
-  }
-
-  loginWithGithub() {
-    console.log('GitHub login clicked');
+    this._authService.loginWithFacebook();
   }
 }

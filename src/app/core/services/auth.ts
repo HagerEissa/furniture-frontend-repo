@@ -23,14 +23,32 @@ export class Auth {
       }
 
       setToken(token: string) {
-          localStorage.setItem('token', token);
-        }
+        localStorage.setItem('token', token);
+      }
+
+      setUser(user: any) {
+        localStorage.setItem('user', JSON.stringify(user));
+      }
 
       getToken() {
-          return localStorage.getItem('token');
-        }
+        return localStorage.getItem('token');
+      }
+      getUser() {
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+      }
 
-      clearToken() {
-          localStorage.removeItem('token');
-        }
+      getUserId() {
+        const user = this.getUser();
+        return user ? user._id : null;
+      }
+
+      logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
+
+      isLoggedIn() {
+        return !!this.getToken();
+      }
 }

@@ -1,6 +1,6 @@
 .signup-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1170')
     no-repeat center center/cover;

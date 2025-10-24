@@ -13,9 +13,8 @@ export class OauthSuccess implements OnInit {
 
   ngOnInit(): void {
     const token = this.route.snapshot.queryParamMap.get('token');
-
     if (token) {
-      this.auth.setToken(token); // 
+      this.auth.setToken(token);
       this.router.navigate(['/home']);
     } else {
       this.router.navigate(['/login']);

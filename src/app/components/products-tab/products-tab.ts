@@ -20,7 +20,11 @@ export class ProductsTab implements OnInit {
   constructor(private productService: ProductService) {}
 
   openEditModal(product: any) {
-    this.selectedProduct = { ...product, categoryId: product.categoryId?.name || product.categoryId };
+    this.selectedProduct = {
+      ...product,
+      categoryId: product.categoryId?._id || product.categoryId,
+    };
+
     const modal = new bootstrap.Modal(document.getElementById('editModal'));
     modal.show();
   }
