@@ -24,13 +24,13 @@
             <td>{{ user.role }}</td>
 
             <td>
-              <button class="btn btn-sm btn-primary" (click)="toggleRole(user)" [disabled]="user._id === currentUser?._id" title="You cannot change your own role">
+              <button class="btn btn-sm btn-primary" (click)="toggleRole(user)" [disabled]="user._id === currentUser?._id" title="Change role">
                 <i class="bi bi-person-gear"></i>
               </button>
             </td>
 
             <td>
-              <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="user._id === currentUser?._id" title="You cannot delete your own account">
+              <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="user._id === currentUser?._id" title="Delete account">
                 <i class="bi bi-trash"></i>
               </button>
             </td>

@@ -19,88 +19,66 @@
 
     <main class="profile-content">
         <header>
-        <h1>My Profile</h1>
-        <p>Manage your profile information</p>
+            <h1>My Profile</h1>
+            <p>Manage your profile information</p>
         </header>
 
         <section class="profile-details">
-        @if (profileForm) {
-            <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
-            <!-- Name -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" type="text" formControlName="name" />
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" formControlName="email" />
-            </div>
-
-            <!-- Phone -->
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input id="phone" type="text" formControlName="phone" />
-            </div>
-
-            <!-- Old Password -->
-            <div class="form-group password-group">
-                <label for="oldPassword">Old Password</label>
-                <div class="password-wrapper">
-                <input
-                    id="oldPassword"
-                    [type]="showOldPassword ? 'text' : 'password'"
-                    formControlName="oldPassword"
-                    placeholder="Enter old password"
-                />
-                <button type="button" class="toggle-btn" (click)="toggleOldPassword()">
-                    <i [class]="showOldPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-                </button>
-                </div>
-            </div>
-
-            <!-- New Password -->
-            <div class="form-group password-group">
-                <label for="newPassword">New Password</label>
-                <div class="password-wrapper">
-                <input
-                    id="newPassword"
-                    [type]="showNewPassword ? 'text' : 'password'"
-                    formControlName="newPassword"
-                    placeholder="Enter new password"
-                />
-                <button type="button" class="toggle-btn" (click)="toggleNewPassword()">
-                    <i [class]="showNewPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-                </button>
+            @if (profileForm) {
+                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" formControlName="name" />
                 </div>
 
-                @if (profileForm.get('newPassword')?.hasError('passwordstrength') 
-                    && profileForm.get('newPassword')?.touched) {
-                <div class="text-danger small">
-                    Password must contain at least 8 characters, one uppercase, one lowercase, and one number.
-                </div>
-                }
-            </div>
-
-            <!-- File Upload -->
-            <div class="file-save-group">
-                <div class="file-input-wrapper">
-                <input
-                    type="file"
-                    id="fileInput"
-                    class="file-input"
-                    (change)="onFileSelected($event)"
-                />
-                <label class="file-label" for="fileInput">Upload Image</label>
-                <span class="file-name">{{ selectedFileName || 'No file chosen' }}</span>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" formControlName="email" />
                 </div>
 
-                <!-- Save Button -->
-                <button type="submit" [disabled]="profileForm.invalid">Save</button>
-            </div>
-            </form>
-        }
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="text" formControlName="phone" />
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="oldPassword">Old Password</label>
+                    <div class="password-wrapper">
+                    <input id="oldPassword" [type]="showOldPassword ? 'text' : 'password'" formControlName="oldPassword" placeholder="Enter old password"/>
+                    <button type="button" class="toggle-btn" (click)="toggleOldPassword()" title="Show/Hide Old Password">
+                        <i class="fa" [ngClass]="showOldPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                    </button>
+                    </div>
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="newPassword">New Password</label>
+                    <div class="password-wrapper">
+                    <input id="newPassword" [type]="showNewPassword ? 'text' : 'password'" formControlName="newPassword" placeholder="Enter new password"/>
+                    <button type="button" class="toggle-btn" (click)="toggleNewPassword()" title="Show/Hide New Password">
+                        <i class="fa" [ngClass]="showNewPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                    </button>
+                    </div>
+
+                    @if (profileForm.get('newPassword')?.hasError('passwordstrength') && profileForm.get('newPassword')?.touched) {
+                        <div class="text-danger small">
+                            Password must contain at least 8 characters, one uppercase, one
+                            lowercase, and one number.
+                        </div>
+                    }
+                </div>
+
+                <div class="file-save-group">
+                    <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" class="file-input" (change)="onFileSelected($event)"/>
+                    <label class="file-label" for="fileInput">Upload Image</label>
+                    <span class="file-name">{{selectedFileName || "No file chosen"}}</span>
+                    </div>
+
+                    <button type="submit" [disabled]="profileForm.invalid">Save</button>
+                </div>
+                </form>
+            }
         </section>
     </main>
 </div>
