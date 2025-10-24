@@ -104,8 +104,8 @@
 /* ========================= */
 /*  Responsive Design (Mobile) */
 /* ========================= */
-/* 768 */
-@media (max-width: 880px) {
+/* 768 880 */
+@media (max-width:1080px) {
   /* Show menu toggle icon */
   .menu-toggle {
     display: block;
