@@ -2,6 +2,7 @@
   text-align: center;
   margin-top: 10em;
   margin-bottom: 5em;
+  overflow: hidden;
 }
 
 .categories-container h2 {
@@ -14,28 +15,40 @@
 
 .categories-cards-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   gap: 2em;
   padding: 0 2em;
+  margin: 0 auto;
   margin-top: 3em;
+}
+
+.categories-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.categories-cards-container {
+  scrollbar-width: none;
 }
 
 .categories-cards-container section {
   cursor: pointer;
+  scroll-snap-align: start;
 }
 
 .category-img {
   flex: 1 1 300px;
   max-width: 370px;
   aspect-ratio: 1 / 1;
+  height: 220px;
 }
 
 .category-img img {
   width: 100%;
-  height: 470px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .category-title {
