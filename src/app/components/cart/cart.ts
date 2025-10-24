@@ -6,10 +6,9 @@ import { CartService } from '../../core/services/cart-service';
 import { Auth } from '../../core/services/auth';
 import { Router } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
-import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-cart',
-  imports: [MatIconModule, HeroCart,CurrencyPipe,RouterLink],
+  imports: [MatIconModule, HeroCart,CurrencyPipe],
   templateUrl: './cart.html',
   styleUrl: './cart.css'
   })
