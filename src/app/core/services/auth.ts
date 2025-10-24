@@ -43,12 +43,11 @@ export class Auth {
         return user ? user._id : null;
       }
 
-
       logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
       }
-   
+
       isLoggedIn() {
         return !!this.getToken();
       }
