@@ -1,6 +1,6 @@
 <app-hero-cart ></app-hero-cart>
 <div class="container my-5">
-    @if(favourites.length > 0) {
+    @if(products_in_cart &&products_in_cart.length > 0) {
         <div class="row" >
             <div class="col-sm-12 col-md-8">
                 <table class="table align-middle fav-table">
@@ -15,21 +15,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (fav of favourites; track $index) {
+                        @for (product of products_in_cart; track $index) {
                         <tr>
-                            <td class="d-flex align-items-center"><img [src]="fav.image" [alt]="fav.name" class="fav-img"/></td>
-                            <td>{{ fav.name }}</td>
-                            <td>${{ fav.price}}</td>
+                            <td class="d-flex align-items-center"><img [src]="product.imgURL" [alt]="product.name" class="fav-img"/></td>
+                            <td>{{ product.name }}</td>
+                            <td>${{ product.price}}</td>
                             <td>
                                 <div class="quantity-box">
-                                    <button class="qty-btn" (click)="decreaseQuantity(fav)">-</button>
-                                    <span class="qty-value">{{ fav.Quantity }}</span>
-                                    <button class="qty-btn" (click)="increaseQuantity(fav)">+</button>
+                                    <button class="qty-btn" (click)="decreaseQuantity(product)">-</button>
+                                    <span class="qty-value">{{ product.quantity }}</span>
+                                    <button class="qty-btn" (click)="increaseQuantity(product)">+</button>
                                 </div>
                             </td>
-                            <td>${{ fav.price * fav.Quantity }}</td>
+                            <td>{{ product.price * product.quantity| currency }}</td>
 
-                            <td><button class="btn btn-outline-danger btn-sm" (click)="removeItem(fav.id)"> <mat-icon>delete</mat-icon></button></td>
+                            <td><button class="btn btn-outline-danger btn-sm" (click)="removeItem(product._id)"> <mat-icon>delete</mat-icon></button></td>
                         </tr>
                         }
                     </tbody>
@@ -39,14 +39,14 @@
                 <div class="summary-card">
                 <h4 class="fw-bold mb-4 text-center">Cart Totals</h4>
                 <div class="d-flex justify-content-between mb-2">
-                    <span>Subtotal</span>
-                    <span>{{ favourites.length }}</span>
+                    <span>Total items</span>
+                    <span>{{ products_in_cart.length }}</span>
                 </div>
                 <div class="d-flex justify-content-between mb-3">
                     <span>Total Price</span>
-                    <span class="total">${{ totalPrice}}.00</span>
+                    <span class="total">{{ totalPrice | currency}}</span>
                 </div>
-                <button class="btn btn-warning w-100" routerLink="/Checkout">check Out</button>
+                <button class="btn btn-warning w-100" (click)="goToCheckout()" >check Out</button>
                 </div>
             </div>
         </div>

@@ -22,8 +22,10 @@ export const routes: Routes = [
   { path: 'oauth-success', component: OauthSuccess },
   { path: 'home', component: Home },
   { path: 'shop', component: Shop },
-  { path: 'about', component: About },
-  { path: 'contact', component: Contact },
+  // { path: 'about', component: About },
+  {path:'about',loadComponent:()=>import('../app/Pages/about/about').then(c=>c.About),title:'About'}, //lazyload
+  // { path: 'contact', component: Contact },
+  {path:'contact',loadComponent:()=>import('../app/Pages/contact/contact').then(c=>c.Contact),title:'contact'}, //lazyload
   { path: 'Checkout', component: Checkout },
   { path: 'dashboard', component: Dashboard },
   { path: 'profile', component: Profile },
