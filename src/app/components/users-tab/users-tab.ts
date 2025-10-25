@@ -30,7 +30,7 @@ export class UsersTab {
         });
         this.users.set(sortedUsers);
       },
-      error: (err) => console.error('Failed to load users:', err),
+      error: (err) => console.error('failed to load users:', err),
     });
   }
 
@@ -44,7 +44,7 @@ export class UsersTab {
         );
         this.users.set(updatedUsers);
       },
-      error: (err) => console.error('Failed to update role:', err),
+      error: (err) => console.error('failed to update role:', err),
     });
   }
 

@@ -31,7 +31,7 @@ export class CategoriesTab implements OnInit {
       next: (res: any) => {
         this.categories = res;
       },
-      error: (err) => console.error('Error fetching categories:', err),
+      error: (err) => console.error('failed to fetch categories:', err),
     });
   }
 
@@ -51,7 +51,7 @@ export class CategoriesTab implements OnInit {
         console.log('Category deleted');
         this.loadCategories();
       },
-      error: (err) => console.error('Error deleting category:', err),
+      error: (err) => console.error('failed to delete category:', err),
     });
   }
 
