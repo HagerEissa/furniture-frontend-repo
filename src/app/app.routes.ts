@@ -21,17 +21,18 @@ export const routes: Routes = [
   { path: 'login', component: Login},
   { path: 'signup', component: Signup },
   { path: 'oauth-success', component: OauthSuccess },
-  { path: 'home', component: Home ,canActivate: [authGuard] },
-  { path: 'shop', component: Shop,canActivate: [authGuard] },
+
+  { path: 'home', component: Home ,canActivate: [authGuard],title:'Home' },
+  { path: 'shop', component: Shop,canActivate: [authGuard],title:'Shop'  },
   {path:'about',loadComponent:()=>import('../app/Pages/about/about').then(c=>c.About),title:'About',canActivate: [authGuard]}, //lazyload
   {path:'contact',loadComponent:()=>import('../app/Pages/contact/contact').then(c=>c.Contact),title:'contact',canActivate: [authGuard]}, //lazyload
-  { path: 'Checkout', component: Checkout,canActivate: [authGuard] },
-  { path: 'dashboard', component: Dashboard,canActivate: [adminGuardGuard] },
-  { path: 'profile', component: Profile,canActivate: [authGuard] },
-  { path: 'cart', component: Cart,canActivate: [authGuard] },
-  { path: 'favourite', component: Favourite,canActivate: [authGuard] },
+  { path: 'Checkout', component: Checkout,canActivate: [authGuard],title:'Checkout' },
+  { path: 'dashboard', component: Dashboard,canActivate: [adminGuardGuard],title:'dashboard' },
+  { path: 'profile', component: Profile,canActivate: [authGuard] ,title:'profile'},
+  { path: 'cart', component: Cart,canActivate: [authGuard],title:'Cart' },
+  { path: 'favourite', component: Favourite,canActivate: [authGuard],title:'Favourite' },
   // { path: 'oauthsuccesscomponent', component: OauthSuccessComponent },
-  { path: 'blog', component: Blog,canActivate: [authGuard] },
-  { path: 'product-detail/:id', component: ProductDetail,canActivate: [authGuard] },
-  { path: '**', component: NotFound },
-];
+  { path: 'blog', component: Blog,canActivate: [authGuard] ,title:'Blog'},
+  { path: 'product-detail/:id', component: ProductDetail,canActivate: [authGuard] ,title:'ProductDetail' },
+  { path: '**', component: NotFound ,title:'NotFound' },
+]
