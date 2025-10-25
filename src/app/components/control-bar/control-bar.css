@@ -1,5 +1,4 @@
 
-/* --- Global Bar Container --- */
 .product-control-bar {
   display: flex;
   justify-content: space-between;
@@ -11,13 +10,11 @@
   color: #333;
 }
 
-/* Grouping Left and Right Controls */
 .control-group {
   display: flex;
   align-items: center;
 }
 
-/* --- LEFT Controls (Filter, View, Results) --- */
 
 .left-controls {
   gap: 20px;
@@ -65,7 +62,6 @@
   color: #333;
 }
 
-/* --- RIGHT Controls (Show, Sort By) --- */
 
 .right-controls {
   gap: 30px;
@@ -84,7 +80,6 @@
 }
 
 .control-select {
-  /* Styled to look like the buttons in the image */
   background-color: #ffffff;
   border: none;
   padding: 8px 15px;
@@ -132,7 +127,6 @@
   cursor: pointer;
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .product-control-bar {
     flex-direction: column; 

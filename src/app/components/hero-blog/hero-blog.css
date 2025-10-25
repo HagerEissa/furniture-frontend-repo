@@ -22,7 +22,6 @@
   z-index: 1;
 }
 
-/* --- Banner Content --- */
 .banner-content {
   position: relative;
   z-index: 2;
@@ -30,7 +29,6 @@
   text-align: center;
 }
 
-/* Page Title */
 .page-title {
   font-size: 48px;
   font-family: 'Poppins', sans-serif;
@@ -39,7 +37,6 @@
   color: #000000;
 }
 
-/* Breadcrumbs */
 .breadcrumbs {
   font-size: 16px;
   font-weight: 500;
