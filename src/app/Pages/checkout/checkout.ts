@@ -96,25 +96,23 @@ export class Checkout implements OnInit {
 
     this.orderService.createOrder(orderData).subscribe({
       next: (res: any) => {
-        console.log('✅ Order created successfully:', res);
+        console.log(' Order created successfully:', res);
 
         this.cartService.clearCart(this.userId).subscribe({
           next: () => {
-            // 🧹 امسحي الداتا المحلية
             localStorage.removeItem('cartItems');
             localStorage.removeItem('totalPrice');
 
-            // 🧹 صفّي الكارت في الميموري
             this.cartItems = [];
             this.totalPrice = 0;
 
-            alert('✅ Order completed! Cart cleared successfully.');
-            this.router.navigate(['/']); // رجّعي المستخدم للصفحة الرئيسية
+            alert(' Order completed! Cart cleared successfully.');
+            this.router.navigate(['/']);
           },
-          error: (err) => console.error('❌ Error clearing cart:', err),
+          error: (err) => console.error(' Error clearing cart:', err),
         });
       },
-      error: (err) => console.error('❌ Failed to create order:', err),
+      error: (err) => console.error(' Failed to create order:', err),
     });
   }
 }
