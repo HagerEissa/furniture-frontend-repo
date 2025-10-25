@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class Homeslider {
 
-   products:any = [];
+  products: any = [];
   threeProducts: any[][] = [];
 
   @Input() limit: number | null = null;
@@ -34,11 +34,11 @@ export class Homeslider {
   }
 
   displayThreeProducts(products: any[]) {
-    this.threeProducts=[];
+    this.threeProducts = [];
     for (let i = 0; i < products.length; i += 3) {
       this.threeProducts.push(this.products.slice(i, i + 3));
     }
-    console.log("slider products ",this.threeProducts)
+    console.log("slider products ", this.threeProducts)
     return this.threeProducts;
 
   }

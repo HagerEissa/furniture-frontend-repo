@@ -28,8 +28,8 @@ export class Products {
     private _favouriteService: FavouriteService,
     private _authService: Auth,
     private _cartService: CartService,
-    private _router:Router
-  ) {}
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
     const userId = this._authService.getUserId();
@@ -122,8 +122,8 @@ export class Products {
   }
 
   // display product details
-   goToProductDetail(product: any) {
+  goToProductDetail(product: any) {
     this._router.navigate(['/product-detail', product._id]);
-}
+  }
 }
 
