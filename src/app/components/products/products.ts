@@ -34,7 +34,6 @@ export class Products {
   ngOnInit(): void {
     const userId = this._authService.getUserId();
 
-    // 🟡 Load user's favourite list
     if (userId) {
       this._favouriteService.getFavouriteForUser(userId).subscribe({
         next: (data: any) => {
@@ -46,7 +45,6 @@ export class Products {
       });
     }
 
-    // 🟢 Load all products once from the state service
     this.state.displayedProducts$.subscribe((products) => {
       this.allProducts = products;
     });
@@ -56,7 +54,6 @@ export class Products {
     return this.state.displayedProducts$;
   }
 
-  // ❤️ Toggle favourite
   toggle_fav(productId: string) {
     const userId: string = this._authService.getUserId();
     if (!userId) {
@@ -83,7 +80,6 @@ export class Products {
     }
   }
 
-  // 🛒 Add to Cart
   add_to_card(productId: string) {
     const userId: string = this._authService.getUserId();
     if (!userId) {
@@ -121,7 +117,6 @@ export class Products {
     });
   }
 
-  // display product details
    goToProductDetail(product: any) {
     this._router.navigate(['/product-detail', product._id]);
 }
