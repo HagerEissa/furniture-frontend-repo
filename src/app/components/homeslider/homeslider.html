@@ -1,0 +1,73 @@
+
+
+
+<section class="carousel-section overflow-hidden">
+     <p>Discover stylish furniture</p>
+
+  <h1>Make Your Home Modern</h1>
+
+  <div class="carousel-container">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+
+
+        @if(threeProducts?.length){
+        @for(product of threeProducts; track $index){
+
+        <div class="carousel-item " [class.active]="$index === 0" data-bs-interval="4000">
+
+          <div class="row justify-content-center g-3 p-3">
+
+
+            @if(product[0]){
+
+            <div class="col-lg-4 col-md-6 col-12" (click)="goToProductDetail(product[0])">
+              <img [src]="product[0].imgURL" class="carousel-img d-block mx-auto" [alt]="product[0].title">
+            </div>
+            }
+
+            @if(product[1]){
+            <div class="col-lg-4 col-md-6 col-12" (click)="goToProductDetail(product[1])">
+              <img [src]="product[1].imgURL" class="carousel-img d-block mx-auto" [alt]="product[1].title">
+            </div>
+            }
+
+            @if(product[2]){
+            <div class="col-lg-4 col-md-6 col-12" (click)="goToProductDetail(product[2])">
+              <img [src]="product[2].imgURL" class="carousel-img d-block mx-auto" [alt]="product[2].title">
+            </div>
+            }
+
+
+
+          </div>
+        </div>
+
+        }
+        }
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>

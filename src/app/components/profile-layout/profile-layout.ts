@@ -56,6 +56,7 @@ export class ProfileLayout implements OnInit {
     }
   }
 
+
   toggleOldPassword(): void {
     this.showOldPassword = !this.showOldPassword;
   }
