@@ -20,8 +20,8 @@ import { Router } from '@angular/router';
 export class Products {
   @Input() limit: number | null = null;
 
-  favouriteProducts: string[] = []; // IDs of favorite products
-  allProducts: any[] = []; // store all products to handle add-to-cart/stock check
+  favouriteProducts: string[] = []; 
+  allProducts: any[] = [];
 
   constructor(
     private state: ProductStateService,

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../core/services/product-service';
+import { CategoryService } from '../../core/services/category-service';
 declare var bootstrap: any;
 
 @Component({
@@ -11,6 +12,7 @@ declare var bootstrap: any;
 })
 export class AddProductForm {
   @Output() productAdded = new EventEmitter<void>();
+  categories: any = [];
 
   product = {
     name: '',
@@ -26,7 +28,17 @@ export class AddProductForm {
 
   selectedFile: File | null = null;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private categoryService: CategoryService) {}
+
+  ngOnInit() {
+    this.categoryService.getAllCategories().subscribe({
+      next: (data) => {
+        this.categories = data;
+        console.log('Fetched categories:', this.categories);
+      },
+      error: (err) => console.error('Error fetching categories:', err),
+    });
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
