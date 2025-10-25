@@ -1,30 +1,26 @@
 <div class="profile-page">
-    <aside class="profile-sidebar">
-        <div class="avatar">
-        @if (selectedFilePreview) {
-            <img [src]="selectedFilePreview" alt="Avatar" />
-        } @else {
-            <div class="avatar-placeholder">No Image</div>
-        }
-        </div>
-
-        <nav class="profile-nav">
-        <ul>
-            <li><a routerLink="details">My Details</a></li>
-            <li><a routerLink="settings">Settings</a></li>
-        </ul>
-        </nav>
-    </aside>
-
     <main class="profile-content">
-        <header>
-            <h1>My Profile</h1>
-            <p>Manage your profile information</p>
+        <header class="profile-header">
+            <div class="avatar-section">
+                @if (selectedFilePreview) {
+                    <img [src]="selectedFilePreview" alt="Avatar" class="profile-avatar" />
+                } @else {
+                    <div class="avatar-placeholder">No Image</div>
+                }
+                <label for="fileInput" class="file-label">Upload Image</label>
+                <input type="file" id="fileInput" class="file-input" (change)="onFileSelected($event)" accept="image/*"/>
+            </div>
+
+            <div class="profile-text">
+                <h1>My Profile</h1>
+                <p>Manage your personal information</p>
+            </div>
         </header>
 
-        <section class="profile-details">
+        <section class="profile-form-section">
             @if (profileForm) {
-                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="profile-form">
+
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input id="name" type="text" formControlName="name" />
@@ -43,38 +39,31 @@
                 <div class="form-group password-group">
                     <label for="oldPassword">Old Password</label>
                     <div class="password-wrapper">
-                    <input id="oldPassword" [type]="showOldPassword ? 'text' : 'password'" formControlName="oldPassword" placeholder="Enter old password"/>
-                    <button type="button" class="toggle-btn" (click)="toggleOldPassword()" title="Show/Hide Old Password">
-                        <i class="fa" [ngClass]="showOldPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
-                    </button>
+                        <input id="oldPassword" [type]="showOldPassword ? 'text' : 'password'" formControlName="oldPassword" placeholder="Enter old password"/>
+                        <button type="button" class="toggle-btn" (click)="toggleOldPassword()" title="Show/Hide Old Password">
+                            <i class="fa" [ngClass]="showOldPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                        </button>
                     </div>
                 </div>
 
                 <div class="form-group password-group">
                     <label for="newPassword">New Password</label>
                     <div class="password-wrapper">
-                    <input id="newPassword" [type]="showNewPassword ? 'text' : 'password'" formControlName="newPassword" placeholder="Enter new password"/>
-                    <button type="button" class="toggle-btn" (click)="toggleNewPassword()" title="Show/Hide New Password">
-                        <i class="fa" [ngClass]="showNewPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
-                    </button>
+                        <input id="newPassword" [type]="showNewPassword ? 'text' : 'password'" formControlName="newPassword" placeholder="Enter new password"/>
+                        <button type="button" class="toggle-btn" (click)="toggleNewPassword()" title="Show/Hide New Password">
+                            <i class="fa" [ngClass]="showNewPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                        </button>
                     </div>
 
                     @if (profileForm.get('newPassword')?.hasError('passwordstrength') && profileForm.get('newPassword')?.touched) {
                         <div class="text-danger small">
-                            Password must contain at least 8 characters, one uppercase, one
-                            lowercase, and one number.
+                            Password must contain at least 8 characters, one uppercase, one lowercase, and one number.
                         </div>
                     }
                 </div>
 
-                <div class="file-save-group">
-                    <div class="file-input-wrapper">
-                    <input type="file" id="fileInput" class="file-input" (change)="onFileSelected($event)"/>
-                    <label class="file-label" for="fileInput">Upload Image</label>
-                    <span class="file-name">{{selectedFileName || "No file chosen"}}</span>
-                    </div>
-
-                    <button type="submit" [disabled]="profileForm.invalid">Save</button>
+                <div class="save-btn-wrapper">
+                    <button type="submit" [disabled]="profileForm.invalid" class="save-btn">Save Changes</button>
                 </div>
                 </form>
             }
