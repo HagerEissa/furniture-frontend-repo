@@ -16,18 +16,23 @@ export class ContactLayout {
     message: '',
   };
 
+  submitted = false; 
+
   constructor(private _contactService: ContactService) {}
 
-  onSubmit() {
-    if (!this.contact.name || !this.contact.email || !this.contact.message) {
-      alert('Please fill all required fields.');
-      return;
+  onSubmit(form: any) {
+    this.submitted = true; 
+
+    if (form.invalid) {
+      return; 
     }
 
     this._contactService.sendMessage(this.contact).subscribe({
       next: () => {
         alert('Thank you! Your message has been sent.');
         this.contact = { name: '', email: '', message: '' };
+        form.resetForm();
+        this.submitted = false;
       },
       error: (err) => {
         console.error('Error sending message:', err);
