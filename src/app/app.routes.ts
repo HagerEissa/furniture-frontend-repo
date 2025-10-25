@@ -19,18 +19,18 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
   { path: 'oauth-success', component: OauthSuccess },
-  { path: 'home', component: Home },
-  { path: 'shop', component: Shop },
+  { path: 'home', component: Home ,title:'Home'},
+  { path: 'shop', component: Shop ,title:'Shop' },
   {path:'about',loadComponent:()=>import('../app/Pages/about/about').then(c=>c.About),title:'About'}, //lazyload
   {path:'contact',loadComponent:()=>import('../app/Pages/contact/contact').then(c=>c.Contact),title:'contact'}, //lazyload
-  { path: 'Checkout', component: Checkout },
-  { path: 'dashboard', component: Dashboard },
-  { path: 'profile', component: Profile },
-  { path: 'cart', component: Cart },
-  { path: 'favourite', component: Favourite },
+  { path: 'Checkout', component: Checkout ,title:'Checkout'},
+  { path: 'dashboard', component: Dashboard ,title:'dashboard'},
+  { path: 'profile', component: Profile ,title:'profile'},
+  { path: 'cart', component: Cart ,title:'Cart'},
+  { path: 'favourite', component: Favourite ,title:'Favourite'},
   // { path: 'oauthsuccesscomponent', component: OauthSuccessComponent },
-  { path: 'blog', component: Blog },
-  { path: 'product-detail/:id', component: ProductDetail },
+  { path: 'blog', component: Blog ,title:'Blog'},
+  { path: 'product-detail/:id', component: ProductDetail ,title:'ProductDetail'},
 
-  { path: '**', component: NotFound },
+  { path: '**', component: NotFound ,title:'NotFound'},
 ];
