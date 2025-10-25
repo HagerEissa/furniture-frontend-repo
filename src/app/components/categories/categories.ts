@@ -18,9 +18,9 @@ export class Categories implements OnInit {
     this._categoryService.getAllCategories().subscribe({
       next: (data) => {
         this.categories = data;
-        console.log('Categories:', data);
+        console.log('categories:', data);
       },
-      error: (error) => console.log('Error fetching categories:', error),
+      error: (error) => console.log('failed to fetch categories:', error),
     });
   }
 

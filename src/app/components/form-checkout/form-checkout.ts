@@ -28,7 +28,6 @@ export class FormCheckout implements OnInit {
   ) {}
 
   ngOnInit() {
-    // 🟢 نجيب userId من localStorage مباشرة
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       this.userId = JSON.parse(storedUser)._id;
@@ -38,7 +37,7 @@ export class FormCheckout implements OnInit {
       return;
     }
 
-    console.log('User ID:', this.userId); // ✅ للتأكد
+    console.log('User ID:', this.userId); 
 
     this.checkoutForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -50,7 +49,7 @@ export class FormCheckout implements OnInit {
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       additionalInfo: [''],
-      paymentMethod: ['cash', Validators.required], // 🟢 cash أو strips
+      paymentMethod: ['cash', Validators.required], 
     });
 
     this.loadCart();
@@ -104,7 +103,7 @@ export class FormCheckout implements OnInit {
 const payload = {
   userId: this.userId,
   items: this.cartItems.map((item) => ({
-    productId: item._id, // لازم يكون موجود
+    productId: item._id,
     name: item.name,
     price: item.price,
     quantity: item.quantity,

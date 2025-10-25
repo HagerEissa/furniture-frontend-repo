@@ -6,6 +6,7 @@ import { AddProductForm } from '../../Forms/add-product-form/add-product-form';
 import { HeroDashboard } from '../../components/hero-dashboard/hero-dashboard';
 import { CategoriesTab } from '../../components/categories-tab/categories-tab';
 import { AddCategoryForm } from '../../Forms/add-category-form/add-category-form';
+import { MessagesTab } from "../../components/messages-tab/messages-tab";
 declare var bootstrap: any;
 
 @Component({
@@ -19,7 +20,8 @@ declare var bootstrap: any;
     CategoriesTab,
     AddCategoryForm,
     AddProductForm,
-  ],
+    MessagesTab
+],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

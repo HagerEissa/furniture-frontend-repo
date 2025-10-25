@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ContactService } from '../../core/services/contact-service';
 
 @Component({
   selector: 'app-contact-layout',
@@ -12,9 +13,10 @@ export class ContactLayout {
   contact = {
     name: '',
     email: '',
-    subject: '',
     message: '',
   };
+
+  constructor(private _contactService: ContactService) {}
 
   onSubmit() {
     if (!this.contact.name || !this.contact.email || !this.contact.message) {
@@ -22,8 +24,15 @@ export class ContactLayout {
       return;
     }
 
-    console.log('Form submitted:', this.contact);
-    alert('Thank you! Your message has been sent.');
-    this.contact = { name: '', email: '', subject: '', message: '' };
+    this._contactService.sendMessage(this.contact).subscribe({
+      next: () => {
+        alert('Thank you! Your message has been sent.');
+        this.contact = { name: '', email: '', message: '' };
+      },
+      error: (err) => {
+        console.error('Error sending message:', err);
+        alert('Something went wrong. Please try again later.');
+      },
+    });
   }
 }

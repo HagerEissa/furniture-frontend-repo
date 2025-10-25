@@ -1,4 +1,3 @@
-/* Base Container Styles */
 .footer-container {
   padding: 50px 5%;
   background-color: #ffffff;
@@ -7,7 +6,6 @@
   margin-top: 8em;
 }
 
-/* Main Content Layout (Funiro, Links, Help, Newsletter) */
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -17,14 +15,12 @@
   margin: 0 auto;
 }
 
-/* --- Column Styling --- */
 
 .footer-col {
   display: flex;
   flex-direction: column;
 }
 
-/* Logo and Address Column */
 .col-info {
   flex-basis: 25%;
   max-width: 250px;
@@ -46,7 +42,6 @@
   line-height: 100%;
 }
 
-/* Links and Help Columns */
 .col-links,
 .col-help {
   flex-basis: 15%;
@@ -73,7 +68,6 @@
   color: #b88e2f;
 }
 
-/* --- Newsletter Styling --- */
 
 .col-newsletter {
   flex-grow: 1;
@@ -116,7 +110,6 @@
   border-bottom-color: #b88e2f;
 }
 
-/* --- Divider and Copyright --- */
 
 .footer-divider {
   border: none;
@@ -135,7 +128,6 @@
   color: #000000;
 }
 
-/* --- Responsive Mobile View (e.g., screens under 768px) --- */
 
 @media (max-width: 768px) {
   .footer-container {
@@ -146,7 +138,6 @@
     flex-direction: column;
   }
 
-  /* Reset column widths for mobile to stack them */
   .footer-col {
     flex-basis: 100%;
     margin-bottom: 30px;
