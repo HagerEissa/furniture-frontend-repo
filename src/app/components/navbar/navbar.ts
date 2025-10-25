@@ -15,27 +15,34 @@ import { Auth } from '../../core/services/auth';
 export class Navbar implements OnInit {
   showMenu = false;
   isLoggedIn = false;
+  favCount = 0;
+  isAdminUser = false; 
 
-  constructor(private authState: AuthStateService, private auth: Auth, private router: Router,private _favouriteService:FavouriteService,private _authService:Auth) {
+  constructor(
+    private authState: AuthStateService,
+    private auth: Auth,
+    private router: Router,
+    private _favouriteService: FavouriteService,
+    private _authService: Auth
+  ) {
     this.authState.isLoggedIn$.subscribe((status) => (this.isLoggedIn = status));
   }
-  favCount: number = 0;
-  // constructor(private _favouriteService:FavouriteService,private _authService:Auth) {}
+
   ngOnInit(): void {
-    let userId:string=this._authService.getUserId();
-    if (!userId) return;
-    this._favouriteService.getFavouriteForUser(userId).subscribe({
-      next: (data:any) => {
-        this.favCount = data?.products?.length;
-        // console.log("nav fav",data.products.length);
-        
-      },
-      error: (error) => console.log('Error ', error),
-    });
+    this.isAdminUser = this._authService.isAdmin();
+
+    if (!this.isAdminUser) {
+      const userId = this._authService.getUserId();
+      if (userId) {
+        this._favouriteService.getFavouriteForUser(userId).subscribe({
+          next: (data: any) => {
+            this.favCount = data?.products?.length || 0;
+          },
+          error: (error) => console.log('Error ', error),
+        });
+      }
+    }
   }
-  
-
-
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -47,5 +54,3 @@ export class Navbar implements OnInit {
     this.router.navigate(['/login']);
   }
 }
- 
-

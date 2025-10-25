@@ -30,7 +30,6 @@ export class UsersTab {
         });
         this.users.set(sortedUsers);
       },
-      error: (err) => console.error('Failed to load users:', err),
     });
   }
 
@@ -44,7 +43,6 @@ export class UsersTab {
         );
         this.users.set(updatedUsers);
       },
-      error: (err) => console.error('Failed to update role:', err),
     });
   }
 
@@ -55,7 +53,6 @@ export class UsersTab {
         const updatedUsers = this.users().filter((u) => u._id !== user._id);
         this.users.set(updatedUsers);
       },
-      error: (err) => console.error('Failed to delete user:', err),
     });
   }
 }

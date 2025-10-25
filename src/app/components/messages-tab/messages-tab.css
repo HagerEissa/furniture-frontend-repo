@@ -23,7 +23,7 @@
 .table thead th {
   position: sticky;
   top: 0;
-  background: linear-gradient(90deg, #588257, #a1b089);
+	background: linear-gradient(90deg, #588257, #a1b089);
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
@@ -57,18 +57,6 @@
   transition: all 0.2s ease;
 }
 
-.table button.btn-primary {
-  background-color: #588257;
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(184, 142, 47, 0.3);
-}
-
-.table button.btn-primary:hover {
-  background-color: #385937;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(161, 118, 30, 0.4);
-}
-
 .table button.btn-danger {
   background-color: #e74c3c;
   color: #fff;
@@ -81,19 +69,31 @@
   box-shadow: 0 6px 12px rgba(192, 57, 43, 0.4);
 }
 
-.current-user td {
-  color: #588257;
-  font-weight: bolder;
+.gold-alert {
+  width: 100%;
+	background: #588257;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(184, 142, 47, 0.3);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
 }
 
-.you-badge {
-  background-color: #588257;
-  color: white;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  margin-left: 8px;
-  border-radius: 6px;
-  font-weight: 500;
+.gold-alert:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 14px rgba(44, 69, 29, 0.4);
+}
+
+.gold-alert i {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 6px;
 }
 
 @media (max-width: 768px) {
@@ -106,5 +106,10 @@
   .table button.btn {
     padding: 3px 8px;
     font-size: 0.75rem;
+  }
+
+	.gold-alert {
+    font-size: 0.9rem;
+    padding: 1rem;
   }
 }

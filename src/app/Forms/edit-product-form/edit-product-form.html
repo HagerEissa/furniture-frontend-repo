@@ -1,315 +1,3 @@
-<!-- <div
-  class="modal fade"
-  id="editModal"
-  tabindex="-1"
-  aria-labelledby="editModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <form #form="ngForm" (ngSubmit)="updateProduct(form)">
-          <div class="mb-3">
-            <label>Name</label>
-            <input
-              type="text"
-              class="form-control"
-              name="name"
-              [(ngModel)]="product.name"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Description</label>
-            <input
-              type="text"
-              class="form-control"
-              name="description"
-              [(ngModel)]="product.desc"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Short Description</label>
-            <input
-              type="text"
-              class="form-control"
-              name="short-description"
-              [(ngModel)]="product.shortDesc"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Price</label>
-            <input
-              type="number"
-              class="form-control"
-              name="price"
-              [(ngModel)]="product.price"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Discount</label>
-            <input
-              type="number"
-              class="form-control"
-              name="discount"
-              [(ngModel)]="product.discount"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Product Image</label>
-
-            @if (product.imgURL) {
-            <div class="mb-3 text-center">
-              <img
-                [src]="product.imgURL"
-                alt="Current Product Image"
-                class="img-fluid rounded mb-2"
-                style="max-height: 150px; border: 1px solid #ddd"
-              />
-            </div>
-            }
-
-            <input
-              type="file"
-              class="form-control"
-              name="product-img"
-              (change)="onFileSelected($event)"
-              accept="image/*"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Category</label>
-            <input
-              type="text"
-              class="form-control"
-              name="category"
-              [(ngModel)]="product.categoryId"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Stock</label>
-            <input
-              type="text"
-              class="form-control"
-              name="stock"
-              [(ngModel)]="product.stock"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Product Status</label>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="status"
-                id="new"
-                [value]="true"
-                [(ngModel)]="product.isnew"
-                checked
-              />
-              <label class="form-check-label" for="true">New</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="status"
-                id="old"
-                [value]="false"
-                [(ngModel)]="product.isnew"
-              />
-              <label class="form-check-label" for="false">Old</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button class="btn add-product-btn">Edit Product</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div
-  class="modal fade"
-  id="editModal"
-  tabindex="-1"
-  aria-labelledby="editModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          (click)="resetForm(form)"
-        ></button>
-      </div>
-
-      <div class="modal-body">
-        <form #form="ngForm" (ngSubmit)="updateProduct(form)">
-          <div class="mb-3">
-            <label>Name</label>
-            <input
-              type="text"
-              class="form-control"
-              name="name"
-              [(ngModel)]="product.name"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Description</label>
-            <input
-              type="text"
-              class="form-control"
-              name="desc"
-              [(ngModel)]="product.desc"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Short Description</label>
-            <input
-              type="text"
-              class="form-control"
-              name="shortDesc"
-              [(ngModel)]="product.shortDesc"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Price</label>
-            <input
-              type="number"
-              class="form-control"
-              name="price"
-              [(ngModel)]="product.price"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Discount</label>
-            <input
-              type="number"
-              class="form-control"
-              name="discount"
-              [(ngModel)]="product.discount"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Product Image</label>
-            @if (product.imgURL) {
-            <div class="mb-3 text-center">
-              <img
-                [src]="product.imgURL"
-                alt="Current Product Image"
-                class="img-fluid rounded mb-2"
-                style="max-height: 150px; border: 1px solid #ddd"
-              />
-            </div>
-            }
-
-            <input
-              type="file"
-              class="form-control"
-              (change)="onFileSelected($event)"
-              accept="image/*"
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Category</label>
-            <input
-              type="text"
-              class="form-control"
-              name="categoryId"
-              [(ngModel)]="product.categoryId"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Stock</label>
-            <input
-              type="number"
-              class="form-control"
-              name="stock"
-              [(ngModel)]="product.stock"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label>Product Status</label>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="status"
-                id="new"
-                [value]="true"
-                [(ngModel)]="product.isnew"
-              />
-              <label class="form-check-label" for="new">New</label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="status"
-                id="old"
-                [value]="false"
-                [(ngModel)]="product.isnew"
-              />
-              <label class="form-check-label" for="old">Old</label>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              (click)="resetForm(form)"
-            >
-              Cancel
-            </button>
-            <button type="submit" class="btn add-product-btn">Edit Product</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div
   class="modal fade"
   id="editModal"
@@ -332,7 +20,6 @@
 
       <div class="modal-body">
         <form #form="ngForm" (ngSubmit)="updateProduct(form)">
-          <!-- Name -->
           <div class="mb-3">
             <label>Name</label>
             <input
@@ -347,7 +34,6 @@
             }
           </div>
 
-          <!-- Description -->
           <div class="mb-3">
             <label>Description</label>
             <input
@@ -362,7 +48,6 @@
             }
           </div>
 
-          <!-- Short Description -->
           <div class="mb-3">
             <label>Short Description</label>
             <input
@@ -377,7 +62,6 @@
             }
           </div>
 
-          <!-- Price -->
           <div class="mb-3">
             <label>Price</label>
             <input
@@ -392,7 +76,6 @@
             }
           </div>
 
-          <!-- Discount -->
           <div class="mb-3">
             <label>Discount</label>
             <input
@@ -403,7 +86,6 @@
             />
           </div>
 
-          <!-- Product Image -->
           <div class="mb-3">
             <label>Product Image</label>
 
@@ -427,22 +109,26 @@
             />
           </div>
 
-          <!-- Category -->
           <div class="mb-3">
-            <label>Category ID</label>
-            <input
-              type="text"
-              class="form-control"
+            <label>Category</label>
+            <select
+              class="form-select"
               name="categoryId"
               [(ngModel)]="product.categoryId"
               required
-            />
+              #categoryId="ngModel"
+            >
+              <option value="" disabled>Select a category</option>
+              @for (cat of categories; track cat._id) {
+              <option [value]="cat._id">{{ cat.name }}</option>
+              }
+            </select>
+
             @if (form.submitted && !product.categoryId) {
-            <div class="text-danger mt-1">Category ID is required.</div>
+            <div class="text-danger mt-1">Category is required.</div>
             }
           </div>
 
-          <!-- Stock -->
           <div class="mb-3">
             <label>Stock</label>
             <input
@@ -457,7 +143,6 @@
             }
           </div>
 
-          <!-- Product Status -->
           <div class="mb-3">
             <label>Product Status</label>
             <div class="form-check">
@@ -484,7 +169,6 @@
             </div>
           </div>
 
-          <!-- Footer -->
           <div class="modal-footer">
             <button
               type="button"

@@ -1,6 +1,4 @@
-<!-- Navbar Container -->
 <header class="navbar-container">
-  <!-- Logo Section -->
   <div class="logo">
     <a routerLink="/">
       <img src="Log.png" alt="Furniro Logo" width="50" height="50" />
@@ -8,7 +6,6 @@
     <span>Furniro</span>
   </div>
 
-  <!-- Navigation Links -->
   <nav class="nav-links" [class.active]="showMenu">
     <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
       (click)="toggleMenu()">Home</a>
@@ -18,23 +15,34 @@
     <a routerLink="/blog" routerLinkActive="active" (click)="toggleMenu()">Blog</a>
 
     <div class="nav-icons">
-      <a routerLink="/profile" class="icon-link">
-        <i class="fa-regular fa-user"></i>
-      </a>
-      <a routerLink="/favourite" class="icon-link">
-        <i class="fa-regular fa-heart"></i>
-        <span class="fav-count" *ngIf="favCount > 0">{{ favCount }}</span>
-      </a>
-      <a routerLink="/cart" class="icon-link">
-        <i class="fa-solid fa-cart-shopping"></i>
-        
-      </a>
-      <a routerLink="/dashboard"><i class="fa-solid fa-gauge"></i></a>
+      <ng-container *ngIf="!isAdminUser">
+        <a routerLink="/profile" class="icon-link">
+          <i class="fa-regular fa-user"></i>
+        </a>
 
-      
+        <a routerLink="/favourite" class="icon-link">
+          <i class="fa-regular fa-heart"></i>
+          <span class="fav-count" *ngIf="favCount > 0">{{ favCount }}</span>
+        </a>
+
+        <a routerLink="/cart" class="icon-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isAdminUser">
+        <a routerLink="/profile" class="icon-link">
+          <i class="fa-regular fa-user"></i>
+        </a>
+
+        <a routerLink="/dashboard" class="icon-link">
+          <i class="fa-solid fa-gauge"></i>
+        </a>
+      </ng-container>
     </div>
+
     <button class="logout-btn" (click)="logout()">Logout</button>
   </nav>
 
   <i class="fa-solid fa-bars menu-toggle" (click)="toggleMenu()"></i>
-</header> 
+</header>

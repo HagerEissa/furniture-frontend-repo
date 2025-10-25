@@ -96,14 +96,19 @@
 
           <div class="mb-3">
             <label>Category</label>
-            <input
-              type="text"
-              class="form-control"
+            <select
+              class="form-select"
               name="category"
               [(ngModel)]="product.category"
               required
               #category="ngModel"
-            />
+            >
+              <option value="" disabled selected>Select a category</option>
+              @for (cat of categories; track cat._id) {
+              <option [value]="cat._id">{{ cat.name }}</option>
+              }
+            </select>
+
             @if (category.invalid && (category.dirty || category.touched)) {
             <div class="text-danger small">Category is required.</div>
             }

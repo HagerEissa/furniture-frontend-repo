@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../core/services/cart-service';
+import { Auth } from '../../core/services/auth';
 
 @Component({
   selector: 'app-form-checkout',
@@ -16,43 +17,68 @@ export class FormCheckout implements OnInit {
   checkoutForm!: FormGroup;
   cartItems: any[] = [];
   totalCartPrice: number = 0;
-  userId = 'user_id_here';
+  userId = '';
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private auth: Auth
   ) {}
 
   ngOnInit() {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.userId = JSON.parse(storedUser)._id;
+    } else {
+      alert('User not logged in!');
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    console.log('User ID:', this.userId); 
+
     this.checkoutForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       country: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
-      postalCode: ['', Validators.required],
+      postalCode: [''],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       additionalInfo: [''],
-      paymentMethod: ['stripe', Validators.required],
+      paymentMethod: ['cash', Validators.required], 
     });
 
     this.loadCart();
   }
 
   loadCart() {
-    this.cartService.getCartForUser(this.userId).subscribe({
-      next: (res: any) => {
-        this.cartItems = res.items;
-        this.totalCartPrice = this.cartItems.reduce(
-          (sum, i) => sum + i.price * i.quantity,
-          0
-        );
-      },
-      error: (err) => console.error('Failed to load cart:', err)
-    });
+    const storedCart = localStorage.getItem('cartItems');
+    const storedTotal = localStorage.getItem('totalPrice');
+
+    if (storedCart) {
+      this.cartItems = JSON.parse(storedCart);
+      this.totalCartPrice = storedTotal ? parseFloat(storedTotal) : 0;
+      console.log('Loaded cart from localStorage:', this.cartItems);
+    } else {
+      this.cartService.getCartForUser(this.userId).subscribe({
+        next: (res: any) => {
+          this.cartItems =
+            res?.products?.map((p: any) => ({
+              ...p.productId,
+              quantity: p.quantity,
+            })) || [];
+          this.totalCartPrice = this.cartItems.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+        },
+        error: (err) => console.error('Failed to load cart from API:', err),
+      });
+    }
   }
 
   onSubmit() {
@@ -62,12 +88,6 @@ export class FormCheckout implements OnInit {
     }
 
     const shippingInfo = this.checkoutForm.value;
-    const items = this.cartItems.map(item => ({
-      id: item._id,
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity
-    }));
 
     const token = localStorage.getItem('token');
     if (!token) {
@@ -78,22 +98,35 @@ export class FormCheckout implements OnInit {
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
+const payload = {
+  userId: this.userId,
+  items: this.cartItems.map((item) => ({
+    productId: item._id,
+    name: item.name,
+    price: item.price,
+    quantity: item.quantity,
+    total: item.price * item.quantity,
+  })),
+  totalPrice: this.totalCartPrice,
+  shippingInfo: this.checkoutForm.value,
+  paymentMethod: this.checkoutForm.value.paymentMethod,
+};
 
-    this.http.post<{ url: string }>(
-      'http://localhost:4200/api/payment/create-checkout-session',
-      { items, shippingInfo },
-      { headers }
-    ).subscribe({
-      next: (res) => {
-        // redirect to Stripe Checkout
-        window.location.href = res.url;
-      },
-      error: (err) => {
-        console.error('Payment error:', err);
-        alert('Payment failed, please try again.');
-      }
-    });
+
+    this.http
+      .post<{ url: string }>('http://localhost:3000/api/payment/create-checkout-session', payload, {
+        headers,
+      })
+      .subscribe({
+        next: (res) => {
+          window.location.href = res.url;
+        },
+        error: (err) => {
+          console.error('Payment error:', err);
+          alert('Payment failed, please try again.');
+        },
+      });
   }
 }
