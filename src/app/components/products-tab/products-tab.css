@@ -23,7 +23,7 @@
 .table thead th {
   position: sticky;
   top: 0;
-  background: linear-gradient(90deg, #b88e2f, #a1761e);
+  background: linear-gradient(90deg, #588257, #a1b089);
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
@@ -58,13 +58,13 @@
 }
 
 .table button.btn-primary {
-  background-color: #b88e2f;
+  background-color: #588257;
   color: #fff;
   box-shadow: 0 4px 8px rgba(184, 142, 47, 0.3);
 }
 
 .table button.btn-primary:hover {
-  background-color: #a1761e;
+  background-color: #385937;
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(161, 118, 30, 0.4);
 }

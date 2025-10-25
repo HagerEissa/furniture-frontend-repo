@@ -6,7 +6,7 @@
 
 .add-product-btn,
 .add-category-btn {
-  background-color: #b88e2f; /* Gold theme */
+  background-color:#a1b089; 
   color: white;
   font-weight: 500;
   float: right;
@@ -17,19 +17,22 @@
 
 .add-product-btn:hover,
 .add-category-btn:hover {
-  background-color: #a1761e;
+  background-color: #a1b089;
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(161, 118, 30, 0.4);
+  box-shadow: 0 6px 12px rgba(144, 153, 113, 0.4);
 }
 
 .add-category-btn {
-  background-color: #d4af37; 
+  background-color: #588257; 
 }
 
 .add-category-btn:hover {
   background-color: #bfa02f;
 }
 
+.add-product-btn:hover {
+  background-color: #bfa02f;
+}
 .table-container {
   padding-top: 5em;
 }
@@ -45,19 +48,19 @@ h2 {
 .nav-tabs .nav-link {
   padding: 0.5rem 1rem;
   border-radius: 8px 8px 0 0;
-  color: #b88e2f; 
+  color: #273617; 
   font-weight: 500;
   transition: all 0.3s ease;
   border: 1px solid transparent; 
 }
 
 .nav-tabs .nav-link.active {
-  background-color: #b88e2f; 
+  background-color: #588257; 
   color: #fff;
 }
 
 .nav-tabs .nav-link:hover {
-  background-color: #a1761e;
+  background-color: #588257;
   color: #fff;
   transform: scale(1.05);
 }
