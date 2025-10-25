@@ -1,20 +1,14 @@
 .modal-content {
-  border-radius: 15px;
-  border: none;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-  background-color: #fdfaf6; 
   transition: all 0.3s ease-in-out;
 }
 
 .modal-header {
   background-color: #588257;
-  border-bottom: none;
-  border-radius: 15px 15px 0 0;
 }
 
 .modal-title {
-  font-weight: 600;
-  color: #333;
+  color: white;
   font-size: 1.2rem;
 }
 
@@ -29,29 +23,24 @@
 
 .modal-body input[type='text'],
 .modal-body input[type='file'] {
-  border-radius: 8px;
-  border: 1px solid #ccc;
   padding: 0.6em;
   font-size: 0.95rem;
   transition: border-color 0.3s ease;
 }
 
 .modal-body input:focus {
-  border-color: #c5a25d; 
-  box-shadow: 0 0 5px rgba(197, 162, 93, 0.4);
   outline: none;
 }
 
 .modal-footer {
   border-top: none;
-  background-color: #f9f1e7;
   border-radius: 0 0 15px 15px;
 }
 
 .add-category-btn {
   background-color: #588257;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
   border-radius: 8px;
   padding: 0.6em 1.2em;
@@ -66,16 +55,4 @@
 .add-category-btn:active {
   transform: translateY(0);
   background-color: #8c733b;
-}
-
-.btn-secondary {
-  background-color: #dcdcdc;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: background-color 0.3s;
-}
-
-.btn-secondary:hover {
-  background-color: #bfbfbf;
 }
