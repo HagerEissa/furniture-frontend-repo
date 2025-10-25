@@ -14,10 +14,12 @@ import { NotFound } from './components/not-found/not-found';
 import { Blog } from './Pages/blog/blog';
 import { ProductDetail } from './components/product-detail/product-detail';
 import { PaymentSuccessComponent } from './components/suceesspayment/suceesspayment';
+import { authGuard } from './core/guards/auth-guard';
+import { adminGuardGuard } from './core/guards/admin-guard-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: Login },
+  { path: 'login', component: Login},
   { path: 'signup', component: Signup },
   { path: 'oauth-success', component: OauthSuccess },
   { path: 'home', component: Home, title: 'Home' },
@@ -44,3 +46,4 @@ export const routes: Routes = [
 
   { path: '**', component: NotFound, title: 'NotFound' },
 ];
+

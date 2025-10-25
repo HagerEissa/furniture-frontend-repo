@@ -61,6 +61,11 @@ export class Auth {
   isLoggedIn() {
     return !!this.getToken();
   }
+  isAdmin() {
+    const user = this.getUser();
+    // console.log("role",user.role);
+    return user && user.role === 'admin';
+  }
 }
  
 
