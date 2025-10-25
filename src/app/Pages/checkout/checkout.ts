@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../core/services/cart-service';
 import { OrderService } from '../../core/services/order-service';
@@ -6,6 +5,7 @@ import { HeroCheckout } from '../../components/hero-checkout/hero-checkout';
 import { Banner } from '../../components/banner/banner';
 import { FormCheckout } from '../../components/form-checkout/form-checkout';
 import { Auth } from '../../core/services/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -32,7 +32,8 @@ export class Checkout implements OnInit {
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
-    private auth: Auth
+    private auth: Auth,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -40,7 +41,6 @@ export class Checkout implements OnInit {
     if (userId) {
       this.userId = userId;
 
-      // ✅ تحميل الداتا من localStorage بدل الـ API
       const storedCart = localStorage.getItem('cartItems');
       const storedTotal = localStorage.getItem('totalPrice');
 
@@ -49,7 +49,7 @@ export class Checkout implements OnInit {
         this.totalPrice = storedTotal ? parseFloat(storedTotal) : 0;
       } else {
         console.warn('No cart data found in localStorage');
-        this.loadCart(); // fallback لو عايزة تجيبيها من السيرفر لو مش لاقياها
+        this.loadCart();
       }
     } else {
       console.error('User not logged in');
@@ -59,10 +59,8 @@ export class Checkout implements OnInit {
   loadCart() {
     this.cartService.getCartForUser(this.userId).subscribe({
       next: (res: any) => {
-        // نحاول نجيب الـ items من أكتر من احتمال
         this.cartItems = res?.items || res?.data?.items || res?.cart || res?.data || [];
 
-        // لو في منتجات فعلاً نحسب الإجمالي
         if (this.cartItems.length > 0) {
           this.totalPrice = this.cartItems.reduce(
             (sum, item) => sum + (item.price || 0) * (item.quantity || 1),
@@ -98,17 +96,25 @@ export class Checkout implements OnInit {
 
     this.orderService.createOrder(orderData).subscribe({
       next: (res: any) => {
-        alert(' Order created successfully!');
-        this.cartService.clearCart(this.userId).subscribe(() => {
-          this.cartItems = [];
-          this.totalPrice = 0;
+        console.log('✅ Order created successfully:', res);
+
+        this.cartService.clearCart(this.userId).subscribe({
+          next: () => {
+            // 🧹 امسحي الداتا المحلية
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem('totalPrice');
+
+            // 🧹 صفّي الكارت في الميموري
+            this.cartItems = [];
+            this.totalPrice = 0;
+
+            alert('✅ Order completed! Cart cleared successfully.');
+            this.router.navigate(['/']); // رجّعي المستخدم للصفحة الرئيسية
+          },
+          error: (err) => console.error('❌ Error clearing cart:', err),
         });
       },
-      error: (err) => {
-        console.error(' Failed to create order:', err);
-        alert('Failed to create order');
-      },
+      error: (err) => console.error('❌ Failed to create order:', err),
     });
   }
 }
- 
