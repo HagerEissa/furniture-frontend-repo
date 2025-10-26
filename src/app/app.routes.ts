@@ -9,7 +9,6 @@ import { Signup } from './components/signup/signup';
 import { OauthSuccess } from './components/oauth-success/oauth-success';
 import { Cart } from './components/cart/cart';
 import { Favourite } from './components/favourite/favourite';
-// import { OauthSuccessComponent } from './components/oauth-success-component/oauth-success-component';
 import { NotFound } from './components/not-found/not-found';
 import { Blog } from './Pages/blog/blog';
 import { ProductDetail } from './components/product-detail/product-detail';
@@ -28,18 +27,17 @@ export const routes: Routes = [
     path: 'about',
     loadComponent: () => import('../app/Pages/about/about').then((c) => c.About),
     title: 'About',
-  }, //lazyload
+  },
   {
     path: 'contact',
     loadComponent: () => import('../app/Pages/contact/contact').then((c) => c.Contact),
     title: 'contact',
-  }, //lazyload
+  },
   { path: 'Checkout', component: Checkout, title: 'Checkout' },
   { path: 'dashboard', component: Dashboard, title: 'dashboard' },
   { path: 'profile', component: Profile, title: 'profile' },
   { path: 'cart', component: Cart, title: 'Cart' },
   { path: 'favourite', component: Favourite, title: 'Favourite' },
-  // { path: 'oauthsuccesscomponent', component: OauthSuccessComponent },
   { path: 'blog', component: Blog, title: 'Blog' },
   { path: 'product-detail/:id', component: ProductDetail, title: 'ProductDetail' },
   { path: 'payment-success', component: PaymentSuccessComponent, title: 'Payment Success' },
