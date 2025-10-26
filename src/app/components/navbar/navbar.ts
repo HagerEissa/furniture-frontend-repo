@@ -36,7 +36,9 @@ export class Navbar implements OnInit {
       if (userId) {
         this._favouriteService.getFavouriteForUser(userId).subscribe({
           next: (data: any) => {
-            this.favCount = data?.products?.length || 0;
+            this.favCount = data?.products
+            ?.filter((p: any) => p.productId != null)
+            ?.length || 0;
           },
           error: (error) => console.log('Error ', error),
         });
