@@ -20,9 +20,13 @@ export class Favourite implements OnInit {
   loadFavourite() {
     this._favouriteService.getFavouriteForUser(this.userId).subscribe({
       next: (data:any)=> {
-        this.favourites = data?.products?.map((p: any) => p.productId) || []; //now in this.favourites = [{},{},{}]
+        this.favourites = data?.products
+        ?.filter((p: any) => p.productId != null)
+        ?.map((p: any) => p.productId) || []; //now in this.favourites = [{},{},{}]
         this.totalPrice = 0;
-         data?.products?.forEach((p: any) => {
+         data?.products
+         ?.filter((p: any) => p.productId != null)
+         ?.forEach((p: any) => {
           this.totalPrice +=p.productId.price
         })
         console.log("Favourite Response:", data?.products);
