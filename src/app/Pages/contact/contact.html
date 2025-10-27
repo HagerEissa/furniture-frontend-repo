@@ -1,3 +1,12 @@
-<app-hero-contact></app-hero-contact>
-<app-contact-layout></app-contact-layout>
-<app-banner></app-banner>
+<div *ngIf="!isAdminUser; else notAllowed">
+  <app-hero-contact></app-hero-contact>
+  <app-contact-layout></app-contact-layout>
+  <app-banner></app-banner>
+</div>
+
+<ng-template #notAllowed>
+  <div class="not-allowed">
+    <h2>Access Denied</h2>
+    <p>You are not authorized to view this page.</p>
+  </div>
+</ng-template>

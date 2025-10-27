@@ -37,7 +37,7 @@ export class FormCheckout implements OnInit {
       return;
     }
 
-    console.log('User ID:', this.userId); 
+    console.log('User ID:', this.userId);
 
     this.checkoutForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -49,7 +49,7 @@ export class FormCheckout implements OnInit {
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       additionalInfo: [''],
-      paymentMethod: ['cash', Validators.required], 
+      paymentMethod: ['cash', Validators.required],
     });
 
     this.loadCart();
@@ -87,8 +87,14 @@ export class FormCheckout implements OnInit {
       return;
     }
 
-    const shippingInfo = this.checkoutForm.value;
+    const paymentMethod = this.checkoutForm.value.paymentMethod;
 
+    if (paymentMethod === 'cash') {
+      this.router.navigate(['/payment-success']);
+      return;
+    }
+
+    const shippingInfo = this.checkoutForm.value;
     const token = localStorage.getItem('token');
     if (!token) {
       alert('Please login to continue');
@@ -100,20 +106,20 @@ export class FormCheckout implements OnInit {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-const payload = {
-  userId: this.userId,
-  items: this.cartItems.map((item) => ({
-    productId: item._id,
-    name: item.name,
-    price: item.price,
-    quantity: item.quantity,
-    total: item.price * item.quantity,
-  })),
-  totalPrice: this.totalCartPrice,
-  shippingInfo: this.checkoutForm.value,
-  paymentMethod: this.checkoutForm.value.paymentMethod,
-};
 
+    const payload = {
+      userId: this.userId,
+      items: this.cartItems.map((item) => ({
+        productId: item._id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        total: item.price * item.quantity,
+      })),
+      totalPrice: this.totalCartPrice,
+      shippingInfo,
+      paymentMethod,
+    };
 
     this.http
       .post<{ url: string }>('http://localhost:3000/api/payment/create-checkout-session', payload, {
