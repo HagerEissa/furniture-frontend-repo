@@ -7,11 +7,24 @@
   </div>
 
   <nav class="nav-links" [class.active]="showMenu">
-    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-      (click)="toggleMenu()">Home</a>
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="toggleMenu()"
+      >Home</a
+    >
     <a routerLink="/shop" routerLinkActive="active" (click)="toggleMenu()">Shop</a>
     <a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a>
-    <a routerLink="/contact" routerLinkActive="active" (click)="toggleMenu()">Contact</a>
+
+    <a
+      *ngIf="!isAdminUser"
+      routerLink="/contact"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+      >Contact</a
+    >
+
     <a routerLink="/blog" routerLinkActive="active" (click)="toggleMenu()">Blog</a>
 
     <div class="nav-icons">
@@ -30,6 +43,7 @@
         </a>
       </ng-container>
 
+      <!-- يظهر للـ Admin فقط -->
       <ng-container *ngIf="isAdminUser">
         <a routerLink="/profile" class="icon-link">
           <i class="fa-regular fa-user"></i>
