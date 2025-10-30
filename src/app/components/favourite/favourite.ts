@@ -22,7 +22,7 @@ export class Favourite implements OnInit {
       next: (data:any)=> {
         this.favourites = data?.products
         ?.filter((p: any) => p.productId != null)
-        ?.map((p: any) => p.productId) || []; //now in this.favourites = [{},{},{}]
+        ?.map((p: any) => p.productId) || []; 
         this.totalPrice = 0;
          data?.products
          ?.filter((p: any) => p.productId != null)

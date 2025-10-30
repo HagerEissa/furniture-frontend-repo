@@ -27,7 +27,7 @@ export class Cart implements OnInit{
       next: (data:any)=> {
         this.products_in_cart = data?.products
         ?.filter((p: any) => p.productId != null)
-        ?.map((p: any) => ({...p.productId,quantity:p.quantity})) || []; //now in this.products_in_cart = [{},{},{}]
+        ?.map((p: any) => ({...p.productId,quantity:p.quantity})) || []; 
 
         this.totalPrice = 0;
          data?.products
