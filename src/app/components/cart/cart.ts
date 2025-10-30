@@ -25,10 +25,14 @@ export class Cart implements OnInit{
     this.userId =this._authService.getUserId();
     this._cartService.getCartForUser(this.userId).subscribe({
       next: (data:any)=> {
-        this.products_in_cart = data?.products?.map((p: any) => ({...p.productId,quantity:p.quantity})) || []; //now in this.products_in_cart = [{},{},{}]
+        this.products_in_cart = data?.products
+        ?.filter((p: any) => p.productId != null)
+        ?.map((p: any) => ({...p.productId,quantity:p.quantity})) || []; 
 
         this.totalPrice = 0;
-         data?.products?.forEach((p: any) => {
+         data?.products
+         ?.filter((p: any) => p.productId != null)
+         ?.forEach((p: any) => {
           this.totalPrice +=p.productId.price*p.quantity
         })
         console.log("cart Response:", this.products_in_cart);

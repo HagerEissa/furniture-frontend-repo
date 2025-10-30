@@ -21,14 +21,12 @@ export class EditProductForm {
   constructor(private productService: ProductService, private categoryService: CategoryService) {}
 
   ngOnInit() {
-    // ✅ Fetch all categories
     this.categoryService.getAllCategories().subscribe({
       next: (data) => {
         this.categories = data;
         console.log('Fetched categories:', data);
 
-        // ✅ If product already has category object, keep its _id
-        if (this.product && this.product.categoryId && this.product.categoryId._id) {
+      if (this.product && this.product.categoryId && this.product.categoryId._id) {
           this.product.categoryId = this.product.categoryId._id;
         }
       },

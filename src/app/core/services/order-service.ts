@@ -37,5 +37,10 @@ export class OrderService {
   const headers = { Authorization: `Bearer ${token}` };
   return this._http.delete(`${this.URL_DB}/${id}`, { headers });
 }
+getAllOrders() {
+  const token = localStorage.getItem('token');
+  const headers = { Authorization: `Bearer ${token}` };
+  return this._http.get(this.URL_DB, { headers });
+}
 
 }

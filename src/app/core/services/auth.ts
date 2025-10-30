@@ -56,6 +56,8 @@ export class Auth {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('totalPrice');
   }
 
   isLoggedIn() {

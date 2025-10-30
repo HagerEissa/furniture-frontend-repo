@@ -1,9 +1,7 @@
-/* Section background */
 .contact-section {
   background-color: #fafafa;
 }
 
-/* Input + textarea styling */
 input[type='text'],
 input[type='email'],
 input[type='password'],
@@ -29,7 +27,6 @@ textarea:focus {
   outline: none;
 }
 
-/* Button style */
 button[type='submit'] {
   display: inline-flex;
   align-items: center;

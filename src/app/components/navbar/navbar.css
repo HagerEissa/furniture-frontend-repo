@@ -10,7 +10,6 @@
   z-index: 1000;
 }
 
-/* Logo styling */
 .logo {
   display: flex;
   align-items: center;
@@ -21,19 +20,16 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Round logo image */
 .logo img {
   border-radius: 50%;
 }
 
-/* Navigation links container */
 .nav-links {
   display: flex;
   gap: 3rem;
   transition: all 0.4s ease;
 }
 
-/* Individual nav links */
 .nav-links a {
   position: relative;
   text-decoration: none;
@@ -45,7 +41,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Underline animation on hover/active */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -57,7 +52,6 @@
   transition: width 0.3s ease;
 }
 
-/* Hover effect: change color + show underline */
 .nav-links a:hover {
   color: #b88e2f;
 }
@@ -66,7 +60,6 @@
   width: 100%;
 }
 
-/* Active link styling */
 .nav-links a.active {
   color: #b88e2f;
 }
@@ -75,14 +68,12 @@
   width: 100%;
 }
 
-/* Icons container */
 .nav-icons {
   display: flex;
   align-items: center;
   gap: 1.2rem;
 }
 
-/* Style for each icon */
 .nav-icons i {
   font-size: 22px;
   color: black;
@@ -90,29 +81,22 @@
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Icon hover effect */
 .nav-icons i:hover {
   color: #b88e2f;
   transform: scale(1.2);
 }
 
-/* Hidden menu toggle icon (only visible on mobile) */
 .menu-toggle {
   display: none;
 }
 
-/* ========================= */
-/*  Responsive Design (Mobile) */
-/* ========================= */
-/* 768 880 */
+
 @media (max-width:1080px) {
-  /* Show menu toggle icon */
   .menu-toggle {
     display: block;
     font-size: 26px;
   }
 
-  /* Mobile dropdown menu style */
   .nav-links {
     display: flex;
     flex-direction: column;
@@ -144,7 +128,6 @@
     animation: slideDown 0.4s ease;
   }
 
-  /* Slide-down animation for smooth open */
   @keyframes slideDown {
     0% {
       opacity: 0;
@@ -156,7 +139,6 @@
     }
   }
 
-  /* Center text for mobile menu items */
   .nav-links a {
     text-align: center;
   }

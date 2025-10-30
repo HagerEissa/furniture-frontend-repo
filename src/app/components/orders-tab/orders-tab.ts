@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../core/services/order-service'; 
+import { OrderService } from '../../core/services/order-service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -20,7 +20,7 @@ export class OrdersTab implements OnInit {
   }
 
   loadOrders() {
-    this.orderService.getUserOrders().subscribe({
+    this.orderService.getAllOrders().subscribe({
       next: (res: any) => {
         this.orders = res;
         console.log('Orders loaded:', res);
@@ -42,7 +42,7 @@ export class OrdersTab implements OnInit {
     this.orderService.updateOrderStatus(order._id, nextStatus).subscribe({
       next: (res: any) => {
         console.log('Status updated:', res);
-        this.loadOrders(); 
+        this.loadOrders();
       },
       error: (err) => {
         console.error('Error updating status:', err);
