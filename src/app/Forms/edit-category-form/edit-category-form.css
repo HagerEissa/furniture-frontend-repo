@@ -1,0 +1,12 @@
+.modal-header,
+.edit-category-btn {
+  background-color: #588257;
+}
+
+.edit-category-btn {
+  border: none;
+}
+
+.modal-title {
+  color: white;
+}

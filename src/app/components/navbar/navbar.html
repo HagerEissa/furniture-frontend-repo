@@ -1,1 +1,61 @@
-<p>navbar works!</p>
+<header class="navbar-container">
+  <div class="logo">
+    <a routerLink="/">
+      <img src="Log.png" alt="Furniro Logo" width="50" height="50" />
+    </a>
+    <span>Furniro</span>
+  </div>
+
+  <nav class="nav-links" [class.active]="showMenu">
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="toggleMenu()"
+      >Home</a
+    >
+    <a routerLink="/shop" routerLinkActive="active" (click)="toggleMenu()">Shop</a>
+    <a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a>
+
+    <a
+      *ngIf="!isAdminUser"
+      routerLink="/contact"
+      routerLinkActive="active"
+      (click)="toggleMenu()"
+      >Contact</a
+    >
+
+    <a routerLink="/blog" routerLinkActive="active" (click)="toggleMenu()">Blog</a>
+
+    <div class="nav-icons">
+      <ng-container *ngIf="!isAdminUser">
+        <a routerLink="/profile" class="icon-link">
+          <i class="fa-regular fa-user"></i>
+        </a>
+
+        <a routerLink="/favourite" class="icon-link">
+          <i class="fa-regular fa-heart"></i>
+          <span class="fav-count" *ngIf="favCount > 0">{{ favCount }}</span>
+        </a>
+
+        <a routerLink="/cart" class="icon-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isAdminUser">
+        <a routerLink="/profile" class="icon-link">
+          <i class="fa-regular fa-user"></i>
+        </a>
+
+        <a routerLink="/dashboard" class="icon-link">
+          <i class="fa-solid fa-gauge"></i>
+        </a>
+      </ng-container>
+    </div>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </nav>
+
+  <i class="fa-solid fa-bars menu-toggle" (click)="toggleMenu()"></i>
+</header>

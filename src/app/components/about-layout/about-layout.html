@@ -1,0 +1,71 @@
+<section class="about-section py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-3">About Our Furniture Website</h2>
+        <p class="text-center text-muted mb-5">
+            Welcome to <strong>Furniro</strong> — a modern furniture shopping experience created with passion and technology.
+        </p>
+
+        <div class="row g-4 align-items-center">
+        <div class="col-lg-6 col-12">
+            <img
+            src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=627"
+            alt="Furniture Showcase" class="img-fluid rounded-3 shadow-sm"/>
+        </div>
+
+        <div class="col-lg-6 col-12">
+            <h4 class="fw-semibold mb-3 text-gold">Our Project</h4>
+
+            <p class="text-muted mb-4">
+                This furniture e-commerce platform was developed by a team of five web developers using
+                <strong>Angular</strong> for the frontend, <strong>Express.js</strong> and <strong>MongoDB</strong> for the backend,
+                and <strong>OAuth 2.0</strong> for secure authentication. It also integrates
+                <strong>Cloudinary</strong> for image management.
+            </p>
+
+            <p class="text-muted mb-4">
+                On the <strong>frontend</strong>, we built the UI using <strong>Angular</strong> and <strong>Bootstrap</strong> to ensure
+                a responsive and elegant design.  
+                On the <strong>backend</strong>, we used <strong>Node.js</strong> with <strong>Express</strong> and
+                <strong>MongoDB</strong> as our database.  
+                We implemented major packages like <strong>Stripe</strong> for handling payments, 
+                <strong>Cloudinary</strong> and <strong>Multer</strong> for image uploads and management, and
+                <strong>OAuth 2.0</strong> for enabling login via Google and Facebook.
+            </p>
+
+            <p class="text-muted mb-4">
+                The <strong>admin panel</strong> provides full CRUD functionality for managing users and products,
+                giving admins complete control over website content.  
+                Regular users can <strong>browse products</strong>, <strong>edit their profiles</strong>,
+                <strong>add items to cart or favorites</strong>, <strong>place orders</strong>, and even
+                <strong>leave reviews and comments</strong> — all while enjoying a secure and smooth experience.
+            </p>
+
+            <h5 class="fw-semibold mb-3 text-gold">Our Development Team</h5>
+
+            <ul class="list-unstyled team-list">
+            @for (member of teamMembers; track member.name) {
+                <li class="mb-3">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-placeholder me-3">
+                            <i class="bi bi-person-circle fs-3 text-gold"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-semibold">{{ member.name }}</p>
+                        <small class="text-muted">{{ member.role }}</small><br />
+                        <a [href]="member.linkedin" target="_blank" class="text-decoration-none text-gold small me-3">
+                            <i class="bi bi-linkedin me-1"></i> LinkedIn
+                        </a>
+                        @if (member.github) {
+                            <a [href]="member.github" target="_blank" class="text-decoration-none text-gold small">
+                                <i class="bi bi-github me-1"></i> GitHub
+                            </a>
+                        }
+                        </div>
+                    </div>
+                </li>
+            }
+            </ul>
+        </div>
+        </div>
+    </div>
+</section>

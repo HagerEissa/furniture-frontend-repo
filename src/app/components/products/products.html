@@ -1,0 +1,43 @@
+<section class="products-container">
+  <section class="products-cards-container">
+    <div class="img-content-card-container" *ngFor="
+        let product of (displayedProducts$ | async)?.slice(0, limit || undefined)
+      ">
+      <div class="product-card-container" (click)="goToProductDetail(product)">
+        <div class="product-card-img">
+          <img [src]="product.imgURL" [alt]="product.title" />
+        </div>
+
+        <div class="overlay">
+          <button class="add-to-cart-btn" (click)="add_to_card(product._id)" (click)=" $event.stopPropagation()">
+            Add to cart
+          </button>
+          <p class="wishlist-btn" (click)="toggle_fav(product._id)" (click)=" $event.stopPropagation()">
+            <span class="material-icons" [ngStyle]="{
+                color: favouriteProducts.includes(product._id)
+                  ? '#b88e2f'
+                  : 'gray'
+              }">{{
+              favouriteProducts.includes(product._id)
+              ? 'favorite'
+              : 'favorite_border'
+              }}</span>Like
+          </p>
+        </div>
+
+        <div class="card-content">
+          <p class="product-title">{{ product.name }}</p>
+          <p class="product-desc">{{ product.shortDesc }}</p>
+          <p class="price">${{ product.price | number }}</p>
+        </div>
+
+        <div *ngIf="product.discount" class="sticker-discount">
+          -{{ product.discount }}%
+        </div>
+        <div *ngIf="!product.discount && product.isnew" class="sticker-new">
+          New
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

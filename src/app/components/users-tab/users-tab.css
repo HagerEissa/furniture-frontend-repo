@@ -1,0 +1,110 @@
+.table-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.table-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(90deg, #588257, #a1b089);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table th,
+.table td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table tbody tr:hover {
+  background-color: #fff3e0;
+  transition: background-color 0.2s ease;
+}
+
+.table button.btn {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: none;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.table button.btn-primary {
+  background-color: #588257;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(184, 142, 47, 0.3);
+}
+
+.table button.btn-primary:hover {
+  background-color: #385937;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(161, 118, 30, 0.4);
+}
+
+.table button.btn-danger {
+  background-color: #e74c3c;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.table button.btn-danger:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(192, 57, 43, 0.4);
+}
+
+.current-user td {
+  color: #588257;
+  font-weight: bolder;
+}
+
+.you-badge {
+  background-color: #588257;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  margin-left: 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .table button.btn {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+}

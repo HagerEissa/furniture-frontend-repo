@@ -1,0 +1,98 @@
+<div class="page-container">
+
+    <div class="checkout-body">
+
+        <div class="billing-details">
+            <h2 class="section-title">Billing details</h2>
+
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                <div class="form-row split-2">
+                    <div class="form-group">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" formControlName="firstName" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" formControlName="lastName" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country / Region</label>
+                    <input type="text" id="country" formControlName="country" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Street address</label>
+                    <input type="text" id="address" formControlName="address" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Town / City</label>
+                    <input type="text" id="city" formControlName="city" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="zip-code">ZIP code</label>
+                    <input type="text" id="zip-code" formControlName="postalCode" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" formControlName="phone" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" formControlName="email" required />
+                </div>
+
+                <div class="form-group">
+                    <textarea id="additional-info" formControlName="additionalInfo" rows="3"
+                        placeholder="Additional Information"></textarea>
+                </div>
+
+
+                <div class="payment-method">
+                    <input type="radio" id="card" formControlName="paymentMethod" name="paymentMethod" value="stripe" />
+                    <label for="card">Pay with Card (Stripe)</label>
+                </div>
+
+                <div class="payment-method">
+                    <input type="radio" id="cod" formControlName="paymentMethod" name="paymentMethod" value="cash" />
+                    <label for="cod">Cash on delivery</label>
+                </div>
+
+                <button type="submit" class="place-order-btn" [disabled]="checkoutForm.invalid">Place order</button>
+
+
+
+            </form>
+        </div>
+
+        <div class="order-summary">
+            <div class="product-summary">
+                <div class="summary-header">
+                    <span class="product-title">Product</span>
+                    <span class="product-title">Subtotal</span>
+                </div>
+
+                <div class="summary-item" *ngFor="let item of cartItems">
+                    <span class="item-name">{{ item.name }}</span>
+                    <span class="item-amount">Rs. {{ item.price * item.quantity | number:'1.0-2' }}</span>
+                </div>
+                <div class="summary-total">
+                    <span class="total-label">Subtotal</span>
+                    <span class="total-amount">Rs. {{ totalCartPrice | number:'1.0-2' }}</span>
+                </div>
+
+                <div class="summary-total grand-total">
+                    <span class="total-label">Total</span>
+                    <span class="grand-amount">Rs. {{ totalCartPrice | number:'1.0-2' }}</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

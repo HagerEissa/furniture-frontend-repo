@@ -1,0 +1,80 @@
+.admin-header {
+  background-color: #f9f1e7; 
+  padding: 1em;
+  border-radius: 15px;
+}
+
+.add-product-btn,
+.add-category-btn {
+  background-color:#a1b089; 
+  color: white;
+  font-weight: 500;
+  float: right;
+  margin-right: 2em;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.add-product-btn:hover,
+.add-category-btn:hover {
+  background-color: #a1b089;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(144, 153, 113, 0.4);
+}
+
+.add-category-btn {
+  background-color: #588257; 
+}
+
+.add-category-btn:hover {
+  background-color: #bfa02f;
+}
+
+.add-product-btn:hover {
+  background-color: #bfa02f;
+}
+.table-container {
+  padding-top: 5em;
+}
+
+h2 {
+  margin-top: 2em;
+}
+
+.nav-tabs .nav-item {
+  margin-right: 1.5rem; 
+}
+
+.nav-tabs .nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+  color: #273617; 
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent; 
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #588257; 
+  color: #fff;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #588257;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.table-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.table-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+}

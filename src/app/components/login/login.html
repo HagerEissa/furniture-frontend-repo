@@ -1,59 +1,69 @@
-<div class="container-fluid min-vh-100">
-    <div class="row">
-        <div class="col-12 d-flex justify-content-end">
-            <button mat-stroked-button class="login-btn mt-3 me-3 mb-2"  >
-                Sign up
-            </button>
-        </div>
-    </div>
-    <div class="row h-100 align-items-center">
-        <div class="col-sm-12 col-md-6 flex flex-column justify-content-center px-4 px-md-5 left-section">
-            <div class="left-section-content " [formGroup]="loginForm">
-                <h2 >Sign in</h2>
-                <mat-form-field appearance="outline">
-                    <mat-label>Email address</mat-label>
-                    <input matInput type="email" placeholder="pat@example.com" formControlName="email" required>
-                </mat-form-field>
-                @if(loginForm.controls.email.touched&&!emailValid){
-                    @if (loginForm.controls.email.errors?.['required']) {
-                        <small class="warning ">Please enter Email address*</small>
-                    }
-                    @if (loginForm.controls.email.errors?.['email']) {
-                        <small class="warning ">The Email address should be a valid email*</small>
-                    }
-                }
+<div class="login-container">
+    <div class="login-card" [formGroup]="loginForm">
+        <h2 class="mb-3">Sign in</h2>
 
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label> 
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-                    </button> 
-                </mat-form-field> 
-                @if(loginForm.controls.password.touched&&!passwordValid){
-                    @if (loginForm.controls.password.errors?.['required']) {
-                        <small class="warning">*password is required</small>
-                    }
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email address</mat-label>
+            <input matInput type="email" placeholder="pat@example.com" formControlName="email" required />
+        </mat-form-field>
+        @if (loginForm.controls.email.touched && !emailValid) {
+            @if (loginForm.controls.email.errors?.['required']) {
+                <small class="warning">Please enter Email address*</small>
             }
+            @if (loginForm.controls.email.errors?.['email']) {
+                <small class="warning">The Email address should be a valid email*</small>
+            }
+        }
+
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        @if (loginForm.controls.password.touched && !passwordValid) {
+            @if (loginForm.controls.password.errors?.['required']) {
+                <small class="warning">*password is required</small>
+            }
+        }
+
+        <button mat-raised-button class="sign-btn mt-2" [disabled]="!FormValid" (click)="login()">
+            Sign in
+        </button>
+
+    
+        <div class="divider d-flex align-items-center my-4">
+            <hr class="flex-grow-1" />
+            <span class="px-2 text-muted">OR</span>
+            <hr class="flex-grow-1" />
+        </div>
 
 
-                <button mat-raised-button class="sign-btn"  [disabled]="!FormValid" (click)="login()" >
-                    Sign in
-                </button>
-                <p class="terms">
-                    Don't have an account? <a href="#">sign up</a> 
-                </p>
-                <p class="terms">
-                    This page is protected by Google reCAPTCHA to ensure you are not a bot. <a href="#">learn more.</a> 
-                </p>
-                
-            </div>
-        </div>
-        <div class=" col-md-6 d-none d-md-block p-0 overflow-hidden ">
-            <img src="2.jpg" alt="" class="img-fluid w-100 h-100 object-fit-cover">
-        </div>
+        <button mat-stroked-button class="social-btn w-100 mb-2 icon" (click)="loginWithGoogle()">
+            <img src="google.svg" alt="Google" />
+            Continue with Google
+        </button>
+        <button mat-stroked-button class="social-btn w-100 mb-2 icon" (click)="loginWithFacebook()">
+            <img src="facebook.svg" alt="Facebook" />
+            Continue with Facebook
+        </button>
+
+
+        <p class="terms mt-3 text-center">
+            Don't have an account?
+            <a routerLink="/signup">Sign up</a>
+        </p>
+        <p class="terms text-center">
+            This page is protected by Google reCAPTCHA to ensure you are not a bot.
+            <a href="#">Learn more</a>
+        </p>
     </div>
 
-</div>
 
+    <div class="login-image">
+        <img src="2.jpg" alt="login background" class="img-fluid w-100 h-100 object-fit-cover" />
+    </div>
+</div>

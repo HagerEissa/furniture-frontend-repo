@@ -1,0 +1,58 @@
+.modal-content {
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-header {
+  background-color: #588257;
+}
+
+.modal-title {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.btn-close {
+  filter: brightness(0) saturate(100%) invert(25%) sepia(6%) saturate(400%) hue-rotate(30deg);
+}
+
+.modal-body label {
+  font-weight: 500;
+  color: #444;
+}
+
+.modal-body input[type='text'],
+.modal-body input[type='file'] {
+  padding: 0.6em;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.modal-body input:focus {
+  outline: none;
+}
+
+.modal-footer {
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+}
+
+.add-category-btn {
+  background-color: #588257;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-category-btn:hover {
+  background-color: #385937;
+  transform: translateY(-2px);
+}
+
+.add-category-btn:active {
+  transform: translateY(0);
+  background-color: #8c733b;
+}

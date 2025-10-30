@@ -1,0 +1,170 @@
+<div class="modal fade" id="addModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Product</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="resetForm(form)"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="addProduct(form)">
+          <div class="mb-3">
+            <label>Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              [(ngModel)]="product.name"
+              #name="ngModel"
+              required
+            />
+            @if (name.invalid && (name.dirty || name.touched)) {
+            <div class="text-danger small">Name is required.</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="description"
+              [(ngModel)]="product.desc"
+              required
+              #desc="ngModel"
+            />
+            @if (desc.invalid && (desc.dirty || desc.touched)) {
+            <div class="text-danger small">Description is required.</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label>Short Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="short-description"
+              [(ngModel)]="product.shortDesc"
+              required
+              #shortDesc="ngModel"
+            />
+            @if (shortDesc.invalid && (shortDesc.dirty || shortDesc.touched)) {
+            <div class="text-danger small">Short description is required.</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label>Price</label>
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              [(ngModel)]="product.price"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Discount</label>
+            <input
+              type="number"
+              class="form-control"
+              name="discount"
+              [(ngModel)]="product.discount"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Product Image</label>
+            <input
+              type="file"
+              class="form-control"
+              name="product-img"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              required
+              #imageInput
+            />
+            @if (!selectedFile && form.submitted) {
+            <div class="text-danger small">Product image is required.</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label>Category</label>
+            <select
+              class="form-select"
+              name="category"
+              [(ngModel)]="product.category"
+              required
+              #category="ngModel"
+            >
+              <option value="" disabled selected>Select a category</option>
+              @for (cat of categories; track cat._id) {
+              <option [value]="cat._id">{{ cat.name }}</option>
+              }
+            </select>
+
+            @if (category.invalid && (category.dirty || category.touched)) {
+            <div class="text-danger small">Category is required.</div>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label>Stock</label>
+            <input
+              type="text"
+              class="form-control"
+              name="stock"
+              [(ngModel)]="product.stock"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label>Product Status</label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="status"
+                id="new"
+                [value]="true"
+                [(ngModel)]="product.isnew"
+                checked
+              />
+              <label class="form-check-label" for="true">New</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="status"
+                id="old"
+                [value]="false"
+                [(ngModel)]="product.isnew"
+              />
+              <label class="form-check-label" for="false">Old</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(form)">
+              Cancel
+            </button>
+            <button
+              class="btn add-product-btn"
+              [disabled]="form.invalid || !selectedFile"
+              type="submit"
+            >
+              Add Product
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

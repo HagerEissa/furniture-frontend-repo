@@ -1,7 +1,5 @@
+<app-navbar *ngIf="isLoggedIn"></app-navbar>
 
+<router-outlet></router-outlet>
 
-<!-- <router-outlet /> -->
-
-<!-- <app-signup></app-signup> -->
- <!-- <app-signup-with-mail></app-signup-with-mail> -->
-<app-login></app-login>
+<app-footer *ngIf="isLoggedIn"></app-footer>

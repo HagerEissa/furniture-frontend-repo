@@ -1,0 +1,178 @@
+.profile-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fffaf0;
+  color: #333;
+  padding: 2rem 4rem;
+}
+
+.profile-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid #b88e2f;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.profile-avatar,
+.avatar-placeholder {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #f1e3c4;
+  border: 4px solid #b88e2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #a1761e;
+  font-size: 0.9rem;
+}
+
+.file-label {
+  background-color: #b88e2f;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.file-label:hover {
+  background-color: #a1761e;
+}
+
+.file-input {
+  display: none;
+}
+
+.profile-text {
+  flex-grow: 1;
+}
+
+.profile-text h1 {
+  color: #a1761e;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.profile-text p {
+  color: #555;
+  margin: 0;
+}
+
+.profile-form-section {
+  background: #fff;
+  border: 2px solid #b88e2f;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(184, 142, 47, 0.2);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  color: #a1761e;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #b88e2f;
+  outline: none;
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #a1761e;
+}
+
+.save-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.save-btn {
+  background-color: #b88e2f;
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #a1761e;
+}
+
+.text-danger {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatar-section {
+    align-items: center;
+  }
+
+  .profile-content {
+    padding: 1rem;
+  }
+}
