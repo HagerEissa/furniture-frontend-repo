@@ -2,7 +2,6 @@
     <div class="login-card" [formGroup]="loginForm">
         <h2 class="mb-3">Sign in</h2>
 
-        <!-- Email -->
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Email address</mat-label>
             <input matInput type="email" placeholder="pat@example.com" formControlName="email" required />
@@ -16,7 +15,6 @@
             }
         }
 
-        <!-- Password -->
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Password</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
@@ -36,14 +34,14 @@
             Sign in
         </button>
 
-        <!-- Divider -->
+    
         <div class="divider d-flex align-items-center my-4">
             <hr class="flex-grow-1" />
             <span class="px-2 text-muted">OR</span>
             <hr class="flex-grow-1" />
         </div>
 
-        <!-- Social Buttons -->
+
         <button mat-stroked-button class="social-btn w-100 mb-2 icon" (click)="loginWithGoogle()">
             <img src="google.svg" alt="Google" />
             Continue with Google
@@ -53,7 +51,7 @@
             Continue with Facebook
         </button>
 
-        <!-- Footer text -->
+
         <p class="terms mt-3 text-center">
             Don't have an account?
             <a routerLink="/signup">Sign up</a>
@@ -64,7 +62,7 @@
         </p>
     </div>
 
-    <!-- Background Image -->
+
     <div class="login-image">
         <img src="2.jpg" alt="login background" class="img-fluid w-100 h-100 object-fit-cover" />
     </div>

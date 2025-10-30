@@ -89,7 +89,6 @@ export class ProductReview {
 
 
 
-  // refresh review
   displayReviews() {
     this.reviewService.getReviewsByProductId(this.productId).subscribe({
       next: (res: any) => this.reviewLst = res,
