@@ -1,59 +1,39 @@
-# Frontend
+# Furnio website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+## Table of contents
 
-## Development server
+- [Overview](#overview)
+- [Screenshot](#screenshot)
+- [Built with](#built-with)
+- [Test](#test)
 
-To start a local development server, run:
+## Overview
 
-```bash
-ng serve
-```
+### Features
+Your users should be able to:
+1. View the optimal layout for each page depending on their device's screen size
+2. See hover states for all interactive elements throughout the site
+3. Receive an error message when the contact form is submitted if:
+The Name, Email or Message fields are empty should show "Can't be empty"
+The Email is not formatted correctly should show "Please use a valid email address"
+4. View actual locations on the contact page map
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Screenshot
 
-## Code scaffolding
+<img width="1920" height="1892" alt="screenshot1" src="https://github.com/user-attachments/assets/7bb8a33d-a948-410e-b3bf-6e12feccb4d8" />
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+<img width="1920" height="5872" alt="screenshot2" src="https://github.com/user-attachments/assets/b7600ca7-024e-4ad7-af48-d245e8190da4" />
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Built with
+- Semantic HTML5 markup
+- Bootstrap
+- Angular
+- Node js
+- MongoDB
+- Angular Material
 
-```bash
-ng generate --help
-```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Test
+- Run the frontend with (ng serve -o)
+- Run the backend repo with (npm run dev)
