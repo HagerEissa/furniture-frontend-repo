@@ -1,4 +1,4 @@
-# Furnio website
+# Furniro website
 
 ## Table of contents
 
