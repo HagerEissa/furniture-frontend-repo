@@ -36,7 +36,9 @@ The Email is not formatted correctly should show "Please use a valid email addre
 - Angular
 - Node js
 - MongoDB
+- Express
 - Angular Material
+- Cloudinary
 
 
 ### Test
