@@ -122,9 +122,13 @@ export class FormCheckout implements OnInit {
     };
 
     this.http
-      .post<{ url: string }>('http://localhost:3000/api/payment/create-checkout-session', payload, {
-        headers,
-      })
+      .post<{ url: string }>(
+        'https://furniture-backend-repo-production.up.railway.app/api/payment/create-checkout-session',
+        payload,
+        {
+          headers,
+        }
+      )
       .subscribe({
         next: (res) => {
           window.location.href = res.url;
