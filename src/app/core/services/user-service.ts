@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   constructor(private _http:HttpClient){}
-      URL_DB = "http://localhost:3000/api/user"
+      URL_DB = "https://furniture-backend-repo-production.up.railway.app/api/user"
 
       getUsers(){
         return this._http.get(this.URL_DB);

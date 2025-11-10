@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ContactService {
   constructor(private _http: HttpClient) {}
 
-  private URL_DB = 'http://localhost:3000/api/contact';
+  private URL_DB = 'https://furniture-backend-repo-production.up.railway.app/api/contact';
 
   sendMessage(data: any) {
     return this._http.post(this.URL_DB, data);

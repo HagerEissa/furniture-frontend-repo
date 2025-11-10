@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ReviewService {
   constructor(private _http:HttpClient){}
-      URL_DB = "http://localhost:3000/api/product"
+      URL_DB = "https://furniture-backend-repo-production.up.railway.app/api/product"
 
       getReviewsByProductId(id:any){
         return this._http.get(`${this.URL_DB}/${id}/review`)
