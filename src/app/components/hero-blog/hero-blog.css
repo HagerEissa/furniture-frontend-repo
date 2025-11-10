@@ -64,7 +64,6 @@
   color: #97731e;
 }
 
-/* --- Responsive --- */
 @media (max-width: 600px) {
   .page-title-banner {
     height: 220px;
