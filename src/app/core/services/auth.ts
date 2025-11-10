@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class Auth {
   constructor(private _http: HttpClient) {}
-  URL_DB = 'https://furniture-backend-repo-production.up.railway.app/api';
+  URL_DB = 'https://insightful-stillness-production.up.railway.app/api';
   login(data: any) {
     return this._http.post(`${this.URL_DB}/login`, data);
   }

@@ -13,7 +13,7 @@ export interface Category {
 export class CategoryService {
   constructor(private _http: HttpClient) {}
 
-  URL_DB = 'https://furniture-backend-repo-production.up.railway.app/api/category';
+  URL_DB = 'https://insightful-stillness-production.up.railway.app/api/category';
 
   getAllCategories(): Observable<Category[]> {
     return this._http.get<Category[]>(this.URL_DB);

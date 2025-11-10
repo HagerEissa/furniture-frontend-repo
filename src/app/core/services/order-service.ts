@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class OrderService {
-  URL_DB = 'https://furniture-backend-repo-production.up.railway.app/api/orders'; 
+  URL_DB = 'https://insightful-stillness-production.up.railway.app/api/orders'; 
 
   constructor(private _http: HttpClient) {}
 
