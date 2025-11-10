@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
   constructor(private _http: HttpClient) {}
-  URL_DB = 'https://furniture-backend-repo-production.up.railway.app/api/cart';
+  URL_DB = 'https://insightful-stillness-production.up.railway.app/api/cart';
 
   getCartForUser(id: any) {
     return this._http.get(`${this.URL_DB}/${id}`);

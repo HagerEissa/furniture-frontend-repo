@@ -123,7 +123,7 @@ export class FormCheckout implements OnInit {
 
     this.http
       .post<{ url: string }>(
-        'https://furniture-backend-repo-production.up.railway.app/api/payment/create-checkout-session',
+        'https://insightful-stillness-production.up.railway.app/api/payment/create-checkout-session',
         payload,
         {
           headers,
