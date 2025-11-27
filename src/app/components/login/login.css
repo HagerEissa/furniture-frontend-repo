@@ -14,7 +14,6 @@
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
-  /* backdrop-filter: blur(5px); */
   z-index: 0;
 }
 
@@ -26,10 +25,10 @@
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  padding: 20px 50px;
+  padding: 30px 50px;
   color: #000;
-  min-width: 450px;
-  /* max-width: 400px; */
+  width: 100%;
+  max-width: 450px;
   text-align: center;
 }
 
@@ -37,7 +36,6 @@
   margin-bottom: 25px;
   font-weight: 700;
 }
-
 
 .sign-btn {
   background: #000 !important;
@@ -100,7 +98,6 @@
   text-align: left;
 }
 
-
 .login-image {
   position: absolute;
   right: 0;
@@ -115,20 +112,38 @@
   object-fit: cover;
 }
 
+/* Media Queries */
+
+/* Tablets */
 @media (max-width: 992px) {
   .login-image {
     display: none;
   }
-
   .login-card {
-    width: 90%;
     max-width: 420px;
     padding: 35px 30px;
   }
 }
 
-@media (max-width: 576px) {
+/* Small Tablets / Large Phones */
+@media (max-width: 768px) {
   .login-card {
+    max-width: 380px;
+    padding: 30px 25px;
+  }
+  .sign-btn {
+    border-radius: 25px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .login-card {
+    max-width: 320px;
     padding: 25px 20px;
+  }
+  .sign-btn {
+    border-radius: 18px;
+    height: 40px;
   }
 }
